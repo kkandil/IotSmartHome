@@ -1,0 +1,4 @@
+// Keep verification outputs separate from Android Studio's existing build cache.
+gradle.beforeProject { project ->
+    project.buildDir = new File(project.rootDir, "build-migration/" + project.name)
+}
