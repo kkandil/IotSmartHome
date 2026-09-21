@@ -1,0 +1,6 @@
+[submodule "HubServer"]
+	path = HubServer
+	url = https://github.com/kkandil/HubServer.git
+[submodule "SmartHome"]
+	path = SmartHome
+	url = https://github.com/kkandil/SmartHomeApp.git
