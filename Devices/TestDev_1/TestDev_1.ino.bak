@@ -6,37 +6,16 @@ SmartSnap api;
 
 int SliderCntrInt = 0;
 float SliderCntrFloat = 0.0;
-int led1State = 0;
-float led2State = 0.0;
+
 void HandleWriteVariable(const String& varName, const String& varType, const String& value)
 {
   if (varName == "SliderCntrInt")
   { 
-    if(value.toInt() == 1)
-    {
-      led1State = 1;
-      digitalWrite(D5, HIGH);
-    }
-    else
-    {
-      led1State = 0;
-      digitalWrite(D5, LOW);
-    }
     SliderCntrInt = value.toInt();
     api.WriteVariableValue("SliderCtrlInt_State", "int", String(SliderCntrInt));
    }
-  else if (varName == "SliderCntrFloat")
+   else if (varName == "SliderCntrFloat")
   { 
-    if(value.toFloat() == 1.0)
-    {
-      led2State = 1.0;
-      digitalWrite(D6, HIGH);
-    }
-    else
-    {
-      led2State = 0.0;
-      digitalWrite(D6, LOW);
-    }
     SliderCntrFloat = value.toFloat();
     api.WriteVariableValue("SliderCtrlFloat_State", "float", String(SliderCntrFloat, 2));
   }
@@ -47,13 +26,13 @@ bool HandleReadVariable(const String& varName, String& varType, String& value)
   if (varName == "SliderCntrInt")
   {  
     varType = "int" ;
-    value = String(led1State) ;  
+    value = String(SliderCntrInt) ;  
     return true;
    }
    else if (varName == "SliderCntrFloat")
   {  
     varType = "float" ;
-    value = String(led2State, 2);
+    value = String(SliderCntrFloat, 2);
     return true;
   }
   return false;
@@ -72,12 +51,6 @@ void HandleConnectionStatus(bool connected)
 void setup()
 {
   Serial.begin(115200);
-  
-  pinMode(D5, OUTPUT);
-  pinMode(D6, OUTPUT);
-
-  digitalWrite(D5, LOW);
-  digitalWrite(D6, LOW);
 
   api.onWriteVariable(HandleWriteVariable);
   api.onReadVariable(HandleReadVariable);

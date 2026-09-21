@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "SmartSnapAPI.h"
 #include "DHTesp.h" // Click here to get the library: http://librarymanager/All#DHTesp
+#include "SmartSnapHubConfig.h"
 
 // #ifdef ESP32
 // #pragma message(THIS EXAMPLE IS FOR ESP8266 ONLY!)
@@ -92,7 +93,7 @@ void setup()
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl"  );
+  int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");

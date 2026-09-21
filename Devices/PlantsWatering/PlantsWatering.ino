@@ -1,6 +1,6 @@
 #include "SmartSnapAPI.h"
 #include <Ultrasonic.h>
- 
+#include "SmartSnapHubConfig.h"
  
 // TrigPin = D3, EchoPin = D2 
 Ultrasonic ultrasonic(D6, D7);
@@ -81,6 +81,103 @@ void WaterSensorHandler(void);
 void WaterLevelSensorHandler(void);
 
 
+void HandleWriteVariable(const String& varName, const String& VarType, const String& value)
+{
+  int outputState = 0;
+
+  if( varName == PUMP1_CONTROL_VAR )
+  {
+      outputState = value.toInt(); 
+      SetPumpOutputState(0, outputState);
+  }
+  else if( varName == PUMP2_CONTROL_VAR )
+  {
+      outputState = value.toInt(); 
+      SetPumpOutputState(1, outputState);
+  }
+  else if( varName == "V7")
+  {
+    outputState = value.toInt(); 
+    if( outputState == 1)
+      isWaterSensorActive = true;
+    else
+      isWaterSensorActive = false;
+    SmartSnap.WriteVariableValue("V7", "int", String(isWaterSensorActive));
+  }
+  else
+  {
+      Serial.println("Unkown Variable"); 
+  } 
+}
+
+bool HandleReadVariable(const String& varName, String& varType, String& value)
+{
+  if( varName == "V1" )
+  {
+    varType = "int" ;
+    value = String(Pumps[0].currentState) ; 
+    return true;
+  }
+  else if( varName == "V2" )
+  {
+    varType = "int" ;
+    value = String(Pumps[1].currentState) ; 
+    return true;
+  }
+  else if( varName == "V5" )
+  {
+    varType = "int" ; 
+    value = String(analogRead(MOISTURE_SENSOR_PIN));
+    return true;
+  }
+  else if( varName == "V6" )
+  {
+    varType = "int" ; 
+    if( waterSensorState == WATER_SENSOR_STATE_DETECTED)
+      value = "1";
+    else
+      value = "0";
+   return true;   
+  }
+  else if( varName == "V7" )
+  {
+    varType = "int" ; 
+    value = String(isWaterSensorActive); 
+    return true;
+  } 
+  else if( varName == "V8" )
+  {
+    WaterLevelSensorHandler();
+    varType = "int" ; 
+    value = String(waterSensorValueCM); 
+    return true;
+  }  
+  return false;
+}
+
+
+extern void HandleServerValue(const String& varName, const String& value)
+{
+  if( varName == "V6" )
+  {
+    Serial.println("Received Value for V6 = " + value);
+    if(value.toInt() == 1 )
+    {
+      waterSensorState = WATER_SENSOR_STATE_DETECTED;
+      
+    }
+    else
+    {
+      waterSensorState = WATER_SENSOR_STATE_NOTDETECTED;
+    }
+  }
+}
+
+void HandleConnectionStatus(bool connected)
+{
+  Serial.printf("Connection status: %s\n", connected ? "connected" : "disconnected");
+}
+
 void setup() {
   int retVal = E_NOK;
   Serial.begin(115200); 
@@ -98,9 +195,14 @@ void setup() {
    
   delay(1000);  
   
+  SmartSnap.onWriteVariable(HandleWriteVariable);
+  SmartSnap.onReadVariable(HandleReadVariable);
+  SmartSnap.onServerValue(HandleServerValue);
+  SmartSnap.onConnectionStatus(HandleConnectionStatus);
+  
 //  while( retVal == E_NOK)
  {
-    retVal = SmartSnap.Initialize(111222, "KS_DSL", "2wad@dsl");
+    retVal = SmartSnap.Initialize("Home_Germany", 111222, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
    if( retVal == E_NOK)
      delay(5000);
  }
@@ -126,92 +228,6 @@ void loop() {
   WaterSensorHandler();
  
   // WaterLevelSensorHandler();
-}
-
-
-extern void SmartSnapWriteVariable(String VarName, String VarType, String Value)
-{
-  int outputState = 0;
-
-  if( VarName == PUMP1_CONTROL_VAR )
-  {
-      outputState = Value.toInt(); 
-      SetPumpOutputState(0, outputState);
-  }
-  else if( VarName == PUMP2_CONTROL_VAR )
-  {
-      outputState = Value.toInt(); 
-      SetPumpOutputState(1, outputState);
-  }
-  else if( VarName == "V7")
-  {
-    outputState = Value.toInt(); 
-    if( outputState == 1)
-      isWaterSensorActive = true;
-    else
-      isWaterSensorActive = false;
-    SmartSnap.WriteVariableValue("V7", "int", String(isWaterSensorActive));
-  }
-  else
-  {
-      Serial.println("Unkown Variable"); 
-  } 
-}
-
-extern void SmartSnapGetVariable(String VarName, String& VarType, String* Value)
-{
-  if( VarName == "V1" )
-  {
-    VarType = "int" ;
-    *Value = String(Pumps[0].currentState) ; 
-  }
-  else if( VarName == "V2" )
-  {
-    VarType = "int" ;
-    *Value = String(Pumps[1].currentState) ; 
-  }
-  else if( VarName == "V5" )
-  {
-    VarType = "int" ; 
-    *Value = String(analogRead(MOISTURE_SENSOR_PIN));
-  }
-  else if( VarName == "V6" )
-  {
-    VarType = "int" ; 
-    if( waterSensorState == WATER_SENSOR_STATE_DETECTED)
-      *Value = "1";
-    else
-      *Value = "0";
-  }
-  else if( VarName == "V7" )
-  {
-    VarType = "int" ; 
-    *Value = String(isWaterSensorActive); 
-  } 
-  else if( VarName == "V8" )
-  {
-    WaterLevelSensorHandler();
-    VarType = "int" ; 
-    *Value = String(waterSensorValueCM); 
-  }  
-}
-
-
-extern void SmartSnapServerWriteVariable(String VarName, String Value)
-{
-  if( VarName == "V6" )
-  {
-    Serial.println("Received Value for V6 = " + Value);
-    if(Value.toInt() == 1 )
-    {
-      waterSensorState = WATER_SENSOR_STATE_DETECTED;
-      
-    }
-    else
-    {
-      waterSensorState = WATER_SENSOR_STATE_NOTDETECTED;
-    }
-  }
 }
 
 void SetPumpOutputState(int pumpIndex, int state)
@@ -374,4 +390,3 @@ void WaterLevelSensorHandler(void)
   // Serial.print("Distance in CM: ");
   // Serial.println(waterSensorValueCM);
 }
-

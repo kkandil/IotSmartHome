@@ -13,7 +13,7 @@ DHTesp dht;
 SmartSnap smartSnap;
 
  
-#define SLEEP_TIME_IN_MIN 30
+#define SLEEP_TIME_IN_MIN 1
 unsigned long timer =0;
 
 void HandleWriteVariable(const String& varName, const String& varType, const String& value)
@@ -93,7 +93,7 @@ void setup()
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  int ret = smartSnap.Initialize( "Home_Germany", 1008, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
+  int ret = smartSnap.Initialize( "Home_Germany", 1011, "KS_DSL", "2wad@dsl"  );
 
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");
