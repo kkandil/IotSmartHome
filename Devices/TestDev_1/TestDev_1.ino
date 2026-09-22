@@ -10,7 +10,7 @@ int led1State = 0;
 float led2State = 0.0;
 void HandleWriteVariable(const String& varName, const String& varType, const String& value)
 {
-  if (varName == "SliderCntrInt")
+  if (varName == "V1")
   { 
     if(value.toInt() == 1)
     {
@@ -22,10 +22,8 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
       led1State = 0;
       digitalWrite(D5, LOW);
     }
-    SliderCntrInt = value.toInt();
-    api.WriteVariableValue("SliderCtrlInt_State", "int", String(SliderCntrInt));
    }
-  else if (varName == "SliderCntrFloat")
+  else if (varName == "V2")
   { 
     if(value.toFloat() == 1.0)
     {
@@ -37,20 +35,18 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
       led2State = 0.0;
       digitalWrite(D6, LOW);
     }
-    SliderCntrFloat = value.toFloat();
-    api.WriteVariableValue("SliderCtrlFloat_State", "float", String(SliderCntrFloat, 2));
   }
 }
 
 bool HandleReadVariable(const String& varName, String& varType, String& value)
 {
-  if (varName == "SliderCntrInt")
+  if (varName == "V1")
   {  
     varType = "int" ;
     value = String(led1State) ;  
     return true;
    }
-   else if (varName == "SliderCntrFloat")
+   else if (varName == "V2")
   {  
     varType = "float" ;
     value = String(led2State, 2);
