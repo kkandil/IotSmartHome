@@ -39,6 +39,8 @@ public:
   void Disconnect();
 
   void WriteVariableValue(const String& varName, const String& varType, const String& value);
+  bool SendNotificationToPhone(const String& message);
+  bool SendAlarmToPhone(const String& message);
   void RequestVariableValueFromServer(const String& varName);
 
   void onWriteVariable(WriteVariableHandler handler);

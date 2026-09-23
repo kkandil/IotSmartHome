@@ -371,3 +371,29 @@ void SmartSnap::HandleGetVariableValueFromServer(const char* payload, size_t len
     _serverValueHandler(varName, varValue);
   }
 }
+
+// Returns whether the notification was emitted, not a delivery receipt.
+bool SmartSnap::SendNotificationToPhone(const String& message) {
+  if (!IsConnected() || message.length() == 0 || message.length() > 512) return false;
+  DynamicJsonDocument doc(1024);
+  doc["homeName"] = _homeName;
+  doc["deviceID"] = _deviceId;
+  doc["message"] = message;
+  String output;
+  serializeJson(doc, output);
+  _webSocket.emit("DeviceWriteNotification", output.c_str());
+  return true;
+}
+
+// Send on an alarm transition, not repeatedly from every Run/loop iteration.
+bool SmartSnap::SendAlarmToPhone(const String& message) {
+  if (!IsConnected() || message.length() == 0 || message.length() > 512) return false;
+  DynamicJsonDocument doc(1024);
+  doc["homeName"] = _homeName;
+  doc["deviceID"] = _deviceId;
+  doc["message"] = message;
+  String output;
+  serializeJson(doc, output);
+  _webSocket.emit("DeviceWriteAlarm", output.c_str());
+  return true;
+}
