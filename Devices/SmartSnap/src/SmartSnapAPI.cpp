@@ -29,6 +29,10 @@ SmartSnap::SmartSnap()
 {
 }
 
+int SmartSnap::Initialize(const char* homeName, const char* wifiSsid, const char* wifiPass, const char* serverHost, uint16_t serverPort) {
+  return Initialize(homeName, 0, wifiSsid, wifiPass, serverHost, serverPort);
+}
+
 int SmartSnap::Initialize(const char* homeName,
                           int deviceId,
                           const char* wifiSsid,
@@ -43,33 +47,39 @@ int SmartSnap::Initialize(const char* homeName,
 #if defined(ESP8266)
   // Sketch OTA preserves LittleFS. Keep identity and credentials independent of the new sketch defaults.
   if(LittleFS.begin()) {
-    // Apply a one-shot replacement only after the new, verified image has actually booted.
-    DynamicJsonDocument receipt(512);
-    File receiptFile=LittleFS.open("/smartsnap-ota.json","r");
-    if(receiptFile && deserializeJson(receipt,receiptFile)==DeserializationError::Ok &&
-       receipt["md5"].as<String>()==ESP.getSketchMD5()) {
-      receiptFile.close();
-      bool replaced=true;
-      if(receipt["replace"].as<bool>() && !receipt["applied"].as<bool>()) {
-        replaced=!LittleFS.exists("/smartsnap-connection.json") || LittleFS.remove("/smartsnap-connection.json");
-      }
-      if(replaced) {
-        _otaCompletedJob=receipt["jobId"].as<String>();receipt["applied"]=true;
-        File completed=LittleFS.open("/smartsnap-ota.tmp","w");
-        if(completed){serializeJson(receipt,completed);completed.close();LittleFS.rename("/smartsnap-ota.tmp","/smartsnap-ota.json");}
-      }
-    }
-
-    DynamicJsonDocument config(1024);
+    DynamicJsonDocument config(1024), receipt(512);
     File input=LittleFS.open("/smartsnap-connection.json","r");
-    if(input && deserializeJson(config,input)==DeserializationError::Ok && config["id"].as<int>()>0) {
+    bool hasConfig=input && deserializeJson(config,input)==DeserializationError::Ok && config["id"].as<int>()>0;
+    input.close();
+    File receiptFile=LittleFS.open("/smartsnap-ota.json","r");
+    bool verified=receiptFile && deserializeJson(receipt,receiptFile)==DeserializationError::Ok &&
+                  receipt["md5"].as<String>()==ESP.getSketchMD5();
+    receiptFile.close();
+    bool apply=verified && !receipt["applied"].as<bool>();
+    int savedId=hasConfig?config["id"].as<int>():_deviceId;
+    if(!hasConfig || (apply && receipt["replace"].as<bool>())) {
+      config.clear();config["home"]=_homeName;config["id"]=_deviceId>0?_deviceId:savedId;
+      config["host"]=_serverHost;config["port"]=_serverPort;
+      config["ssid"]=savedSsid;config["pass"]=savedPass;
+    }
+    if(apply && receipt["deviceID"].as<int>()>0) config["id"]=receipt["deviceID"].as<int>();
+    bool stored=hasConfig && !apply;
+    if(!stored && config["id"].as<int>()>0) {
+      File output=LittleFS.open("/smartsnap-connection.tmp","w");
+      if(output) {bool written=serializeJson(config,output)>0;output.close();stored=written && LittleFS.rename("/smartsnap-connection.tmp","/smartsnap-connection.json");}
+    }
+    if(config["id"].as<int>()>0) {
       _homeName=config["home"].as<String>();_deviceId=config["id"];
       _serverHost=config["host"].as<String>();_serverPort=config["port"];
       savedSsid=config["ssid"].as<String>();savedPass=config["pass"].as<String>();
-    } else {
-      config.clear();config["home"]=_homeName;config["id"]=_deviceId;config["host"]=_serverHost;config["port"]=_serverPort;
-      config["ssid"]=savedSsid;config["pass"]=savedPass;
-      File output=LittleFS.open("/smartsnap-connection.json","w");if(output)serializeJson(config,output);
+    }
+    if(verified && stored) {
+      _otaCompletedJob=receipt["jobId"].as<String>();
+      if(apply) {
+        receipt["applied"]=true;
+        File completed=LittleFS.open("/smartsnap-ota.tmp","w");
+        if(completed){serializeJson(receipt,completed);completed.close();LittleFS.rename("/smartsnap-ota.tmp","/smartsnap-ota.json");}
+      }
     }
   }
 #endif
@@ -145,7 +155,7 @@ void SmartSnap::Run()
     Update.installSignature(nullptr,nullptr);
     if(result==HTTP_UPDATE_OK) {
       DynamicJsonDocument receipt(512);receipt["jobId"]=_otaJob;receipt["md5"]=_otaExpectedMD5;
-      receipt["replace"]=_otaReplaceConfiguration;receipt["applied"]=false;
+      receipt["deviceID"]=_otaDeviceId;receipt["replace"]=_otaReplaceConfiguration;receipt["applied"]=false;
       if(LittleFS.begin()) {
         File pending=LittleFS.open("/smartsnap-ota.tmp","w");
         if(pending){serializeJson(receipt,pending);pending.close();LittleFS.rename("/smartsnap-ota.tmp","/smartsnap-ota.json");}
@@ -183,6 +193,7 @@ void SmartSnap::EventOTA(const char* payload,size_t length){
   _instance->_otaPath=path;_instance->_otaJob=data["jobId"].as<String>();
   _instance->_otaReplaceConfiguration=data["replaceConfiguration"]==true;
   _instance->_otaExpectedMD5=data["sketchMD5"].as<String>();
+  _instance->_otaDeviceId=data["newDeviceID"].as<int>();
 #endif
 }
 
@@ -252,7 +263,7 @@ void SmartSnap::EmitDeviceConnect()
   doc["homeName"] = _homeName;
   doc["deviceID"] = _deviceId;
 #if defined(ESP8266)
-  doc["otaReplaceConfiguration"]=true;doc["hardwareId"]=WiFi.macAddress();doc["otaCompletedJob"]=_otaCompletedJob;
+  doc["otaDeviceId"]=true;doc["otaReplaceConfiguration"]=true;doc["hardwareId"]=WiFi.macAddress();doc["otaCompletedJob"]=_otaCompletedJob;
   doc["ota"]=true;doc["firmwareVersion"]=_firmwareVersion;doc["sketchMD5"]=ESP.getSketchMD5();
 #endif
 

@@ -35,6 +35,10 @@ public:
                  const char* serverHost = "smarthome.herokuapp.com",
                  uint16_t serverPort = 80);
 
+  // Uses the identity already provisioned on the device or assigned by OTA.
+  int Initialize(const char* homeName, const char* wifiSsid, const char* wifiPass,
+                 const char* serverHost = "smarthome.herokuapp.com", uint16_t serverPort = 80);
+
   void Run();
   void SetFirmwareVersion(const String& version);
   // Erases only saved connection provisioning; reboot with desired Initialize defaults afterwards.
@@ -59,6 +63,7 @@ private:
   String _homeName;
   String _serverHost, _otaPath, _otaJob, _otaExpectedMD5, _otaCompletedJob;
   bool _otaReplaceConfiguration = false;
+  int _otaDeviceId = 0;
   String _firmwareVersion = "unversioned";
   uint16_t _serverPort = 3000;
   static void EventOTA(const char* payload, size_t length);

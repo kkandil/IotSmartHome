@@ -43,3 +43,23 @@ In step 3 of either upload page, enable **Replace device configuration** only wh
 The current firmware must advertise support for configuration replacement, and the uploaded sketch must also contain this updated SmartSnap library. Older OTA devices need one normal update with this option OFF before using it. No USB flash is needed for that upgrade.
 
 A replacement marker is written only after the signed image is accepted. On the next boot, SmartSnap checks the actual sketch hash before erasing the saved connection settings and saving the new sketch defaults. Failed downloads/signature checks keep the old settings. The hub verifies a changed ID using the physical hardware address, job receipt and firmware hash. If the device moves to another hub/server, the original hub cannot verify that new connection and shows Unconfirmed; inspect the destination home. Incorrect Wi-Fi/server settings can require USB recovery.
+
+
+## Reuse one binary with different device IDs
+
+The upload page now has **Device ID after update** in the Install section. Select the currently connected physical device, choose a firmware file, and enter the destination device ID (already created in the selected home). Leave the field blank for a normal update. An explicit ID overrides both saved and compiled IDs; Wi-Fi/home/server remain unchanged unless Replace device configuration is enabled. This field is per installation, so a single stored binary can be installed for many IDs. An ID already connected on another device is rejected.
+
+Devices need the new `otaDeviceId` capability. Update older devices once with this field blank before assigning an ID. The new ID is stored in LittleFS after the signed firmware is accepted and its sketch hash is verified on boot. Completion requires the assigned ID, hardware address, job receipt and expected image hash.
+
+Application sketches can omit the ID:
+
+```cpp
+api.SetFirmwareVersion("TempSens_1.0.1");
+api.Initialize("Home_Germany", WIFI_SSID, WIFI_PASSWORD, HUB_HOST, 3000);
+```
+
+This form uses previously provisioned identity or the ID supplied by OTA. Keep the existing ID-taking Initialize form for initial USB provisioning of a blank device; a blank device still needs an initial identity and network settings to connect for its first OTA. Existing sketches continue to compile. Do not erase the filesystem during ordinary OTA.
+
+Firmware versions already accept text, including underscores and dots. Set the actual firmware version with SetFirmwareVersion in the sketch; the web upload version is a catalog label and should match it. Changing that label alone does not change the version compiled into a binary.
+
+Validation for ID assignment: server tests cover invalid/missing IDs, unsupported firmware, occupied IDs, and reboot verification against the explicitly assigned ID using the same firmware bytes. TestDev_1 compiled with the upgraded library. Physical OTA assignment was not completed because the currently connected ID 1007 reported no OTA support; it was left unchanged.
