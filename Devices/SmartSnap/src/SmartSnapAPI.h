@@ -36,6 +36,9 @@ public:
                  uint16_t serverPort = 80);
 
   void Run();
+  void SetFirmwareVersion(const String& version);
+  // Erases only saved connection provisioning; reboot with desired Initialize defaults afterwards.
+  bool ResetConnectionConfiguration();
   void Disconnect();
 
   void WriteVariableValue(const String& varName, const String& varType, const String& value);
@@ -54,6 +57,10 @@ public:
 
 private:
   String _homeName;
+  String _serverHost, _otaPath, _otaJob;
+  String _firmwareVersion = "unversioned";
+  uint16_t _serverPort = 3000;
+  static void EventOTA(const char* payload, size_t length);
   int _deviceId;
   bool _isDeviceConnected;
   bool _isAckReceived;

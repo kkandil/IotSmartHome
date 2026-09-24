@@ -68,6 +68,7 @@ void HandleConnectionStatus(bool connected)
 void setup()
 {
   Serial.begin(115200);
+  api.SetFirmwareVersion("1.2.0-ota");
   
   pinMode(D5, OUTPUT);
   pinMode(D6, OUTPUT);

@@ -3,3 +3,6 @@ private/
 *.apk
 firmware-build/
 testdev-firmware-build/
+
+/ota-*-build/
+/python-tools/

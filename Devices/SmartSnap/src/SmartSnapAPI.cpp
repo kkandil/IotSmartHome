@@ -1,4 +1,9 @@
 #include "SmartSnapAPI.h"
+#if defined(ESP8266)
+#include <ESP8266httpUpdate.h>
+#include <LittleFS.h>
+#include "SmartSnapOTAKey.h"
+#endif
 
 #define USE_SERIAL Serial
 #define WAIT_FOR_ACK_DELAY_TICKS 100   // 100 * 100ms = 10 sec
@@ -33,6 +38,24 @@ int SmartSnap::Initialize(const char* homeName,
 {
   _homeName = homeName ? homeName : "";
   _deviceId = deviceId;
+  _serverHost=serverHost; _serverPort=serverPort;
+  String savedSsid=wifiSsid, savedPass=wifiPass;
+#if defined(ESP8266)
+  // Sketch OTA preserves LittleFS. Keep identity and credentials independent of the new sketch defaults.
+  if(LittleFS.begin()) {
+    DynamicJsonDocument config(1024);
+    File input=LittleFS.open("/smartsnap-connection.json","r");
+    if(input && deserializeJson(config,input)==DeserializationError::Ok && config["id"].as<int>()>0) {
+      _homeName=config["home"].as<String>();_deviceId=config["id"];
+      _serverHost=config["host"].as<String>();_serverPort=config["port"];
+      savedSsid=config["ssid"].as<String>();savedPass=config["pass"].as<String>();
+    } else {
+      config.clear();config["home"]=_homeName;config["id"]=_deviceId;config["host"]=_serverHost;config["port"]=_serverPort;
+      config["ssid"]=savedSsid;config["pass"]=savedPass;
+      File output=LittleFS.open("/smartsnap-connection.json","w");if(output)serializeJson(config,output);
+    }
+  }
+#endif
   _isDeviceConnected = false;
   _isAckReceived = false;
 
@@ -50,7 +73,7 @@ int SmartSnap::Initialize(const char* homeName,
   USE_SERIAL.println();
   USE_SERIAL.println("SmartSnap Initialize...");
 
-  WiFiMulti.addAP(wifiSsid, wifiPass);
+  WiFiMulti.addAP(savedSsid.c_str(), savedPass.c_str());
 
   USE_SERIAL.print("Connecting WiFi");
   while (WiFiMulti.run() != WL_CONNECTED) {
@@ -69,7 +92,8 @@ int SmartSnap::Initialize(const char* homeName,
   _webSocket.on("DeviceWriteVariable", EventDeviceWriteVariable);
   _webSocket.on("GetVariableValueFromServer", EventGetVariableValueFromServer);
 
-  _webSocket.begin(serverHost, serverPort);
+  _webSocket.on("DeviceOTA", EventOTA);
+  _webSocket.begin(_serverHost.c_str(), _serverPort);
 
   for (uint8_t t = WAIT_FOR_ACK_DELAY_TICKS; t > 0; t--) {
     _webSocket.loop();
@@ -90,6 +114,49 @@ int SmartSnap::Initialize(const char* homeName,
 void SmartSnap::Run()
 {
   _webSocket.loop();
+#if defined(ESP8266)
+  if(_otaPath.length() && WiFi.status()==WL_CONNECTED) {
+    String path=_otaPath;_otaPath="";
+    BearSSL::PublicKey publicKey(SMARTSNAP_OTA_PUBLIC_KEY);
+    BearSSL::HashSHA256 hash;
+    BearSSL::SigningVerifier verifier(&publicKey);
+    Update.installSignature(&hash,&verifier);
+    ESPhttpUpdate.rebootOnUpdate(false);
+    WiFiClient client;
+    USE_SERIAL.println("SmartSnap OTA: downloading signed firmware");
+    t_httpUpdate_return result=ESPhttpUpdate.update(client,_serverHost,_serverPort,path);
+    Update.installSignature(nullptr,nullptr);
+    if(result==HTTP_UPDATE_OK) {USE_SERIAL.println("SmartSnap OTA: verified; rebooting");delay(100);ESP.restart();}
+    else {
+      USE_SERIAL.println("SmartSnap OTA failed: "+ESPhttpUpdate.getLastErrorString());
+      // Restore the socket first so the error can reach the hub.
+      _webSocket.begin(_serverHost.c_str(),_serverPort);
+      for(int i=0;i<30;i++){_webSocket.loop();delay(100);}
+      DynamicJsonDocument status(512);status["jobId"]=_otaJob;status["error"]=ESPhttpUpdate.getLastErrorString();
+      String payload;serializeJson(status,payload);_webSocket.emit("DeviceOTAStatus",payload.c_str());
+    }
+  }
+#endif
+}
+
+void SmartSnap::SetFirmwareVersion(const String& version){_firmwareVersion=version;}
+bool SmartSnap::ResetConnectionConfiguration(){
+#if defined(ESP8266)
+  return LittleFS.begin() && LittleFS.remove("/smartsnap-connection.json");
+#else
+  return false;
+#endif
+}
+void SmartSnap::EventOTA(const char* payload,size_t length){
+#if defined(ESP8266)
+  if(!_instance||!_instance->_isDeviceConnected||_instance->_otaPath.length())return;
+  DynamicJsonDocument data(512);
+  if(deserializeJson(data,payload,length))return;
+  String path=data["path"].as<String>();
+  if(!path.startsWith("/ota/download/") || path.length()!=62)return;
+  for(unsigned int i=14;i<path.length();i++)if(!isxdigit(path[i]))return;
+  _instance->_otaPath=path;_instance->_otaJob=data["jobId"].as<String>();
+#endif
 }
 
 void SmartSnap::Disconnect()
@@ -152,11 +219,15 @@ String SmartSnap::GetHomeName() const
 
 void SmartSnap::EmitDeviceConnect()
 {
-  StaticJsonDocument<128> doc;
+  StaticJsonDocument<384> doc;
   String output;
 
   doc["homeName"] = _homeName;
   doc["deviceID"] = _deviceId;
+#if defined(ESP8266)
+  doc["ota"]=true;doc["firmwareVersion"]=_firmwareVersion;doc["sketchMD5"]=ESP.getSketchMD5();
+#endif
+
 
   serializeJson(doc, output);
   _webSocket.emit("DeviceConnect", output.c_str());
