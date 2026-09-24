@@ -43,6 +43,23 @@ int SmartSnap::Initialize(const char* homeName,
 #if defined(ESP8266)
   // Sketch OTA preserves LittleFS. Keep identity and credentials independent of the new sketch defaults.
   if(LittleFS.begin()) {
+    // Apply a one-shot replacement only after the new, verified image has actually booted.
+    DynamicJsonDocument receipt(512);
+    File receiptFile=LittleFS.open("/smartsnap-ota.json","r");
+    if(receiptFile && deserializeJson(receipt,receiptFile)==DeserializationError::Ok &&
+       receipt["md5"].as<String>()==ESP.getSketchMD5()) {
+      receiptFile.close();
+      bool replaced=true;
+      if(receipt["replace"].as<bool>() && !receipt["applied"].as<bool>()) {
+        replaced=!LittleFS.exists("/smartsnap-connection.json") || LittleFS.remove("/smartsnap-connection.json");
+      }
+      if(replaced) {
+        _otaCompletedJob=receipt["jobId"].as<String>();receipt["applied"]=true;
+        File completed=LittleFS.open("/smartsnap-ota.tmp","w");
+        if(completed){serializeJson(receipt,completed);completed.close();LittleFS.rename("/smartsnap-ota.tmp","/smartsnap-ota.json");}
+      }
+    }
+
     DynamicJsonDocument config(1024);
     File input=LittleFS.open("/smartsnap-connection.json","r");
     if(input && deserializeJson(config,input)==DeserializationError::Ok && config["id"].as<int>()>0) {
@@ -126,7 +143,15 @@ void SmartSnap::Run()
     USE_SERIAL.println("SmartSnap OTA: downloading signed firmware");
     t_httpUpdate_return result=ESPhttpUpdate.update(client,_serverHost,_serverPort,path);
     Update.installSignature(nullptr,nullptr);
-    if(result==HTTP_UPDATE_OK) {USE_SERIAL.println("SmartSnap OTA: verified; rebooting");delay(100);ESP.restart();}
+    if(result==HTTP_UPDATE_OK) {
+      DynamicJsonDocument receipt(512);receipt["jobId"]=_otaJob;receipt["md5"]=_otaExpectedMD5;
+      receipt["replace"]=_otaReplaceConfiguration;receipt["applied"]=false;
+      if(LittleFS.begin()) {
+        File pending=LittleFS.open("/smartsnap-ota.tmp","w");
+        if(pending){serializeJson(receipt,pending);pending.close();LittleFS.rename("/smartsnap-ota.tmp","/smartsnap-ota.json");}
+      }
+      USE_SERIAL.println("SmartSnap OTA: verified; rebooting");delay(100);ESP.restart();
+    }
     else {
       USE_SERIAL.println("SmartSnap OTA failed: "+ESPhttpUpdate.getLastErrorString());
       // Restore the socket first so the error can reach the hub.
@@ -156,6 +181,8 @@ void SmartSnap::EventOTA(const char* payload,size_t length){
   if(!path.startsWith("/ota/download/") || path.length()!=62)return;
   for(unsigned int i=14;i<path.length();i++)if(!isxdigit(path[i]))return;
   _instance->_otaPath=path;_instance->_otaJob=data["jobId"].as<String>();
+  _instance->_otaReplaceConfiguration=data["replaceConfiguration"]==true;
+  _instance->_otaExpectedMD5=data["sketchMD5"].as<String>();
 #endif
 }
 
@@ -219,12 +246,13 @@ String SmartSnap::GetHomeName() const
 
 void SmartSnap::EmitDeviceConnect()
 {
-  StaticJsonDocument<384> doc;
+  StaticJsonDocument<768> doc;
   String output;
 
   doc["homeName"] = _homeName;
   doc["deviceID"] = _deviceId;
 #if defined(ESP8266)
+  doc["otaReplaceConfiguration"]=true;doc["hardwareId"]=WiFi.macAddress();doc["otaCompletedJob"]=_otaCompletedJob;
   doc["ota"]=true;doc["firmwareVersion"]=_firmwareVersion;doc["sketchMD5"]=ESP.getSketchMD5();
 #endif
 

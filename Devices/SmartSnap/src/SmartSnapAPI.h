@@ -57,7 +57,8 @@ public:
 
 private:
   String _homeName;
-  String _serverHost, _otaPath, _otaJob;
+  String _serverHost, _otaPath, _otaJob, _otaExpectedMD5, _otaCompletedJob;
+  bool _otaReplaceConfiguration = false;
   String _firmwareVersion = "unversioned";
   uint16_t _serverPort = 3000;
   static void EventOTA(const char* payload, size_t length);

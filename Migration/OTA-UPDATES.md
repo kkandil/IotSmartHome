@@ -32,6 +32,14 @@ Updates interrupt device operation and reboot it. Standard ESP8266 OTA does not 
 
 ## Verified on the physical COM7 device
 
-On 24 September 2026, TestDev_1 (Home_Germany, ID 1007) was flashed by USB with 1.0.0-ota, then updated from the local Pi upload page/API to 1.1.0-ota (22 seconds), and through the remote Heroku/MongoDB upload and relay to 1.2.0-ota (24 seconds). Both reboots were verified using the expected sketch hash. The device is left on 1.2.0-ota.
+On 24 September 2026, TestDev_1 (Home_Germany, ID 1007) was flashed by USB with 1.0.0-ota, then updated from the local Pi upload page/API to 1.1.0-ota (22 seconds), and through the remote Heroku/MongoDB upload and relay to 1.2.0-ota (24 seconds). Both reboots were verified using the expected sketch hash. The device was subsequently upgraded normally to 1.3.0-ota, then the configuration replacement path was physically verified through the Pi in 25 seconds, keeping ID 1007 and its connection settings. The device is left on 1.3.0-ota. Changed-ID completion is covered by the automated server test. The remote replacement physical test was blocked by a laptop-to-MongoDB connection timeout; the updated gateway is deployed but that replacement path was not physically retested.
 
 The original 1 MB sketch region was backed up to `Migration/private/com7-original-sketch-region.bin`; attempts to read all 4 MB encountered serial transfer errors, so this is not a complete flash/filesystem backup. USB is now only supplying power; subsequent successful updates used Wi-Fi.
+
+## Replace a device's configuration
+
+In step 3 of either upload page, enable **Replace device configuration** only when deliberately repurposing a device. The default is off. Select the current device (for example 1007), then install a sketch whose Initialize arguments specify the desired new ID/home/Wi-Fi/server. Create the new device record in the destination home first. The original device record is not deleted automatically.
+
+The current firmware must advertise support for configuration replacement, and the uploaded sketch must also contain this updated SmartSnap library. Older OTA devices need one normal update with this option OFF before using it. No USB flash is needed for that upgrade.
+
+A replacement marker is written only after the signed image is accepted. On the next boot, SmartSnap checks the actual sketch hash before erasing the saved connection settings and saving the new sketch defaults. Failed downloads/signature checks keep the old settings. The hub verifies a changed ID using the physical hardware address, job receipt and firmware hash. If the device moves to another hub/server, the original hub cannot verify that new connection and shows Unconfirmed; inspect the destination home. Incorrect Wi-Fi/server settings can require USB recovery.
