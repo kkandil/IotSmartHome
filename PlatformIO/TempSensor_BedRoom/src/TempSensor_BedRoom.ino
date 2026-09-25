@@ -15,7 +15,7 @@ SmartSnap smartSnap;
  
 #define SLEEP_TIME_IN_MIN 30
 unsigned long timer =0;
-bool isSleepAlowed = false;
+bool isSleepAlowed = true;
 
 void HandleWriteVariable(const String& varName, const String& varType, const String& value)
 { 
@@ -105,6 +105,7 @@ void HandleServerValue(const String& varName, const String& value)
 void HandleConnectionStatus(bool connected)
 {
   Serial.printf("Connection status: %s\n", connected ? "connected" : "disconnected");
+  if (connected) smartSnap.RequestVariableValueFromServer("SleepAlowed");
 }
 
 void setup()
@@ -121,7 +122,7 @@ void setup()
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
   smartSnap.SetFirmwareVersion("TemperatureSensor_1.0.0");
-  int ret = smartSnap.Initialize( "Home_Germany", 1008, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
+  int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");
@@ -135,9 +136,8 @@ void setup()
   // {
   //   smartSnap.Run();
   // }
-  //smartSnap.RequestVariableValueFromServer("SleepAlowed");
+  
   smartSnap.Run();
-
   smartSnap.WriteVariableValue("Temp", "float", String(dht.getTemperature(), 2)); 
   smartSnap.WriteVariableValue("Humid", "float", String(dht.getHumidity(), 2));
   smartSnap.WriteVariableValue("status", "string", dht.getStatusString());

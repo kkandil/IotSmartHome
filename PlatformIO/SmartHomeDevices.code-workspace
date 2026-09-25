@@ -1,0 +1,33 @@
+{
+  "folders": [
+    {
+      "path": "PlantsWatering"
+    },
+    {
+      "path": "TempSensor_BedRoom"
+    },
+    {
+      "path": "TempSensor_Kitchen"
+    },
+    {
+      "path": "TempSensor_Living"
+    },
+    {
+      "path": "TempSensor_OutSide"
+    },
+    {
+      "path": "TestDev_1"
+    },
+    {
+      "path": "TestDev_2"
+    },
+    {
+      "path": "WaterHeater"
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "platformio.platformio-ide"
+    ]
+  }
+}

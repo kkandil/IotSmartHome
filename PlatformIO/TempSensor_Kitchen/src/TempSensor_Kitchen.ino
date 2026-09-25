@@ -13,9 +13,8 @@ DHTesp dht;
 SmartSnap smartSnap;
 
  
-#define SLEEP_TIME_IN_MIN 30
+#define SLEEP_TIME_IN_MIN 1
 unsigned long timer =0;
-bool isSleepAlowed = false;
 
 void HandleWriteVariable(const String& varName, const String& varType, const String& value)
 { 
@@ -32,16 +31,8 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
       smartSnap.WriteVariableValue("status", "string", dht.getStatusString());
     }
   }
-  else if (varName == "SleepAlowed") 
+  if (varName == "test") 
   {
-    if ( value.toInt() == 0)
-    {
-      isSleepAlowed = false;
-    }
-    else
-    {
-      isSleepAlowed = true;
-    }
   }
 }
 
@@ -61,13 +52,8 @@ bool HandleReadVariable(const String& varName, String& varType, String& value)
     return true;
   }
   else if (varName == "status") {
-    varType = "string";
+    varType = "float";
     value = dht.getStatusString();
-    return true;
-  }
-  else if (varName == "SleepAlowed") {
-    varType = "int";
-    value = String(isSleepAlowed);
     return true;
   }
 
@@ -89,17 +75,6 @@ bool HandleReadVariable(const String& varName, String& varType, String& value)
 void HandleServerValue(const String& varName, const String& value)
 {
   Serial.printf("HandleServerValue: %s = %s\n", varName.c_str(), value.c_str());
-  if (varName == "SleepAlowed") 
-  {
-    if ( value.toInt() == 0)
-    {
-      isSleepAlowed = false;
-    }
-    else
-    {
-      isSleepAlowed = true;
-    }
-  }
 }
 
 void HandleConnectionStatus(bool connected)
@@ -111,8 +86,6 @@ void setup()
 {
   Serial.begin(115200); 
 
-  dht.setup(0, DHTesp::DHT22); // Connect DHT sensor to GPIO 17
-
   delay(500);
 
   smartSnap.onWriteVariable(HandleWriteVariable);
@@ -120,14 +93,15 @@ void setup()
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  smartSnap.SetFirmwareVersion("TemperatureSensor_1.0.0");
-  int ret = smartSnap.Initialize( "Home_Germany", 1008, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
+  int ret = smartSnap.Initialize( "Home_Germany", 1011, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");
   } else {
     Serial.println("SmartSnap initialization failed");
   }
+
+  dht.setup(0, DHTesp::DHT22); // Connect DHT sensor to GPIO 17
  
   
   // timer = millis();
@@ -135,7 +109,6 @@ void setup()
   // {
   //   smartSnap.Run();
   // }
-  //smartSnap.RequestVariableValueFromServer("SleepAlowed");
   smartSnap.Run();
 
   smartSnap.WriteVariableValue("Temp", "float", String(dht.getTemperature(), 2)); 
@@ -146,21 +119,15 @@ void setup()
   {
     smartSnap.Run();
   }
-  if(isSleepAlowed == true)
-  {
-    smartSnap.Disconnect();
-    delay(500);
+  smartSnap.Disconnect();
+  delay(500);
 
-    ESP.deepSleep(SLEEP_TIME_IN_MIN * 60 * 1000000ULL);
-    delay(500);
-  }
+  ESP.deepSleep(SLEEP_TIME_IN_MIN * 60 * 1000000ULL);
+  delay(500);
 }
 
 
 void loop()
 {
-  if(isSleepAlowed == false)
-  {
-    smartSnap.Run(); 
-  }
+  // smartSnap.Run(); 
 }

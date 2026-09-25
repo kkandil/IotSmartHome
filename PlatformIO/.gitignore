@@ -1,0 +1,5 @@
+**/.pio/
+**/.vscode/
+build-logs/
+test-build.log
+**/*.ino.cpp
