@@ -1,0 +1,25 @@
+✔ accounts hash passwords, protect reserved owner migration, persist and revoke sessions (466.1094ms)
+✔ home permissions, layout conflicts, permission changes and revocation are enforced (264.3546ms)
+✔ email is unique regardless of case, nicknames can repeat, and eight-character passwords work (352.3151ms)
+Phone request received: event=PhoneWriteVariable home=Shared requestId=control
+Phone authentication complete: event=PhoneWriteVariable requestId=control elapsedMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=control gatewayMs=0 reason=Home hub is offline; live commands are not queued
+Phone request received: event=PhoneWriteVariable home=Shared requestId=unblocked-write
+Phone request received: event=GetVariableSnapshot home=Shared requestId=unblocked-snapshot
+Phone authentication complete: event=PhoneWriteVariable requestId=unblocked-write elapsedMs=0
+Phone authentication complete: event=GetVariableSnapshot requestId=unblocked-snapshot elapsedMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=unblocked-write gatewayMs=0 reason=Home hub is offline; live commands are not queued
+Phone request rejected: event=GetVariableSnapshot requestId=unblocked-snapshot gatewayMs=0 reason=Home hub is offline; live commands are not queued
+✔ gateway isolates home lists, rejects legacy keys and checks each edit on an existing connection (946.3577ms)
+✔ room tabs persist with shared layouts, enforce permissions and survive older clients (329.7377ms)
+✔ shared card widgets and room icons persist, preserve old-client omissions and validate icons (248.358ms)
+✔ camera configuration limits targets to LAN hosts and validates credentials (3.2574ms)
+✔ camera relay authenticates users and isolates homes and device editing (698.6931ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2791.7499

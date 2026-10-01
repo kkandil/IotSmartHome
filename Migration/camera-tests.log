@@ -1,0 +1,10 @@
+✔ camera configuration limits targets to LAN hosts and validates credentials (2.1365ms)
+✔ camera relay authenticates users and isolates homes and device editing (1762.404ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1914.5592

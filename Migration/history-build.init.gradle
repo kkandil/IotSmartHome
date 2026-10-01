@@ -1,0 +1,3 @@
+gradle.beforeProject { project ->
+    project.buildDir = new File(System.getProperty("java.io.tmpdir"), "smarthome-history-20260928/" + project.name)
+}

@@ -122,7 +122,7 @@ void setup()
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
   smartSnap.SetFirmwareVersion("TemperatureSensor_1.0.0");
-  int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
+  int ret = smartSnap.Initialize( "Home_Germany", 1010, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");

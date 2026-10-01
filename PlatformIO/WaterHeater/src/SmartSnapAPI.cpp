@@ -50,6 +50,14 @@ int SmartSnap::Initialize(const int deviceId, const char* wifiSsid, const char* 
     delay(1000);
   }
 
+  // Set DHCP hostname after resolving the saved/OTA identity, before connecting.
+  const String hostname = String("ESP-") + String(_deviceId);
+#if defined(ESP8266)
+  WiFi.hostname(hostname);
+#else
+  WiFi.setHostname(hostname.c_str());
+#endif
+
   WiFiMulti.addAP(wifiSsid, constPass);
 
   while (WiFiMulti.run() != WL_CONNECTED) {

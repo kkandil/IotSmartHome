@@ -1,0 +1,34 @@
+✔ cloud desired values survive restart; latest per variable wins, superseded acknowledgements cannot remove it (3.259ms)
+✔ pending writes defeat stale hub snapshots, accepted hub updates advance cloud revision (1.566ms)
+✔ cloud writes validate configured type and target; deleted/revoked queued values are removed (1.1693ms)
+Events: Ordering comparisons require a numeric variable
+✔ comparison operators include numeric boundaries; nonnumeric ordering never matches (0.9461ms)
+✔ persistent desired config, idempotency, conflicts, comparator validation, home isolation and tombstones (6.3667ms)
+Gateway bridge connected
+Gateway bridge connected
+Phone request received: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read
+Phone request forwarded: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read gatewayMs=0
+Snapshot response forwarded: requestId=bypass-slow-read responseAuthMs=0
+Phone request received: event=PhoneWriteVariable home=Germany requestId=bypass-command
+Phone request forwarded: event=PhoneWriteVariable home=Germany requestId=bypass-command gatewayMs=0
+Gateway unavailable; local service continues
+Phone request received: event=GetVariableSnapshot home=Germany requestId=offline-cache
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Phone request rejected: event=PhoneWriteVariable requestId=offline-write gatewayMs=0 reason=Home hub is offline
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Gateway bridge connected
+Queued value delivered to home hub: Germany 1001 output
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway unavailable; local service continues
+✔ two independent hubs, offline edits synchronize before live traffic, reconnect never resurrects deleted config (1234.3271ms)
+✔ device rename preserves identity, live variable values and automations during hub synchronization (9.7157ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1452.799

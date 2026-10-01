@@ -1,0 +1,96 @@
+INFO    | Android emulator version 33.1.24.0 (build_id 11237101) (CL:N/A)
+INFO    | Found systemPath C:\Users\khale\AppData\Local\Android\Sdk\system-images\android-34\google_apis_playstore\x86_64\
+[43304:49624:20261001,125919.690:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+HAXM is deprecated and not supported by Intel any more. Please download and install Android Emulator Hypervisor Driver for AMD Processors, which also supports Intel Processors. Installing from SDK Manager is comming soon.
+I1001 12:59:20.552075   46644 HealthMonitor.cpp:279] HealthMonitor disabled.
+added library vulkan-1.dll
+initialize: Supports id properties, got a vulkan device UUID
+I1001 12:59:20.955005   46644 VkCommonOperations.cpp:1225] Initializing VkEmulation features:
+I1001 12:59:20.955024   46644 VkCommonOperations.cpp:1226]     glInteropSupported: false
+I1001 12:59:20.955029   46644 VkCommonOperations.cpp:1227]     useDeferredCommands: true
+I1001 12:59:20.955034   46644 VkCommonOperations.cpp:1229]     createResourceWithRequirements: true
+I1001 12:59:20.955038   46644 VkCommonOperations.cpp:1230]     useVulkanComposition: false
+I1001 12:59:20.955041   46644 VkCommonOperations.cpp:1231]     useVulkanNativeSwapchain: false
+I1001 12:59:20.955047   46644 VkCommonOperations.cpp:1232]     enable guestRenderDoc: false
+I1001 12:59:20.955052   46644 VkCommonOperations.cpp:1233]     ASTC LDR emulation mode: 2
+I1001 12:59:20.955057   46644 VkCommonOperations.cpp:1234]     enable ETC2 emulation: true
+I1001 12:59:20.955060   46644 VkCommonOperations.cpp:1235]     enable Ycbcr emulation: false
+I1001 12:59:20.955063   46644 VkCommonOperations.cpp:1236]     guestUsesAngle: false
+I1001 12:59:20.955068   46644 VkCommonOperations.cpp:1237]     useDedicatedAllocations: false
+I1001 12:59:20.957106   46644 FrameBuffer.cpp:486] Graphics Adapter Vendor Google (Google Inc.)
+I1001 12:59:20.957127   46644 FrameBuffer.cpp:487] Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+I1001 12:59:20.957131   46644 FrameBuffer.cpp:488] Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+I1001 12:59:20.957135   46644 FrameBuffer.cpp:489] Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+I1001 12:59:20.957144   46644 FrameBuffer.cpp:490] Graphics Device Extensions N/A
+INFO    | Storing crashdata in: , detection is enabled for process: 49568
+INFO    | Duplicate loglines will be removed, if you wish to see each individual line launch with the -log-nofilter flag.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 80cc:a163:9c01:0:b0b4:a163:9c01:0
+RegGetValueW failed 2 The system cannot find the file specified.
+
+
+library_mode swiftshader_indirect gpu mode swiftshader_indirect
+createGlobalVkEmulation:963 Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0)
+INFO    | Ignore IPv6 address: 80cc:a163:9c01:0:b0b4:a163:9c01:0 (2x)
+INFO    | Sending adb public key [QAAAAJddyRjZDcn49WwrD4jjdWMgyCrjZUAObO0rZh3o9fMFGrPNnbfVHOs/WyPSl3iUfbCcmeNUeThMVbpVLPd2Jgm6GsO47rkT+rxsnxDvm6c9p3N8EshFK8i7G55PW8Wdim7UquY6jukr8/y9enNXnsKT9V2jf/sM7aGN/T5O7V98r12QueA3dEp4GlAo3cD+S8QwjqCYHGgB6lbnjedOG/AVaSnA7WZ2xgeYTPSmon3aeHStu6Vzs8F8fzaS3Z2gTwTMt4sEcS/Yd6f9GuuxiLJjGHxniVWcERDbWxruzD/jgBoG7UFmnGptb4F7kN19OmedIUWwS8d1q/jm1pl6wnUKenjI7wB8MbRp64FoFK8mmfffqTUNvRPRcEwxjjAxn7c5ryswJ8+TrgtzATWwPAnavWViXiRrvkvAoOxYP3PwWprwrBdpqWnVdiw7kCbEHGtVHLt1nn9j22MQWBLY7hGZYACQauNZRmN9ofFsVtu85RwoPR/8uUDXorG1B5cVjvuNfJZCNEg/5YRR9lk4ktgEyVVGD2FqVK0S2fRUhLqDiM8mXEWUip6qmUtA3PPFstqpNyZF+Dixw2DUTiPiZX5s/6BQ3T5IRfwx/NfJ4zQxNc+Ct/AiHAhjWiLlosdxhcFsCJjJnzPiGLFnjxLbXjnWzKKDtUHiwQ1rFppS5sJIzOFLwQEAAQA= @unknown]
+HAX is working and emulator runs in fast virt mode.
+I1001 12:59:21.882313   43448 FrameBuffer.cpp:3682] setDisplayConfigs w 1080 h 2400 dpiX 420 dpiY 420
+I1001 12:59:21.882401   43448 FrameBuffer.cpp:3695] setDisplayActiveConfig 0
+WARNING | Cold boot:  requested by the user
+INFO    | Cold boot: requested by the user
+INFO    | Your emulator is out of date, please update by launching Android Studio:
+ - Start Android Studio
+ - Select menu "Tools > Android > SDK Manager"
+ - Click "SDK Tools" tab
+ - Check "Android Emulator" checkbox
+ - Click "OK"
+netsimd I 10-01 10:59:22.860 C:/buildbot/src/android/emu-33-release/tools/netsim/src/util/os_utils.cc:126 - Redirecting logs to C:\Users\khale\AppData\Local\Temp\netsimd\
+INFO    | Activated packet streamer for bluetooth emulation
+INFO    | Boot completed in 27275 ms
+INFO    | Increasing screen off timeout, logcat buffer size to 2M.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0
+I1001 13:00:09.315999   31752 VkDecoderGlobalState.cpp:444] Creating Vulkan instance for app: 
+I1001 13:00:09.316089   31752 VkDecoderGlobalState.cpp:447] Creating Vulkan instance for engine: 
+[43304:37560:20261001,130919.688:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:37560:20261001,130919.696:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:37560:20261001,130919.696:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,131419.697:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,132919.711:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,134419.724:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,135919.733:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,141419.748:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,142919.761:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,144419.774:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,145919.786:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,151419.801:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,152919.813:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,154419.827:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,155919.839:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,161419.855:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,162919.863:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,164419.866:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,165919.878:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,171419.881:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,172919.883:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,174419.885:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,175919.891:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,181419.893:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,182919.893:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,184419.905:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,185919.919:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,191419.928:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,192919.940:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,194419.946:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,195919.958:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,201419.973:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[43304:49624:20261001,202919.986:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+INFO    | Ignore IPv6 address: b086:a002:9d01:0:e06e:a002:9d01:0 (2x)
+INFO    | Wait for emulator (pid 49568) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+WARNING | Not saving state: RAM not mapped as shared

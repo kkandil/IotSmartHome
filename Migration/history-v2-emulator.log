@@ -1,0 +1,64 @@
+INFO    | Android emulator version 33.1.24.0 (build_id 11237101) (CL:N/A)
+INFO    | Found systemPath C:\Users\khale\AppData\Local\Android\Sdk\system-images\android-34\google_apis_playstore\x86_64\
+[24072:35652:20260928,211425.481:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+HAXM is deprecated and not supported by Intel any more. Please download and install Android Emulator Hypervisor Driver for AMD Processors, which also supports Intel Processors. Installing from SDK Manager is comming soon.
+I0928 21:14:26.059893   27532 HealthMonitor.cpp:279] HealthMonitor disabled.
+added library vulkan-1.dll
+initialize: Supports id properties, got a vulkan device UUID
+I0928 21:14:26.409651   27532 VkCommonOperations.cpp:1225] Initializing VkEmulation features:
+I0928 21:14:26.409669   27532 VkCommonOperations.cpp:1226]     glInteropSupported: false
+I0928 21:14:26.409673   27532 VkCommonOperations.cpp:1227]     useDeferredCommands: true
+I0928 21:14:26.409677   27532 VkCommonOperations.cpp:1229]     createResourceWithRequirements: true
+I0928 21:14:26.409680   27532 VkCommonOperations.cpp:1230]     useVulkanComposition: false
+I0928 21:14:26.409684   27532 VkCommonOperations.cpp:1231]     useVulkanNativeSwapchain: false
+I0928 21:14:26.409687   27532 VkCommonOperations.cpp:1232]     enable guestRenderDoc: false
+I0928 21:14:26.409689   27532 VkCommonOperations.cpp:1233]     ASTC LDR emulation mode: 2
+I0928 21:14:26.409693   27532 VkCommonOperations.cpp:1234]     enable ETC2 emulation: true
+I0928 21:14:26.409696   27532 VkCommonOperations.cpp:1235]     enable Ycbcr emulation: false
+I0928 21:14:26.409700   27532 VkCommonOperations.cpp:1236]     guestUsesAngle: false
+I0928 21:14:26.409702   27532 VkCommonOperations.cpp:1237]     useDedicatedAllocations: false
+I0928 21:14:26.411645   27532 FrameBuffer.cpp:486] Graphics Adapter Vendor Google (Google Inc.)
+I0928 21:14:26.411662   27532 FrameBuffer.cpp:487] Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+I0928 21:14:26.411667   27532 FrameBuffer.cpp:488] Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+I0928 21:14:26.411670   27532 FrameBuffer.cpp:489] Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+I0928 21:14:26.411675   27532 FrameBuffer.cpp:490] Graphics Device Extensions N/A
+INFO    | Storing crashdata in: , detection is enabled for process: 7276
+INFO    | Duplicate loglines will be removed, if you wish to see each individual line launch with the -log-nofilter flag.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 71:8f74:6902:0:3059:8f74:6902:0
+RegGetValueW failed 2 The system cannot find the file specified.
+
+
+INFO    | Ignore IPv6 address: 71:8f74:6902:0:3059:8f74:6902:0 (2x)
+INFO    | No consent for crashreport f94efe4b-9eaf-474c-9271-883bcbf3d685, deleting.
+library_mode swiftshader_indirect gpu mode swiftshader_indirect
+createGlobalVkEmulation:963 Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0)
+INFO    | Sending adb public key [QAAAAJddyRjZDcn49WwrD4jjdWMgyCrjZUAObO0rZh3o9fMFGrPNnbfVHOs/WyPSl3iUfbCcmeNUeThMVbpVLPd2Jgm6GsO47rkT+rxsnxDvm6c9p3N8EshFK8i7G55PW8Wdim7UquY6jukr8/y9enNXnsKT9V2jf/sM7aGN/T5O7V98r12QueA3dEp4GlAo3cD+S8QwjqCYHGgB6lbnjedOG/AVaSnA7WZ2xgeYTPSmon3aeHStu6Vzs8F8fzaS3Z2gTwTMt4sEcS/Yd6f9GuuxiLJjGHxniVWcERDbWxruzD/jgBoG7UFmnGptb4F7kN19OmedIUWwS8d1q/jm1pl6wnUKenjI7wB8MbRp64FoFK8mmfffqTUNvRPRcEwxjjAxn7c5ryswJ8+TrgtzATWwPAnavWViXiRrvkvAoOxYP3PwWprwrBdpqWnVdiw7kCbEHGtVHLt1nn9j22MQWBLY7hGZYACQauNZRmN9ofFsVtu85RwoPR/8uUDXorG1B5cVjvuNfJZCNEg/5YRR9lk4ktgEyVVGD2FqVK0S2fRUhLqDiM8mXEWUip6qmUtA3PPFstqpNyZF+Dixw2DUTiPiZX5s/6BQ3T5IRfwx/NfJ4zQxNc+Ct/AiHAhjWiLlosdxhcFsCJjJnzPiGLFnjxLbXjnWzKKDtUHiwQ1rFppS5sJIzOFLwQEAAQA= @unknown]
+HAX is working and emulator runs in fast virt mode.
+I0928 21:14:27.404703   28724 FrameBuffer.cpp:3682] setDisplayConfigs w 1080 h 2400 dpiX 420 dpiY 420
+I0928 21:14:27.404803   28724 FrameBuffer.cpp:3695] setDisplayActiveConfig 0
+WARNING | Cold boot:  requested by the user
+INFO    | Cold boot: requested by the user
+INFO    | Your emulator is out of date, please update by launching Android Studio:
+ - Start Android Studio
+ - Select menu "Tools > Android > SDK Manager"
+ - Click "SDK Tools" tab
+ - Check "Android Emulator" checkbox
+ - Click "OK"
+netsimd I 09-28 19:14:28.657 C:/buildbot/src/android/emu-33-release/tools/netsim/src/util/os_utils.cc:126 - Redirecting logs to C:\Users\khale\AppData\Local\Temp\netsimd\
+INFO    | Activated packet streamer for bluetooth emulation
+INFO    | Boot completed in 25105 ms
+INFO    | Increasing screen off timeout, logcat buffer size to 2M.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0
+I0928 21:15:19.415297   33928 VkDecoderGlobalState.cpp:444] Creating Vulkan instance for app: 
+I0928 21:15:19.415426   33928 VkDecoderGlobalState.cpp:447] Creating Vulkan instance for engine: 
+INFO    | Ignore IPv6 address: 58:8a55:6902:0:3040:8a55:6902:0 (2x)
+INFO    | Wait for emulator (pid 7276) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+WARNING | Not saving state: RAM not mapped as shared

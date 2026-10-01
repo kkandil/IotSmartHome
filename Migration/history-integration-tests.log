@@ -1,0 +1,14 @@
+Phone request received: event=PhoneWriteVariable home=HistoryHome requestId=write
+Phone authentication complete: event=PhoneWriteVariable requestId=write elapsedMs=1
+Phone request forwarded: event=PhoneWriteVariable home=HistoryHome requestId=write gatewayMs=1
+✔ authenticated phone gets recorded device history through bridge; phone writes excluded and other homes denied (1169.9605ms)
+✔ history belongs to the variable; removing last card pauses without deleting; stale config cannot re-enable (10.0031ms)
+✔ range queries retain peaks and counts, incremental replacement and 90 day / 730 day retention (76.1575ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1306.5571
