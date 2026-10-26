@@ -1,0 +1,11 @@
+✔ voice validates current target and dispatches only exact allowed commands (1.5672ms)
+✔ deleted/read-only targets cannot be controlled; offline replies do not claim success (0.2728ms)
+✔ voice bearer requires a full secret (0.1632ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2864.6377

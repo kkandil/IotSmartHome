@@ -1,0 +1,84 @@
+remote: Updated 57 paths from 68d8ef4        
+remote: Compressing source files... done.        
+remote: Building source:        
+remote: 
+remote: -----> Building on the Heroku-24 stack        
+remote: -----> Using buildpack: heroku/nodejs        
+remote: -----> Node.js app detected        
+remote: 
+remote: -----> Creating runtime environment        
+remote:                
+remote:        NPM_CONFIG_LOGLEVEL=error        
+remote:        NODE_VERBOSE=false        
+remote:        NODE_ENV=production        
+remote:        NODE_MODULES_CACHE=true        
+remote: 
+remote: -----> Installing binaries        
+remote:        engines.node (package.json):   24.x        
+remote:        engines.npm (package.json):    unspecified (use default)        
+remote: 
+remote:        Resolving node version 24.x...        
+remote:        Downloading and installing node 24.21.0...        
+remote:        Validating checksum        
+remote:        Using default npm version: 11.19.0        
+remote: 
+remote: -----> Restoring cache        
+remote:        - npm cache        
+remote: 
+remote: -----> Installing dependencies        
+remote:        Installing node modules        
+remote:                
+remote:        added 330 packages, and audited 331 packages in 3s        
+remote:                
+remote:        51 packages are looking for funding        
+remote:          run `npm fund` for details        
+remote:                
+remote:        5 moderate severity vulnerabilities        
+remote:                
+remote:        To address issues that do not require attention, run:        
+remote:          npm audit fix        
+remote:                
+remote:        To address all issues (including breaking changes), run:        
+remote:          npm audit fix --force        
+remote:                
+remote:        Run `npm audit` for details.        
+remote: 
+remote: -----> Build        
+remote: 
+remote: -----> Caching build        
+remote:        - npm cache        
+remote: 
+remote: -----> Pruning devDependencies        
+remote:                
+remote:        removed 25 packages, and audited 306 packages in 778ms        
+remote:                
+remote:        50 packages are looking for funding        
+remote:          run `npm fund` for details        
+remote:                
+remote:        2 moderate severity vulnerabilities        
+remote:                
+remote:        To address all issues, run:        
+remote:          npm audit fix        
+remote:                
+remote:        Run `npm audit` for details.        
+remote:        npm notice        
+remote:        npm notice New major version of npm available! 11.19.0 -> 12.2.0        
+remote:        npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0        
+remote:        npm notice To update run: npm install -g npm@12.2.0        
+remote:        npm notice        
+remote: -----> Discovering process types        
+remote:        Procfile declares types -> web        
+remote: 
+remote: -----> Compressing...        
+remote:        Done: 72M        
+remote: -----> Launching...        
+remote:        Released v42        
+remote:        https://smarthomehub-1aec4600a734.herokuapp.com/ deployed to Heroku        
+remote: 
+remote: This app is using the Heroku-24 stack, however a newer stack is available.        
+remote: To upgrade to Heroku-26, see:        
+remote: https://devcenter.heroku.com/articles/upgrading-to-the-latest-stack        
+remote: 
+remote: Verifying deploy... done.        
+To https://git.heroku.com/smarthomehub.git
+   c825253..9dd2f52  HEAD -> main

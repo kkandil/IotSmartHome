@@ -1,0 +1,34 @@
+[45216:48416:20261002,121904.773:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+HAXM is deprecated and not supported by Intel any more. Please download and install Android Emulator Hypervisor Driver for AMD Processors, which also supports Intel Processors. Installing from SDK Manager is comming soon.
+I1002 12:19:05.246275   44108 HealthMonitor.cpp:279] HealthMonitor disabled.
+added library vulkan-1.dll
+initialize: Supports id properties, got a vulkan device UUID
+I1002 12:19:05.526282   44108 VkCommonOperations.cpp:1225] Initializing VkEmulation features:
+I1002 12:19:05.526690   44108 VkCommonOperations.cpp:1226]     glInteropSupported: false
+I1002 12:19:05.526853   44108 VkCommonOperations.cpp:1227]     useDeferredCommands: true
+I1002 12:19:05.527014   44108 VkCommonOperations.cpp:1229]     createResourceWithRequirements: true
+I1002 12:19:05.527190   44108 VkCommonOperations.cpp:1230]     useVulkanComposition: false
+I1002 12:19:05.527473   44108 VkCommonOperations.cpp:1231]     useVulkanNativeSwapchain: false
+I1002 12:19:05.527635   44108 VkCommonOperations.cpp:1232]     enable guestRenderDoc: false
+I1002 12:19:05.527794   44108 VkCommonOperations.cpp:1233]     ASTC LDR emulation mode: 2
+I1002 12:19:05.527955   44108 VkCommonOperations.cpp:1234]     enable ETC2 emulation: true
+I1002 12:19:05.528120   44108 VkCommonOperations.cpp:1235]     enable Ycbcr emulation: false
+I1002 12:19:05.528309   44108 VkCommonOperations.cpp:1236]     guestUsesAngle: false
+I1002 12:19:05.528526   44108 VkCommonOperations.cpp:1237]     useDedicatedAllocations: false
+I1002 12:19:05.530116   44108 FrameBuffer.cpp:486] Graphics Adapter Vendor Google (Google Inc.)
+I1002 12:19:05.530493   44108 FrameBuffer.cpp:487] Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+I1002 12:19:05.531123   44108 FrameBuffer.cpp:488] Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+I1002 12:19:05.531361   44108 FrameBuffer.cpp:489] Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+I1002 12:19:05.531537   44108 FrameBuffer.cpp:490] Graphics Device Extensions N/A
+I1002 12:19:06.162254   47244 FrameBuffer.cpp:3682] setDisplayConfigs w 1080 h 2400 dpiX 420 dpiY 420
+I1002 12:19:06.172774   47244 FrameBuffer.cpp:3695] setDisplayActiveConfig 0
+WARNING | Cold boot:  requested by the user
+netsimd I 10-02 10:19:06.646 C:/buildbot/src/android/emu-33-release/tools/netsim/src/util/os_utils.cc:126 - Redirecting logs to C:\Users\khale\AppData\Local\Temp\netsimd\
+I1002 12:19:44.308454   42772 VkDecoderGlobalState.cpp:444] Creating Vulkan instance for app: 
+I1002 12:19:44.316103   42772 VkDecoderGlobalState.cpp:447] Creating Vulkan instance for engine: 
+[45216:11072:20261002,122904.783:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[45216:11072:20261002,122904.802:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[45216:11072:20261002,122904.803:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[45216:48416:20261002,123404.779:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[45216:48416:20261002,124904.783:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+[45216:48416:20261002,130404.803:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)

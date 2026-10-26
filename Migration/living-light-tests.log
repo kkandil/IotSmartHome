@@ -1,0 +1,97 @@
+Event 8f35a8d3-9ba7-4ab8-993c-6e3d672a0777: sent
+Event 8f35a8d3-9ba7-4ab8-993c-6e3d672a0777: sent
+Event 8f35a8d3-9ba7-4ab8-993c-6e3d672a0777: sent
+Event 8f35a8d3-9ba7-4ab8-993c-6e3d672a0777: sent
+Event 06475a39-b71c-4881-b2da-a8404be7da7c: not_sent
+Events: Event not found
+Events: Add at least one condition and one action (maximum 32 each)
+Events: Enter a whole number
+Events: A selected device or variable no longer exists
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: Event not found
+Event 5c45091c-c524-4850-abad-73ed2e8d16c3: sent
+Event 5c45091c-c524-4850-abad-73ed2e8d16c3: sent
+Event action: Device failure
+Event 610e4268-6767-4fbd-b716-8ea7d47918fa: partial
+Event 3a02a2ea-7a43-49d7-bc46-b284da8d2a8a: sent
+Event 07c5bd72-28df-4977-ba7d-019ad97bea88: sent
+Event 3a02a2ea-7a43-49d7-bc46-b284da8d2a8a: sent
+Event 07c5bd72-28df-4977-ba7d-019ad97bea88: sent
+Event 3a02a2ea-7a43-49d7-bc46-b284da8d2a8a: sent
+Event 07c5bd72-28df-4977-ba7d-019ad97bea88: sent
+Event 6435817c-e1a1-46c2-8b15-0e727a05c0fe: sent
+Event 981af23e-822d-4bed-9a87-4ba3a4984660: sent
+Event 0891580a-eb74-4e7a-a452-71c194e80b1b: sent
+Event 544940d8-78d3-4036-b5e8-a68318cca392: sent
+Event df264ac2-dd9b-40da-9434-b71bfc741b30: sent
+Event 0103bec9-8932-420c-b48f-90ca040be800: sent
+Event 4a3f234e-afff-416f-8950-7db5e57b4c46: sent
+Event becb5d87-1830-41cf-8717-0091b8bab462: sent
+Event 48c4191a-11aa-42f4-80e2-b969b3358565: sent
+Event 5a3f5109-dfcd-44dd-bcf5-7e72e376a908: sent
+Event 6435817c-e1a1-46c2-8b15-0e727a05c0fe: sent
+Event 981af23e-822d-4bed-9a87-4ba3a4984660: sent
+Event 0891580a-eb74-4e7a-a452-71c194e80b1b: sent
+Event 544940d8-78d3-4036-b5e8-a68318cca392: sent
+Event df264ac2-dd9b-40da-9434-b71bfc741b30: sent
+Event 0103bec9-8932-420c-b48f-90ca040be800: sent
+Event 4a3f234e-afff-416f-8950-7db5e57b4c46: sent
+Event becb5d87-1830-41cf-8717-0091b8bab462: sent
+Event 48c4191a-11aa-42f4-80e2-b969b3358565: sent
+Event 5a3f5109-dfcd-44dd-bcf5-7e72e376a908: sent
+Event 6435817c-e1a1-46c2-8b15-0e727a05c0fe: sent
+Event 981af23e-822d-4bed-9a87-4ba3a4984660: sent
+Event 0891580a-eb74-4e7a-a452-71c194e80b1b: sent
+Event 544940d8-78d3-4036-b5e8-a68318cca392: sent
+Event df264ac2-dd9b-40da-9434-b71bfc741b30: sent
+Event 0103bec9-8932-420c-b48f-90ca040be800: sent
+Event 4a3f234e-afff-416f-8950-7db5e57b4c46: sent
+Event becb5d87-1830-41cf-8717-0091b8bab462: sent
+Event 48c4191a-11aa-42f4-80e2-b969b3358565: sent
+Event 5a3f5109-dfcd-44dd-bcf5-7e72e376a908: sent
+Event action: Test dispatch failure
+Event d269cb4b-1e66-4d82-93e4-4db3f50e5f26: not_sent
+Event faee8aaf-7247-4649-a442-4154094c4724: sent
+Event 9a2e5b26-4873-4374-b148-00f86fd17027: sent
+Event cee8d179-888b-41c8-913d-1ca75bf78f3f: sent
+Event 233d6459-aa8a-4ffa-ac71-19223048650a: sent
+Event 5e79933e-2b6c-427d-8204-d8c008b57206: sent
+Event c6bf186c-7e8e-4872-8476-4e1123107e83: sent
+Event 748cb9da-34cf-4964-a28b-a4d660a9ae7b: sent
+Event 84a01b36-46b0-45cc-83a0-a78cd6a946cb: sent
+Event e8a6b970-8eba-4295-8949-354232406388: sent
+Event d269cb4b-1e66-4d82-93e4-4db3f50e5f26: not_sent
+Event action: Test dispatch failure
+Event faee8aaf-7247-4649-a442-4154094c4724: sent
+Event 9a2e5b26-4873-4374-b148-00f86fd17027: sent
+Event cee8d179-888b-41c8-913d-1ca75bf78f3f: sent
+Event 233d6459-aa8a-4ffa-ac71-19223048650a: sent
+Event 5e79933e-2b6c-427d-8204-d8c008b57206: sent
+Event c6bf186c-7e8e-4872-8476-4e1123107e83: sent
+Event 748cb9da-34cf-4964-a28b-a4d660a9ae7b: sent
+Event 84a01b36-46b0-45cc-83a0-a78cd6a946cb: sent
+Event e8a6b970-8eba-4295-8949-354232406388: sent
+✔ AND precedence and OR alternatives, numeric/bool normalization and exact text (1.7656ms)
+✔ rising edge only, multiple actions, persistence, disabled and enable baseline (8.4445ms)
+✔ offline actions record skipped result, save does not run, deletes are scoped (3.5192ms)
+✔ validation, loops including enabling a dormant loop, and target cleanup (4.5676ms)
+✔ queued rapid reports preserve both edges (1.4648ms)
+✔ one failed action does not prevent other actions and partial result is persisted (2.0258ms)
+✔ opposite events preserve repeated ON/OFF transitions without a cooldown (2.5263ms)
+✔ 10 simultaneous events and subsequent transitions survive a busy dispatcher (9.2319ms)
+✔ a failed event does not discard other simultaneous events or subsequent triggers (7.6615ms)
+Event action: Plug did not confirm
+Event 6be78220-d314-4546-9c62-8cc4ede2fd09: partial
+Event 4c55575b-9c1c-4906-8a65-6922b59ba13d: sent
+✔ multiple actions wait for confirmation and continue after a failed plug (6.1439ms)
+✔ LivingLight_On requires Light <= 13 AND custom daytime, then sends both lamp actions (18.0252ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 205.1782

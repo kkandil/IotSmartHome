@@ -23,6 +23,15 @@
     },
     {
       "path": "WaterHeater"
+    },
+    {
+      "path": "MultiSens"
+    },
+    {
+      "path": "Voice_Living"
+    },
+    {
+      "path": "RelayController_1020"
     }
   ],
   "extensions": {

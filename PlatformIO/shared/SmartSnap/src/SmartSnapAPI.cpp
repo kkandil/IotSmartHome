@@ -3,9 +3,17 @@
 #include <ESP8266httpUpdate.h>
 #include <LittleFS.h>
 #include "SmartSnapOTAKey.h"
+#ifdef SMARTSNAP_FAST_WIFI
+#include "FastWiFi.h"
+static FastWiFi fastWiFi;
+#endif
 #endif
 
+#ifdef SMARTSNAP_RADAR_UART
+#define USE_SERIAL Serial1
+#else
 #define USE_SERIAL Serial
+#endif
 #define WAIT_FOR_ACK_DELAY_TICKS 100   // 100 * 100ms = 10 sec
 
 #if defined(ESP8266)
@@ -111,12 +119,22 @@ int SmartSnap::Initialize(const char* homeName,
   WiFiMulti.addAP(savedSsid.c_str(), savedPass.c_str());
 
   USE_SERIAL.print("Connecting WiFi");
-  while (WiFiMulti.run() != WL_CONNECTED) {
-    delay(250);
-    USE_SERIAL.print(".");
+  if (_nonBlockingConnect) {
+    WiFi.mode(WIFI_STA);
+    WiFi.setAutoReconnect(true);
+#if defined(ESP8266) && defined(SMARTSNAP_FAST_WIFI)
+    fastWiFi.begin(savedSsid, savedPass);
+#else
+    WiFi.begin(savedSsid.c_str(), savedPass.c_str());
+#endif
+  } else {
+    while (WiFiMulti.run() != WL_CONNECTED) {
+      delay(250);
+      USE_SERIAL.print(".");
+    }
+    USE_SERIAL.println();
+    USE_SERIAL.println("WiFi connected");
   }
-  USE_SERIAL.println();
-  USE_SERIAL.println("WiFi connected");
 
   _webSocket.on("DeviceConnect", EventDeviceConnect);
   _webSocket.on("message", EventMessage);
@@ -127,8 +145,12 @@ int SmartSnap::Initialize(const char* homeName,
   _webSocket.on("DeviceWriteVariable", EventDeviceWriteVariable);
   _webSocket.on("GetVariableValueFromServer", EventGetVariableValueFromServer);
 
+  _webSocket.on("PresenceConfigure",EventPresence);
+  _webSocket.on("RelayConfigure",EventRelayConfigure);
   _webSocket.on("DeviceOTA", EventOTA);
   _webSocket.begin(_serverHost.c_str(), _serverPort);
+
+  if (_nonBlockingConnect) return E_OK; // Started; IsConnected reports readiness.
 
   for (uint8_t t = WAIT_FOR_ACK_DELAY_TICKS; t > 0; t--) {
     _webSocket.loop();
@@ -148,6 +170,16 @@ int SmartSnap::Initialize(const char* homeName,
 
 void SmartSnap::Run()
 {
+#if defined(ESP8266) && defined(SMARTSNAP_FAST_WIFI)
+  if (_nonBlockingConnect) fastWiFi.run();
+#endif
+  if (_nonBlockingConnect && WiFi.status() != WL_CONNECTED) {
+    if (_isDeviceConnected) {
+      _webSocket.disconnect();
+      _isDeviceConnected = false;
+    }
+    return;
+  }
   _webSocket.loop();
 #if defined(ESP8266)
   if(_otaPath.length() && WiFi.status()==WL_CONNECTED) {
@@ -265,11 +297,18 @@ String SmartSnap::GetHomeName() const
 
 void SmartSnap::EmitDeviceConnect()
 {
-  StaticJsonDocument<768> doc;
+  StaticJsonDocument<1024> doc;
   String output;
 
   doc["homeName"] = _homeName;
   doc["deviceID"] = _deviceId;
+  JsonArray capabilities = doc.createNestedArray("capabilities");
+  if (_capabilities & 1U) capabilities.add("ld2420");
+  if (_capabilities & 4U) capabilities.add("custom_configuration");
+  if (_capabilities & 2U) {
+    capabilities.add("startup_behavior");
+    capabilities.add("relay_startup"); // Compatibility with older apps and hubs.
+  }
 #if defined(ESP8266)
   doc["otaDeviceId"]=true;doc["otaReplaceConfiguration"]=true;doc["hardwareId"]=WiFi.macAddress();doc["otaCompletedJob"]=_otaCompletedJob;
   doc["ota"]=true;doc["firmwareVersion"]=_firmwareVersion;doc["sketchMD5"]=ESP.getSketchMD5();
@@ -480,8 +519,8 @@ void SmartSnap::HandleGetVariableValueFromServer(const char* payload, size_t len
   // } else if (varType == "float") {
   //   varValue = String(v.as<float>(), 6);
   } else {
-    const char* s = v.as<const char*>();
-    varValue = s ? String(s) : String("");
+    if (v.is<const char*>()) varValue = v.as<const char*>();
+    else serializeJson(v, varValue); // Server may store JSON numeric values.
   }
 
 
@@ -514,4 +553,14 @@ bool SmartSnap::SendAlarmToPhone(const String& message) {
   serializeJson(doc, output);
   _webSocket.emit("DeviceWriteAlarm", output.c_str());
   return true;
+}
+
+void SmartSnap::EventPresence(const char* payload,size_t length){if(_instance && _instance->_presenceHandler && length<=4096)_instance->_presenceHandler(String(payload).substring(0,length));}
+void SmartSnap::EventRelayConfigure(const char* payload,size_t length){if(_instance && _instance->_relayHandler && length<=1024)_instance->_relayHandler(String(payload).substring(0,length));}
+
+void SmartSnap::SetCapability(Capability capability, bool enabled) {
+  const uint8_t bit = static_cast<uint8_t>(capability);
+  if (bit > static_cast<uint8_t>(Capability::CustomConfiguration)) return;
+  if (enabled) _capabilities |= (1UL << bit);
+  else _capabilities &= ~(1UL << bit);
 }

@@ -1,0 +1,77 @@
+Processing esp12e (platform: espressif8266@4.2.1; board: esp12e; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/esp12e.html
+PLATFORM: Espressif 8266 (4.2.1) > Espressif ESP8266 ESP-12E
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 1.30000.201119 (3.0.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoJson @ 7.0.4
+|-- SocketIoClient
+|-- WebSockets @ 2.4.0
+|-- SmartSnapAPI @ 1.0.0
+|-- LittleFS @ 0.1.0
+Building in release mode
+Compiling .pio\build\esp12e\src\main.cpp.o
+In file included from src\main.cpp:6:
+src\RelayPersistence.h: In member function 'bool RelayPersistence::load(StartupState&)':
+src\RelayPersistence.h:14:9: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   14 |         StaticJsonDocument<256> doc;
+      |         ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:6:
+src\RelayPersistence.h: In member function 'bool RelayPersistence::save(const StartupState&)':
+src\RelayPersistence.h:28:9: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   28 |         StaticJsonDocument<256> doc;
+      |         ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp: In function 'void onRelayConfigure(const String&)':
+src\main.cpp:24:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   24 |     StaticJsonDocument<1024> input;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp:50:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   50 |     StaticJsonDocument<512> reply;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+Linking .pio\build\esp12e\firmware.elf
+Retrieving maximum program size .pio\build\esp12e\firmware.elf
+Checking size .pio\build\esp12e\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  40.1% (used 32868 bytes from 81920 bytes)
+Flash: [=====     ]  46.0% (used 480481 bytes from 1044464 bytes)
+Building .pio\build\esp12e\firmware.bin
+Creating BIN file ".pio\build\esp12e\firmware.bin" using "C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\esp12e\firmware.elf"
+========================= [SUCCESS] Took 14.40 seconds =========================

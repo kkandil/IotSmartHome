@@ -1,0 +1,7 @@
+INFO    | Android emulator version 33.1.24.0 (build_id 11237101) (CL:N/A)
+INFO    | Found systemPath C:\Users\khale\AppData\Local\Android\Sdk\system-images\android-34\google_apis_playstore\x86_64\
+INFO    | Storing crashdata in: , detection is disabled for process: 109468
+INFO    | Duplicate loglines will be removed, if you wish to see each individual line launch with the -log-nofilter flag.
+ERROR   | Unexpected error while creating: C (error: 5) (863128x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: c074:4509:3102:0:f05c:4509:3102:0

@@ -1,0 +1,384 @@
+Processing esp12e (platform: espressif8266@4.2.1; board: esp12e; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/esp12e.html
+PLATFORM: Espressif 8266 (4.2.1) > Espressif ESP8266 ESP-12E
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 1.30000.201119 (3.0.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 41 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoJson @ 7.0.4
+|-- SocketIoClient
+|-- WebSockets @ 2.4.0
+|-- SmartSnapAPI @ 1.0.0
+|-- LittleFS @ 0.1.0
+Building in release mode
+Compiling .pio\build\esp12e\src\main.cpp.o
+Generating LD script .pio\build\esp12e\ld\local.eagle.app.v6.common.ld
+Compiling .pio\build\esp12e\libee0\Hash\Hash.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\BearSSLHelpers.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\CertStoreBearSSL.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFi.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiAP.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiGeneric.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiGratuitous.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiMulti.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiSTA-WPS.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiSTA.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\ESP8266WiFiScan.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\WiFiClient.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\WiFiClientSecureBearSSL.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\WiFiServer.cpp.o
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\WiFiServerSecureBearSSL.cpp.o
+In file included from src\main.cpp:6:
+src\RelayPersistence.h: In member function 'bool RelayPersistence::load(StartupState&)':
+src\RelayPersistence.h:14:9: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   14 |         StaticJsonDocument<256> doc;
+      |         ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:6:
+src\RelayPersistence.h: In member function 'bool RelayPersistence::save(const StartupState&)':
+src\RelayPersistence.h:28:9: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   28 |         StaticJsonDocument<256> doc;
+      |         ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp: In function 'void onRelayConfigure(const String&)':
+src\main.cpp:26:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   26 |     StaticJsonDocument<1024> input;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp:52:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   52 |     StaticJsonDocument<512> reply;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:2:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\WiFiUdp.cpp.o
+Archiving .pio\build\esp12e\libee0\libHash.a
+Compiling .pio\build\esp12e\libc0a\ESP8266WiFi\enable_wifi_at_boot_time.cpp.o
+Compiling .pio\build\esp12e\libcea\SPI\SPI.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\Dhcp.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\Dns.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\Ethernet.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\EthernetClient.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\EthernetServer.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\EthernetUdp.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\socket.cpp.o
+Compiling .pio\build\esp12e\libfb8\Ethernet\utility\w5100.cpp.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\SocketIOclient.cpp.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\WebSockets.cpp.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\WebSocketsClient.cpp.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\WebSocketsServer.cpp.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\libb64\cdecode.c.o
+Archiving .pio\build\esp12e\libcea\libSPI.a
+Compiling .pio\build\esp12e\lib17b\WebSockets\libb64\cencode.c.o
+Compiling .pio\build\esp12e\lib17b\WebSockets\libsha1\libsha1.c.o
+Compiling .pio\build\esp12e\libd1e\SocketIoClient\SocketIoClient.cpp.o
+Compiling .pio\build\esp12e\lib7d8\ESP8266HTTPClient\ESP8266HTTPClient.cpp.o
+Archiving .pio\build\esp12e\libc0a\libESP8266WiFi.a
+Compiling .pio\build\esp12e\lib4f6\ESP8266httpUpdate\ESP8266httpUpdate.cpp.o
+Compiling .pio\build\esp12e\lib9ef\LittleFS\LittleFS.cpp.o
+Compiling .pio\build\esp12e\lib9ef\LittleFS\lfs.c.o
+Compiling .pio\build\esp12e\lib9ef\LittleFS\lfs_util.c.o
+Compiling .pio\build\esp12e\liba76\SmartSnap\SmartSnapAPI.cpp.o
+Archiving .pio\build\esp12e\libfb8\libEthernet.a
+Archiving .pio\build\esp12e\libFrameworkArduinoVariant.a
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\WebSockets\src\WebSocketsServer.cpp: In member function 'void WebSocketsServer::handleNewClients()':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\WebSockets\src\WebSocketsServer.cpp:649:96: warning: 'WiFiClient WiFiServer::available(uint8_t*)' is deprecated: Renamed to accept(). [-Wdeprecated-declarations]
+  649 |         WEBSOCKETS_NETWORK_CLASS * tcpClient = new WEBSOCKETS_NETWORK_CLASS(_server->available());
+      |                                                                                                ^
+In file included from C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\libraries\ESP8266WiFi\src/ESP8266WiFi.h:40,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\WebSockets\src\WebSockets.h:172,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\WebSockets\src\WebSocketsServer.cpp:25:
+C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\libraries\ESP8266WiFi\src/WiFiServer.h:85:14: note: declared here
+   85 |   WiFiClient available(uint8_t* status = NULL) __attribute__((deprecated("Renamed to accept().")));
+      |              ^~~~~~~~~
+Compiling .pio\build\esp12e\FrameworkArduino\Crypto.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Esp-frag.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Esp-version.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Esp.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\FS.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\FSnoop.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\FunctionalInterrupt.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\HardwareSerial.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\IPAddress.cpp.o
+Archiving .pio\build\esp12e\lib17b\libWebSockets.a
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp: In member function 'void SocketIoClient::webSocketEvent(WStype_t, uint8_t*, size_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_ERROR' not handled in switch [-Wswitch]
+   20 |  switch(type) {
+      |        ^
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_FRAGMENT_TEXT_START' not handled in switch [-Wswitch]
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_FRAGMENT_BIN_START' not handled in switch [-Wswitch]
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_FRAGMENT' not handled in switch [-Wswitch]
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_FRAGMENT_FIN' not handled in switch [-Wswitch]
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_PING' not handled in switch [-Wswitch]
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SocketIoClient\SocketIoClient.cpp:20:8: warning: enumeration value 'WStype_PONG' not handled in switch [-Wswitch]
+Compiling .pio\build\esp12e\FrameworkArduino\LwipDhcpServer-NonOS.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\LwipDhcpServer.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\LwipIntf.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\LwipIntfCB.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\MD5Builder.cpp.o
+Archiving .pio\build\esp12e\libd1e\libSocketIoClient.a
+Compiling .pio\build\esp12e\FrameworkArduino\Print.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Schedule.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\StackThunk.cpp.o
+Archiving .pio\build\esp12e\lib9ef\libLittleFS.a
+Archiving .pio\build\esp12e\lib4f6\libESP8266httpUpdate.a
+Compiling .pio\build\esp12e\FrameworkArduino\Stream.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\StreamSend.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Tone.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\TypeConversion.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\Updater.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\WMath.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\WString.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\abi.cpp.o
+Archiving .pio\build\esp12e\lib7d8\libESP8266HTTPClient.a
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'int SmartSnap::Initialize(const char*, int, const char*, const char*, const char*, uint16_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:54:31: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   54 |     DynamicJsonDocument config(1024), receipt(512);
+      |                               ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:54:46: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   54 |     DynamicJsonDocument config(1024), receipt(512);
+      |                                              ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+Compiling .pio\build\esp12e\FrameworkArduino\aes_unwrap.cpp.o
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::Run()':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:186:34: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  186 |       DynamicJsonDocument receipt(512);receipt["jobId"]=_otaJob;receipt["md5"]=_otaExpectedMD5;
+      |                                  ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:199:33: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  199 |       DynamicJsonDocument status(512);status["jobId"]=_otaJob;status["error"]=ESPhttpUpdate.getLastErrorString();
+      |                                 ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In static member function 'static void SmartSnap::EventOTA(const char*, size_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:217:27: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  217 |   DynamicJsonDocument data(512);
+      |                           ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::RequestVariableValueFromServer(const String&)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:241:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  241 |   StaticJsonDocument<200> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::EmitDeviceConnect()':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:289:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  289 |   StaticJsonDocument<1024> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:294:64: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+  294 |   JsonArray capabilities = doc.createNestedArray("capabilities");
+      |                                                                ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:33,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+  305 |   JsonArray createNestedArray(TChar* key) {
+      |             ^~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::EmitDeviceWriteVariable(const String&, const String&, const String&)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:309:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  309 |   StaticJsonDocument<200> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleWriteVariable(const char*, size_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:413:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  413 |   StaticJsonDocument<200> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleGetVariableValueFromDevice(const char*, size_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:446:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  446 |   StaticJsonDocument<200> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleGetVariableValueFromServer(const char*, size_t)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:476:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  476 |   StaticJsonDocument<200> doc;
+      |   ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'bool SmartSnap::SendNotificationToPhone(const String&)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:520:26: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  520 |   DynamicJsonDocument doc(1024);
+      |                          ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp: In member function 'bool SmartSnap::SendAlarmToPhone(const String&)':
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:533:26: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  533 |   DynamicJsonDocument doc(1024);
+      |                          ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.h:17,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src\SmartSnapAPI.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+Compiling .pio\build\esp12e\FrameworkArduino\base64.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\cbuf.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\cont.S.o
+Compiling .pio\build\esp12e\FrameworkArduino\cont_util.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_app_entry_noextra4k.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_eboot_command.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_features.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_flash_quirks.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_flash_utils.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_i2s.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_main.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_non32xfer.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_noniso.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_phy.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_postmortem.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_si2c.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_sigma_delta.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_spi_utils.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_timer.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_vm.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_waveform_phase.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_waveform_pwm.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring_analog.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring_digital.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring_pulse.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring_pwm.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\core_esp8266_wiring_shift.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\crc32.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\debug.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\exc-c-wrapper-handler.S.o
+Archiving .pio\build\esp12e\liba76\libSmartSnap.a
+Compiling .pio\build\esp12e\FrameworkArduino\exc-sethandler.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\flash_hal.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\gdb_hooks.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\heap.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\hwdt_app_entry.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\libb64\cdecode.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\libb64\cencode.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\libc_replacements.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\mmu_iram.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\reboot_uart_dwnld.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs\spiffs_cache.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs\spiffs_check.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs\spiffs_gc.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs\spiffs_hydrogen.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs\spiffs_nucleus.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\spiffs_api.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\sqrt32.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\stdlib_noniso.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\time.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\uart.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\umm_malloc\umm_info.c.o
+Compiling .pio\build\esp12e\FrameworkArduino\umm_malloc\umm_integrity.c.o
+Compiling .pio\build\esp12e\FrameworkArduino\umm_malloc\umm_local.c.o
+Compiling .pio\build\esp12e\FrameworkArduino\umm_malloc\umm_malloc.cpp.o
+Compiling .pio\build\esp12e\FrameworkArduino\umm_malloc\umm_poison.c.o
+Compiling .pio\build\esp12e\FrameworkArduino\wpa2_eap_patch.cpp.o
+Archiving .pio\build\esp12e\libFrameworkArduino.a
+Linking .pio\build\esp12e\firmware.elf
+Retrieving maximum program size .pio\build\esp12e\firmware.elf
+Checking size .pio\build\esp12e\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  40.2% (used 32924 bytes from 81920 bytes)
+Flash: [=====     ]  46.1% (used 481089 bytes from 1044464 bytes)
+Building .pio\build\esp12e\firmware.bin
+Creating BIN file ".pio\build\esp12e\firmware.bin" using "C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\esp12e\firmware.elf"
+========================= [SUCCESS] Took 18.67 seconds =========================

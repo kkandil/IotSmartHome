@@ -1,0 +1,12 @@
+✔ only configured controls record changed values, paginated newest first and isolated by home (5.4595ms)
+✔ raw pages preserve each timestamp; clear is scoped, invalidates cursors and retry does not delete new readings (102.5052ms)
+✔ history belongs to the variable; removing last card pauses without deleting; stale config cannot re-enable (1.1912ms)
+✔ range queries retain peaks and counts, incremental replacement and 90 day / 730 day retention (2.3808ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 211.0824

@@ -1,0 +1,43 @@
+✔ accounts hash passwords, protect reserved owner migration, persist and revoke sessions (292.8232ms)
+✔ home permissions, layout conflicts, permission changes and revocation are enforced (132.7065ms)
+✔ email is unique regardless of case, nicknames can repeat, and eight-character passwords work (261.1864ms)
+Phone request received: event=SaveEvent home=Shared requestId=SaveEvent
+Phone request started: event=SaveEvent requestId=SaveEvent queueMs=0
+Phone authentication complete: event=SaveEvent requestId=SaveEvent elapsedMs=0
+Phone request rejected: event=SaveEvent requestId=SaveEvent gatewayMs=0 reason=You do not have permission for this home or action
+Phone request received: event=PhoneWriteVariable home=Shared requestId=control
+Phone request started: event=PhoneWriteVariable requestId=control queueMs=0
+Control checks complete: requestId=control elapsedMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=control gatewayMs=0 reason=Home hub is offline; live commands are not queued
+Phone request received: event=PhoneWriteVariable home=Shared requestId=unblocked-write
+Phone request received: event=GetVariableSnapshot home=Shared requestId=unblocked-snapshot
+Phone request started: event=PhoneWriteVariable requestId=unblocked-write queueMs=0
+Phone request started: event=GetVariableSnapshot requestId=unblocked-snapshot queueMs=0
+Phone authentication complete: event=GetVariableSnapshot requestId=unblocked-snapshot elapsedMs=0
+Control checks complete: requestId=unblocked-write elapsedMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=unblocked-write gatewayMs=0 reason=Home hub is offline; live commands are not queued
+Phone request rejected: event=GetVariableSnapshot requestId=unblocked-snapshot gatewayMs=1 reason=Home hub is offline; live commands are not queued
+✔ gateway isolates home lists, rejects legacy keys and checks each edit on an existing connection (522.4568ms)
+✔ room tabs persist with shared layouts, enforce permissions and survive older clients (142.3063ms)
+✔ shared card widgets and room icons persist, preserve old-client omissions and validate icons (143.8379ms)
+Phone request received: event=PhoneWriteVariable home=Private requestId=overlap
+Phone request started: event=PhoneWriteVariable requestId=overlap queueMs=0
+Control checks complete: requestId=overlap elapsedMs=22
+Phone request rejected: event=PhoneWriteVariable requestId=overlap gatewayMs=22 reason=Home hub is offline; live commands are not queued
+Phone request received: event=PhoneWriteVariable home=Private requestId=revoked
+Phone request started: event=PhoneWriteVariable requestId=revoked queueMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=revoked gatewayMs=0 reason=Permission revoked
+✔ control checks overlap but never dispatch before both session and permission checks finish (96.9126ms)
+✔ configuration flag persists and defaults off without changing values or types (5.8891ms)
+✔ templates isolate accounts, persist metadata and enforce revisions (3.1819ms)
+✔ invalid template defaults and duplicate names are rejected (0.4547ms)
+✔ device and template variables are created in one revision; later template changes do not alter it (1.452ms)
+✔ None keeps normal device creation with zero variables (0.3329ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2212.5503

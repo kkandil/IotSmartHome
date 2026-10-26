@@ -1,0 +1,31 @@
+INFO    | Android emulator version 33.1.24.0 (build_id 11237101) (CL:N/A)
+INFO    | Found systemPath C:\Users\khale\AppData\Local\Android\Sdk\system-images\android-34\google_apis_playstore\x86_64\
+INFO    | Storing crashdata in: , detection is enabled for process: 12608
+INFO    | Duplicate loglines will be removed, if you wish to see each individual line launch with the -log-nofilter flag.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: 57:29e6:3a02:0:303f:29e6:3a02:0
+RegGetValueW failed 2 The system cannot find the file specified.
+
+library_mode swiftshader_indirect gpu mode swiftshader_indirect
+createGlobalVkEmulation:963 Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0)
+INFO    | Ignore IPv6 address: 57:29e6:3a02:0:303f:29e6:3a02:0 (2x)
+INFO    | Sending adb public key [QAAAAJddyRjZDcn49WwrD4jjdWMgyCrjZUAObO0rZh3o9fMFGrPNnbfVHOs/WyPSl3iUfbCcmeNUeThMVbpVLPd2Jgm6GsO47rkT+rxsnxDvm6c9p3N8EshFK8i7G55PW8Wdim7UquY6jukr8/y9enNXnsKT9V2jf/sM7aGN/T5O7V98r12QueA3dEp4GlAo3cD+S8QwjqCYHGgB6lbnjedOG/AVaSnA7WZ2xgeYTPSmon3aeHStu6Vzs8F8fzaS3Z2gTwTMt4sEcS/Yd6f9GuuxiLJjGHxniVWcERDbWxruzD/jgBoG7UFmnGptb4F7kN19OmedIUWwS8d1q/jm1pl6wnUKenjI7wB8MbRp64FoFK8mmfffqTUNvRPRcEwxjjAxn7c5ryswJ8+TrgtzATWwPAnavWViXiRrvkvAoOxYP3PwWprwrBdpqWnVdiw7kCbEHGtVHLt1nn9j22MQWBLY7hGZYACQauNZRmN9ofFsVtu85RwoPR/8uUDXorG1B5cVjvuNfJZCNEg/5YRR9lk4ktgEyVVGD2FqVK0S2fRUhLqDiM8mXEWUip6qmUtA3PPFstqpNyZF+Dixw2DUTiPiZX5s/6BQ3T5IRfwx/NfJ4zQxNc+Ct/AiHAhjWiLlosdxhcFsCJjJnzPiGLFnjxLbXjnWzKKDtUHiwQ1rFppS5sJIzOFLwQEAAQA= @unknown]
+HAX is working and emulator runs in fast virt mode.
+INFO    | Cold boot: requested by the user
+INFO    | Your emulator is out of date, please update by launching Android Studio:
+ - Start Android Studio
+ - Select menu "Tools > Android > SDK Manager"
+ - Click "SDK Tools" tab
+ - Check "Android Emulator" checkbox
+ - Click "OK"
+INFO    | Activated packet streamer for bluetooth emulation
+INFO    | Boot completed in 22512 ms
+INFO    | Increasing screen off timeout, logcat buffer size to 2M.
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: e0a7:fab2:3b02:0:1090:fab2:3b02:0
+INFO    | Ignore IPv6 address: e0a7:fab2:3b02:0:1090:fab2:3b02:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: e0a7:fab2:3b02:0:1090:fab2:3b02:0
+INFO    | Ignore IPv6 address: e0a7:fab2:3b02:0:1090:fab2:3b02:0 (2x)
+INFO    | IPv4 server found: 
+INFO    | Ignore IPv6 address: e0a7:fab2:3b02:0:1090:fab2:3b02:0

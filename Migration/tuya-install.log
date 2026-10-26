@@ -1,0 +1,41 @@
+Collecting tinytuya
+  Downloading tinytuya-1.20.0-py3-none-any.whl.metadata (61 kB)
+Collecting requests (from tinytuya)
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting colorama (from tinytuya)
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting cryptography (from tinytuya)
+  Downloading cryptography-50.0.2-cp311-abi3-win_amd64.whl.metadata (4.4 kB)
+Collecting cffi>=2.0.0 (from cryptography->tinytuya)
+  Using cached cffi-2.1.1-cp311-cp311-win_amd64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography->tinytuya)
+  Downloading pycparser-3.11-py3-none-any.whl.metadata (8.2 kB)
+Collecting charset_normalizer<4,>=2 (from requests->tinytuya)
+  Downloading charset_normalizer-3.5.2-cp311-cp311-win_amd64.whl.metadata (47 kB)
+Collecting idna<4,>=2.5 (from requests->tinytuya)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests->tinytuya)
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests->tinytuya)
+  Downloading certifi-2026.10.18-py3-none-any.whl.metadata (2.5 kB)
+Downloading tinytuya-1.20.0-py3-none-any.whl (170 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading cryptography-50.0.2-cp311-abi3-win_amd64.whl (3.8 MB)
+   ---------------------------------------- 3.8/3.8 MB 2.5 MB/s  0:00:01
+Using cached cffi-2.1.1-cp311-cp311-win_amd64.whl (185 kB)
+Downloading pycparser-3.11-py3-none-any.whl (51 kB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.2-cp311-cp311-win_amd64.whl (214 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading certifi-2026.10.18-py3-none-any.whl (134 kB)
+WARNING: Error parsing dependencies of flatcam: Expected comma (within version specifier), semicolon (after version specifier) or end
+    shapely>=1.3rtree
+           ~~~~~~^
+WARNING: Ignoring invalid distribution ~ip (C:\Python311\Lib\site-packages)
+Installing collected packages: urllib3, pycparser, idna, colorama, charset_normalizer, certifi, requests, cffi, cryptography, tinytuya
+
+Successfully installed certifi-2026.10.18 cffi-2.1.1 charset_normalizer-3.5.2 colorama-0.4.6 cryptography-50.0.2 idna-3.20 pycparser-3.11 requests-2.34.2 tinytuya-1.20.0 urllib3-2.8.0
+
+[notice] A new release of pip is available: 26.0.1 -> 26.2.1
+[notice] To update, run: python.exe -m pip install --upgrade pip

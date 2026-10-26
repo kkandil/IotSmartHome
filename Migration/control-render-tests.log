@@ -1,0 +1,12 @@
+
+com.example.smarthome.EventTimeTest:.
+com.example.smarthome.ControlDispatchRenderingTest:.
+com.example.smarthome.SmartPlugDetailsTest:.
+com.example.smarthome.EventRefreshRegressionTest:..
+com.example.smarthome.EventToggleRegressionTest:..
+
+Time: 0.85
+
+OK (7 tests)
+
+

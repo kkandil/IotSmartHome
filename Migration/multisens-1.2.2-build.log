@@ -1,0 +1,58 @@
+Processing nodemcuv2 (platform: espressif8266@4.2.1; board: nodemcuv2; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 1.30000.201119 (3.0.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 49 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoJson @ 7.0.4
+|-- SocketIoClient
+|-- WebSockets @ 2.4.0
+|-- SmartSnapAPI @ 1.0.0
+|-- Adafruit VEML7700 Library @ 2.1.6
+|-- Adafruit AHTX0 @ 2.0.6
+|-- Adafruit BMP280 Library @ 3.0.0
+|-- LittleFS @ 0.1.0
+|-- Wire @ 1.0
+Building in release mode
+Compiling .pio\build\nodemcuv2\src\main.cpp.o
+src\main.cpp: In function 'bool saveSettings(const double*)':
+src\main.cpp:40:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   40 |     StaticJsonDocument<256> doc;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:6:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp: In function 'void loadSettings()':
+src\main.cpp:53:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   53 |     StaticJsonDocument<256> doc;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\main.cpp:6:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+Linking .pio\build\nodemcuv2\firmware.elf
+Retrieving maximum program size .pio\build\nodemcuv2\firmware.elf
+Checking size .pio\build\nodemcuv2\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  41.0% (used 33572 bytes from 81920 bytes)
+Flash: [=====     ]  47.1% (used 491545 bytes from 1044464 bytes)
+Building .pio\build\nodemcuv2\firmware.bin
+Creating BIN file ".pio\build\nodemcuv2\firmware.bin" using "C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\nodemcuv2\firmware.elf"
+========================= [SUCCESS] Took 7.36 seconds =========================

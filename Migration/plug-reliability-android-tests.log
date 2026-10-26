@@ -1,0 +1,10 @@
+
+com.example.smarthome.EventTimeTest:.
+com.example.smarthome.EventRefreshRegressionTest:..
+com.example.smarthome.EventToggleRegressionTest:..
+
+Time: 5.767
+
+OK (5 tests)
+
+

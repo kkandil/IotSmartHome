@@ -1,0 +1,47 @@
+Event 4c032278-d98f-47e4-b30f-4e60427e1148: sent
+Event 4c032278-d98f-47e4-b30f-4e60427e1148: sent
+Event 20c9e82b-5efc-4ef5-9d3b-2541e17fdde4: sent
+Event 9bd542d0-d997-4c96-9f86-e876a83b4aed: sent
+Event 0e8eb5e4-7d33-46cb-a6c6-002fa1bd3757: sent
+Event 0e8eb5e4-7d33-46cb-a6c6-002fa1bd3757: sent
+Event 0e8eb5e4-7d33-46cb-a6c6-002fa1bd3757: sent
+✔ clock validation rejects bad timezone, dates, weekdays, coordinates and equal hours (16.3809ms)
+✔ exact time fires without variable traffic, once per minute; next day and restart safe (4.8935ms)
+✔ mixed AND conditions allow value arriving in minute but never repeat from echoes/toggles (1.637ms)
+✔ save and enable in matching minute do not fire; missed times not replayed (1.4204ms)
+✔ DST repeated minute dispatches once, spring missing minute does not dispatch (1.554ms)
+✔ custom daytime/nighttime complement, overnight windows, date and weekday filtering (0.2853ms)
+✔ solar mode is day at Berlin noon and night at midnight; polar conditions work (0.3586ms)
+✔ daytime transition triggers, variable-only OR still permits rapid edges (1.3049ms)
+✔ Pi location validates, caches, coalesces lookups and survives offline restart (18.0579ms)
+Events: Ordering comparisons require a numeric variable
+✔ comparison operators include numeric boundaries; nonnumeric ordering never matches (0.7848ms)
+✔ persistent desired config, idempotency, conflicts, comparator validation, home isolation and tombstones (5.3481ms)
+Gateway bridge connected
+Gateway bridge connected
+Phone request received: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read
+Phone request forwarded: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read gatewayMs=0
+Snapshot response forwarded: requestId=bypass-slow-read responseAuthMs=0
+Phone request received: event=PhoneWriteVariable home=Germany requestId=bypass-command
+Phone request forwarded: event=PhoneWriteVariable home=Germany requestId=bypass-command gatewayMs=0
+Gateway unavailable; local service continues
+Phone request received: event=GetVariableSnapshot home=Germany requestId=offline-cache
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Phone request rejected: event=PhoneWriteVariable requestId=offline-write gatewayMs=0 reason=Home hub is offline
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Gateway bridge connected
+Queued value delivered to home hub: Germany 1001 output
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway unavailable; local service continues
+✔ two independent hubs, offline edits synchronize before live traffic, reconnect never resurrects deleted config (1282.1703ms)
+✔ device rename preserves identity, live variable values and automations during hub synchronization (7.3752ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1504.145

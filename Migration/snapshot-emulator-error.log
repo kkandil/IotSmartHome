@@ -1,0 +1,7 @@
+[103008:56076:20261006,014308.170:FATAL exception_handler_server.cc:315] Check failed: pipe != INVALID_HANDLE_VALUE. CreateNamedPipe: Access is denied. (5)
+[103008:39596:20261006,014308.175:ERROR filesystem_win.cc:130] GetFileAttributes C:\Users\khale\AppData\Local\Temp\\AndroidEmulator\emu-crash-33.1.24.db\attachments\f94efe4b-9eaf-474c-9271-883bcbf3d685: The system cannot find the file specified. (2)
+ERROR   | Unexpected error while creating: C (error: 5)
+INFO    | Ignore IPv6 address: c074:4509:3102:0:f05c:4509:3102:0 (2x)
+ERROR   | Unexpected error while creating: C (error: 5)
+ERROR   | Unexpected error while creating: C (error: 5) (3046510x)
+ERROR   | A snapshot operation for 'Medium_Phone_API_34' is pending and timeout has expired. Exiting...

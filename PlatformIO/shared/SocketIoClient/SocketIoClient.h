@@ -6,7 +6,11 @@
 #include <vector>
 #include <WebSocketsClient.h>
 
+#ifdef SMARTSNAP_RADAR_UART
+#define SOCKETIOCLIENT_DEBUG(...) Serial1.printf(__VA_ARGS__);
+#else
 #define SOCKETIOCLIENT_DEBUG(...) Serial.printf(__VA_ARGS__);
+#endif
 //#define SOCKETIOCLIENT_DEBUG(...)
 
 #define PING_INTERVAL 10000 //TODO: use socket.io server response

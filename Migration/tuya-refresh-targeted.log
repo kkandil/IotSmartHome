@@ -1,0 +1,13 @@
+✔ setup keeps keys private, requires home and local verification, persists selection (27.4841ms)
+✔ Tuya import creates one Power variable and is idempotent (0.9059ms)
+✔ virtual device publishes confirmed power and forwards local commands (5103.2256ms)
+✔ cloud setup rejects unauthorized users and relays credentials only to their hub (43.0198ms)
+✔ automatic setup reuses a known address and falls back to discovery when it fails (18.1333ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5433.3507

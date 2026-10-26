@@ -1,10 +1,12 @@
-#include "SmartSnapAPI.h"
+#include <Arduino.h>
+#include <SmartSnapAPI.h>
+#include "SmartSnapHubConfig.h"
 #include <Servo.h>
 
 Servo myservo;
 
 //#define USE_SERIAL Serial
-SmartSnap SmartSnap;
+SmartSnap smartSnap;
 
 bool isHeaterActive = false;
 
@@ -28,20 +30,26 @@ void setup() {
   delay(1000);
   isServoAttached = true;
   servoDetachStart = millis(); 
-//  pinMode(D2, OUTPUT);
-//  digitalWrite(D2, HIGH);
-//  while( retVal == E_NOK)
-//  {
-    retVal = SmartSnap.Initialize(1003, "KS_DSL", "2wad@dsl");
-//    if( retVal == E_NOK)
-//      delay(5000);
-//  }
+
+  smartSnap.onWriteVariable(HandleWriteVariable);
+  smartSnap.onReadVariable(HandleReadVariable);
+  smartSnap.onServerValue(HandleServerValue);
+  smartSnap.onConnectionStatus(HandleConnectionStatus);
+
+  smartSnap.SetFirmwareVersion("WaterHeater_1.0.0");
+  int ret = smartSnap.Initialize( "Home_Germany",1003,"KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
+  if (ret == E_OK) {
+    Serial.println("SmartSnap initialized successfully");
+  } else {
+    Serial.println("SmartSnap initialization failed");
+  }
+
 }
 
 void loop() {
   int posHallSensorStateCur = 0;
 
-  SmartSnap.Run();
+  smartSnap.Run();
   if( isServoAttached == true && millis() >= (servoDetachStart+SERVO_DETACH_DELAY_MS))
   {
     isServoAttached = false;
@@ -62,12 +70,12 @@ void loop() {
     Serial.println(posHallSensorStateCur);
     if( posHallSensorStateCur == 0 && isHeaterActive == false)
     {
-      SmartSnap.WriteVariableValue("V1", "int", "1");
+      smartSnap.WriteVariableValue("V1", "int", "1");
       isHeaterActive = true;
     } 
     else if( posHallSensorStateCur == 1 && isHeaterActive == true)
     {
-      SmartSnap.WriteVariableValue("V1", "int", "0");
+      smartSnap.WriteVariableValue("V1", "int", "0");
       isHeaterActive = false;
     }
     PosHallSensorUpdateTimeStart = 0;
@@ -91,13 +99,13 @@ void loop() {
   // }
 }
 
-
-extern void SmartSnapWriteVariable(String VarName, String VarType, String Value)
+ 
+void HandleWriteVariable(const String& varName, const String& varType, const String& value)
 {
   
-   if( VarName == "V1" )
+   if( varName == "V1" )
    {
-      int val = Value.toInt();
+      int val = value.toInt();
       if( val == 1)
       {
         isHeaterActive = true;
@@ -119,7 +127,6 @@ extern void SmartSnapWriteVariable(String VarName, String VarType, String Value)
         myservo.write(12);
         servoDetachStart = millis(); 
         isServoAttached = true;
-//        Serial.println("OFF") ;
       }
       Serial.print("V1 updated with: ");
       Serial.println(String(val));
@@ -130,59 +137,30 @@ extern void SmartSnapWriteVariable(String VarName, String VarType, String Value)
    }
 }
 
-extern void SmartSnapGetVariable(String VarName, String& VarType, String* Value)
+bool HandleReadVariable(const String& varName, String& varType, String& value)
 {
-  if( VarName == "V1" )
+  if( varName == "V1" )
   {
-    VarType = "int" ;
+    varType = "int" ;
     if( isHeaterActive == true )
     {
-      *Value = "1";
+      value = "1";
     }
     else
     {
-      *Value = "0";
+      value = "0";
     }
+    return true;
   }
+  return false;
 }
-//void loop() {
-//    webSocket.loop(); 
-//    while (Serial.available()) {
-//      char inChar = (char)Serial.read();
-//      inputString += inChar;
-//      if (inChar == '\n') {
-////        DynamicJsonDocument doc(1024);
-//////        JsonArray array = doc.to<JsonArray>();
-//////        array.add("message");
-//////        JsonObject param1 = array.createNestedObject();
-//////        param1["p1"]     = (uint32_t) 10;
-//////        param1["p2"]     = (uint32_t) 20;
-////        JsonObject obj = doc.createNestedObject();
-////        obj["p1"] = (uint32_t) 10;
-////        obj["p2"] = (uint32_t) 10;
-////         String output;
-////        serializeJson(doc, output);
-//        const size_t CAPACITY = JSON_OBJECT_SIZE(2);
-//        StaticJsonDocument<CAPACITY> doc;
-//        
-//        // create an object
-//        String output;
-//        JsonObject object = doc.to<JsonObject>();
-//        object["p1"] = 10;
-//        object["p2"] = 20;
-//        
-//        serializeJson(doc, output);
-////        Serial.println(output);
-//        webSocket.emit("message", output.c_str()); 
-////          webSocket.emit("message", "khaled");
-//
-////        inputString.trim();
-////        String asd = "\"" + inputString + "\"";
-////        webSocket.emit("message", asd.c_str());
-////        inputString = "";
-//      }
-//    }
-//}
-extern void SmartSnapServerWriteVariable(String VarName, String Value)
+
+void HandleServerValue(const String& varName, const String& value)
 {
+  Serial.printf("HandleServerValue: %s = %s\n", varName.c_str(), value.c_str());
+}
+
+void HandleConnectionStatus(bool connected)
+{
+  Serial.printf("Connection status: %s\n", connected ? "connected" : "disconnected");
 }

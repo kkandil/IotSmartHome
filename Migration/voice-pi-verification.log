@@ -1,0 +1,10 @@
+State: idle
+State: listening
+State: processing
+State: speaking
+State: finished
+State: idle
+PASS: wake, recognition, authenticated hub command, speaker audio, resume; no device writes.
+{"ready": true, "satellites": 0}active
+active
+ 16:51:20 up  4:57,  3 users,  load average: 1.04, 0.62, 0.26
