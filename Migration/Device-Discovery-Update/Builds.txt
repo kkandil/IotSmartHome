@@ -1,0 +1,12 @@
+MotionSensor_Office | MotionSensor_Office_1.0.5 | build passed
+MultiSens | MultiSens_1.4.2 | build passed
+PlantsWatering | PlantsWatering_1.1.2 | build passed
+RelayController_1020 | 3IOSwitch_1.3.2 | build passed
+TempSensor_BedRoom | TempSensor_BedRoom_1.1.2 | build passed
+TempSensor_Kitchen | TempSensor_Kitchen_1.1.2 | build passed
+TempSensor_Living | TempSensor_Living_1.1.2 | build passed
+TempSensor_OutSide | TempSensor_OutSide_1.1.2 | build passed
+TestDev_1 | TestDev_1.4.3 | build passed
+TestDev_2 | TestDev2_1.0.3 | build passed
+Voice_Living | Voice_Living_1.1.0 | build passed
+WaterHeater | WaterHeater_1.1.3 | build passed

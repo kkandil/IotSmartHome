@@ -1,0 +1,146 @@
+Processing esp32dev (platform: espressif32@6.10.0; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (6.10.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 37 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoJson @ 7.0.4
+|-- SocketIoClient
+|-- WebSockets @ 2.4.0
+|-- SmartSnapAPI @ 1.0.0
+Building in release mode
+Compiling .pio\build\esp32dev\liba76\SmartSnap\SmartSnapAPI.cpp.o
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::RequestVariableValueFromServer(const String&)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:267:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::EmitDeviceConnect()':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:315:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<1024> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:320:64: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   JsonArray capabilities = doc.createNestedArray("capabilities");
+                                                                ^
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:33,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+   JsonArray createNestedArray(TChar* key) {
+             ^~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::EmitDeviceWriteVariable(const String&, const String&, const String&)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:339:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleWriteVariable(const char*, size_t)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:451:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleGetVariableValueFromDevice(const char*, size_t)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:485:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::HandleGetVariableValueFromServer(const char*, size_t)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:515:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'bool SmartSnap::SendNotificationToPhone(const String&)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:560:26: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   DynamicJsonDocument doc(1024);
+                          ^
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'bool SmartSnap::SendAlarmToPhone(const String&)':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:573:26: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   DynamicJsonDocument doc(1024);
+                          ^
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~~
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp: In member function 'void SmartSnap::EmitHealth()':
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:608:3: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   StaticJsonDocument<768> doc;
+   ^~~~~~~~~~~~~~~~~~
+In file included from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.hpp:53,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson.h:9,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.h:17,
+                 from C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/SmartSnap/src/SmartSnapAPI.cpp:1:
+C:/Users/khale/OneDrive/Documents/ChatGPT/IOT dashboard App/PlatformIO/shared/ArduinoJson/src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+ class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+                                                          ^~~~~~~~~~~~~~~~~~
+Archiving .pio\build\esp32dev\liba76\libSmartSnap.a
+Linking .pio\build\esp32dev\firmware.elf
+Retrieving maximum program size .pio\build\esp32dev\firmware.elf
+Checking size .pio\build\esp32dev\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]   9.4% (used 30708 bytes from 327680 bytes)
+Flash: [====      ]  42.1% (used 552049 bytes from 1310720 bytes)
+Building .pio\build\esp32dev\firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio\build\esp32dev\firmware.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+========================= [SUCCESS] Took 26.41 seconds =========================

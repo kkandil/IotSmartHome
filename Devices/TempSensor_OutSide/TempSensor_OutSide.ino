@@ -93,6 +93,7 @@ void setup()
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
+  smartSnap.SetFirmwareVersion("TempSensor_OutSide_1.1.0");
   int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {

@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <SmartSnapAPI.h>
 #include "SmartSnapHubConfig.h"
@@ -31,12 +32,14 @@ void setup() {
   isServoAttached = true;
   servoDetachStart = millis(); 
 
+  smartSnap.EnableDiscovery("WaterHeater", "WaterHeater", "gas_water_heater");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   smartSnap.onWriteVariable(HandleWriteVariable);
   smartSnap.onReadVariable(HandleReadVariable);
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  smartSnap.SetFirmwareVersion("WaterHeater_1.0.0");
+  smartSnap.SetFirmwareVersion("WaterHeater_1.1.3");
   int ret = smartSnap.Initialize( "Home_Germany",1003,"KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
   if (ret == E_OK) {
     Serial.println("SmartSnap initialized successfully");
@@ -105,6 +108,7 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
   
    if( varName == "V1" )
    {
+      if (value != "0" && value != "1") return;
       int val = value.toInt();
       if( val == 1)
       {
@@ -128,6 +132,8 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
         servoDetachStart = millis(); 
         isServoAttached = true;
       }
+      // Report after setting the servo output. This confirms software state, not physical movement.
+      smartSnap.WriteVariableValue("V1", "int", isHeaterActive ? "1" : "0");
       Serial.print("V1 updated with: ");
       Serial.println(String(val));
    }

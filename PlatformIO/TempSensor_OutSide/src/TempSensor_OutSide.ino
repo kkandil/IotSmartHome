@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include "SmartSnapAPI.h"
 #include "DHTesp.h" // Click here to get the library: http://librarymanager/All#DHTesp
@@ -88,11 +89,14 @@ void setup()
 
   delay(500);
 
+  smartSnap.EnableDiscovery("TempSensor_OutSide", "TempSensor_OutSide", "sensor");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   smartSnap.onWriteVariable(HandleWriteVariable);
   smartSnap.onReadVariable(HandleReadVariable);
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
+  smartSnap.SetFirmwareVersion("TempSensor_OutSide_1.1.2");
   int ret = smartSnap.Initialize( "Home_Germany", 1009, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {

@@ -89,11 +89,13 @@ void HandleWriteVariable(const String& varName, const String& VarType, const Str
   {
       outputState = value.toInt(); 
       SetPumpOutputState(0, outputState);
+      SmartSnap.WriteVariableValue(PUMP1_CONTROL_VAR, "int", String(Pumps[0].currentState));
   }
   else if( varName == PUMP2_CONTROL_VAR )
   {
       outputState = value.toInt(); 
       SetPumpOutputState(1, outputState);
+      SmartSnap.WriteVariableValue(PUMP2_CONTROL_VAR, "int", String(Pumps[1].currentState));
   }
   else if( varName == "V7")
   {

@@ -38,6 +38,9 @@ public:
   // Keep the transport event compatible with existing hubs.
   void SendStartupResult(const String& json){_webSocket.emit("RelaySettingsResult",json.c_str());}
   void SendRelayResult(const String& json){SendStartupResult(json);} // Legacy alias
+  struct VariableDefinition { const char* name; const char* type; const char* value; bool configuration; };
+  void EnableDiscovery(const char* name,const char* model,const char* icon="smartsnap") { _discovery=true;_suggestedName=name;_model=model;_icon=icon; }
+  void SetVariableDefinitions(const VariableDefinition* variables,size_t count) { _definitions=variables;_definitionCount=count>32?32:count; }
   SmartSnap();
 
   int Initialize(const char* homeName,
@@ -74,6 +77,21 @@ public:
   String GetHomeName() const;
 
 private:
+  bool _discovery=false;
+  String _suggestedName, _model, _icon;
+  const VariableDefinition* _definitions=nullptr;
+  size_t _definitionCount=0;
+  uint32_t _discoveryAt=0;
+  static void EventDefinition(const char*,size_t);
+  static void EventAssigned(const char*,size_t);
+  struct CommandReceipt { String variable, value, id; };
+  CommandReceipt _commandReceipts[8];
+  String _bootId;
+  uint32_t _healthAt = 0, _uptimeTick = 0;
+  uint64_t _uptimeMs = 0;
+  bool _healthSent = false;
+  void EmitHealth();
+  void TrackCommand(const String& variable, const String& value, const String& id);
   PresenceHandler _relayHandler = nullptr;
   static void EventRelayConfigure(const char* payload, size_t length);
   bool _nonBlockingConnect = false;

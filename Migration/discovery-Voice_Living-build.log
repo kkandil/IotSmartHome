@@ -1,0 +1,128 @@
+Processing esp32dev (platform: espressif32@6.10.0; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Removing unused dependencies...
+Library Manager: Installing symlink://../shared/SocketIoClient
+Library Manager: SocketIoClient@0.0.0+20261029171921 has been installed!
+Library Manager: Installing symlink://../shared/SmartSnap
+Library Manager: SmartSnapAPI@1.0.0 has been installed!
+Library Manager: Resolving dependencies...
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (6.10.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 37 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- WebSockets @ 2.6.1
+|-- ArduinoJson @ 6.21.5
+|-- SocketIoClient
+|-- SmartSnapAPI @ 1.0.0
+|-- WiFi @ 2.0.0
+Building in release mode
+Compiling .pio\build\esp32dev\src\main.cpp.o
+Building .pio\build\esp32dev\bootloader.bin
+Generating partitions .pio\build\esp32dev\partitions.bin
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFi.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiAP.cpp.o
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 1 ELF section
+Successfully created esp32 image.
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiClient.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiGeneric.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiMulti.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiSTA.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiScan.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiServer.cpp.o
+Compiling .pio\build\esp32dev\lib62f\WiFi\WiFiUdp.cpp.o
+Compiling .pio\build\esp32dev\lib375\Ethernet\ETH.cpp.o
+Compiling .pio\build\esp32dev\lib1ef\SPI\SPI.cpp.o
+Compiling .pio\build\esp32dev\lib1f3\WiFiClientSecure\WiFiClientSecure.cpp.o
+Compiling .pio\build\esp32dev\lib1f3\WiFiClientSecure\esp_crt_bundle.c.o
+Compiling .pio\build\esp32dev\lib1f3\WiFiClientSecure\ssl_client.cpp.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\SocketIOclient.cpp.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\WebSockets.cpp.o
+Archiving .pio\build\esp32dev\lib1ef\libSPI.a
+Compiling .pio\build\esp32dev\lib878\WebSockets\WebSocketsClient.cpp.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\WebSocketsServer.cpp.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\libb64\cdecode.c.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\libb64\cencode.c.o
+Compiling .pio\build\esp32dev\lib878\WebSockets\libsha1\libsha1.c.o
+Compiling .pio\build\esp32dev\libd1e\SocketIoClient\SocketIoClient.cpp.o
+Archiving .pio\build\esp32dev\lib1f3\libWiFiClientSecure.a
+Archiving .pio\build\esp32dev\lib375\libEthernet.a
+Compiling .pio\build\esp32dev\lib76c\Preferences\Preferences.cpp.o
+Archiving .pio\build\esp32dev\lib62f\libWiFi.a
+Compiling .pio\build\esp32dev\liba76\SmartSnap\SmartSnapAPI.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\Esp.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\FirmwareMSC.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\FunctionalInterrupt.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\HWCDC.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\HardwareSerial.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\IPAddress.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\IPv6Address.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\MD5Builder.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\Print.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\Stream.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\StreamString.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\Tone.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\USB.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\USBCDC.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\USBMSC.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\WMath.cpp.o
+Archiving .pio\build\esp32dev\lib76c\libPreferences.a
+Compiling .pio\build\esp32dev\FrameworkArduino\WString.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\base64.cpp.o
+Archiving .pio\build\esp32dev\lib878\libWebSockets.a
+Compiling .pio\build\esp32dev\FrameworkArduino\cbuf.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-adc.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-bt.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-cpu.c.o
+Archiving .pio\build\esp32dev\libd1e\libSocketIoClient.a
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-dac.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-gpio.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-i2c-slave.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-i2c.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-ledc.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-matrix.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-misc.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-psram.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-rgb-led.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-rmt.c.o
+Archiving .pio\build\esp32dev\liba76\libSmartSnap.a
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-sigmadelta.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-spi.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-time.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-timer.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-tinyusb.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-touch.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\esp32-hal-uart.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\firmware_msc_fat.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\libb64\cdecode.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\libb64\cencode.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\main.cpp.o
+Compiling .pio\build\esp32dev\FrameworkArduino\stdlib_noniso.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\wiring_pulse.c.o
+Compiling .pio\build\esp32dev\FrameworkArduino\wiring_shift.c.o
+Archiving .pio\build\esp32dev\libFrameworkArduino.a
+Linking .pio\build\esp32dev\firmware.elf
+Retrieving maximum program size .pio\build\esp32dev\firmware.elf
+Checking size .pio\build\esp32dev\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  18.0% (used 59064 bytes from 327680 bytes)
+Flash: [=======   ]  72.8% (used 953625 bytes from 1310720 bytes)
+Building .pio\build\esp32dev\firmware.bin with action:
+  "$PYTHONEXE" "$OBJCOPY" --chip esp32 elf2image --flash_mode ${__get_board_flash_mode(__env__)} --flash_freq ${__get_board_f_image(__env__)} --flash_size 4MB --elf-sha256-offset 0xb0 -o $TARGET $SOURCES
+Building .pio\build\esp32dev\firmware.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 27 ELF sections
+Successfully created esp32 image.
+========================= [SUCCESS] Took 49.54 seconds =========================

@@ -1,0 +1,1 @@
+(async()=>{for(let i=0;i<10;i++){const r=await (await fetch('https://smarthomehub-1aec4600a734.herokuapp.com/health')).json();if(r.hubOnline){console.log('Gateway healthy; Pi connected.');return;}await new Promise(r=>setTimeout(r,2000));}throw Error('Gateway healthy but hub has not reconnected');})().catch(e=>{console.error(e.message);process.exitCode=1});

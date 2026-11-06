@@ -1,4 +1,12 @@
 #include "SmartSnapAPI.h"
+#if defined(ESP32)
+#include <esp_system.h>
+#include <Preferences.h>
+#else
+extern "C" {
+#include <user_interface.h>
+}
+#endif
 #if defined(ESP8266)
 #include <ESP8266httpUpdate.h>
 #include <LittleFS.h>
@@ -71,6 +79,7 @@ int SmartSnap::Initialize(const char* homeName,
       config["ssid"]=savedSsid;config["pass"]=savedPass;
     }
     if(apply && receipt["deviceID"].as<int>()>0) config["id"]=receipt["deviceID"].as<int>();
+    if(apply && (receipt["replace"].as<bool>() || receipt["deviceID"].as<int>()>0))LittleFS.remove("/smartsnap-assignment.json");
     bool stored=hasConfig && !apply;
     if(!stored && config["id"].as<int>()>0) {
       File output=LittleFS.open("/smartsnap-connection.tmp","w");
@@ -91,10 +100,17 @@ int SmartSnap::Initialize(const char* homeName,
     }
   }
 #endif
+  if(_discovery) {
+#if defined(ESP8266)
+    if(LittleFS.begin()) {File f=LittleFS.open("/smartsnap-assignment.json","r");DynamicJsonDocument a(256);if(f && deserializeJson(a,f)==DeserializationError::Ok && a["home"].as<String>()==_homeName && a["id"].as<int>()>0)_deviceId=a["id"];f.close();}
+#else
+    Preferences prefs;prefs.begin("smartsnap",true);if(prefs.getString("home","")==_homeName)_deviceId=prefs.getInt("id",_deviceId);prefs.end();
+#endif
+  }
   _isDeviceConnected = false;
   _isAckReceived = false;
 
-  if (_homeName.length() == 0 || _deviceId <= 0 ) {
+  if (_homeName.length() == 0 || (_deviceId <= 0 && !_discovery) ) {
     USE_SERIAL.println("SmartSnap Initialize: invalid parameters");
     return E_NOK;
   }
@@ -137,6 +153,8 @@ int SmartSnap::Initialize(const char* homeName,
   }
 
   _webSocket.on("DeviceConnect", EventDeviceConnect);
+  _webSocket.on("RequestDeviceDefinition", EventDefinition);
+  _webSocket.on("DeviceAssigned", EventAssigned);
   _webSocket.on("message", EventMessage);
   _webSocket.on("connect", EventConnect);
   _webSocket.on("disconnect", EventDisconnect);
@@ -164,6 +182,7 @@ int SmartSnap::Initialize(const char* homeName,
   }
 
   USE_SERIAL.println("SmartSnap failed to connect");
+  if(_discovery) return E_OK; // Keep servicing pairing while waiting for the user.
   _webSocket.disconnect();
   return E_NOK;
 }
@@ -180,7 +199,16 @@ void SmartSnap::Run()
     }
     return;
   }
+  const uint32_t healthNow = millis();
+  _uptimeMs += uint32_t(healthNow - _uptimeTick);
+  _uptimeTick = healthNow;
   _webSocket.loop();
+  if(_discovery && !_isDeviceConnected && uint32_t(millis()-_discoveryAt)>10000UL && WiFi.status()==WL_CONNECTED){_discoveryAt=millis();EmitDeviceConnect();}
+  if (_isDeviceConnected && (!_healthSent || uint32_t(healthNow - _healthAt) >= 300000UL)) {
+    EmitHealth();
+    _healthAt = healthNow;
+    _healthSent = true;
+  }
 #if defined(ESP8266)
   if(_otaPath.length() && WiFi.status()==WL_CONNECTED) {
     String path=_otaPath;_otaPath="";
@@ -249,7 +277,7 @@ void SmartSnap::WriteVariableValue(const String& varName, const String& varType,
 
 void SmartSnap::RequestVariableValueFromServer(const String& varName)
 {
-  StaticJsonDocument<200> doc;
+  StaticJsonDocument<768> doc;
   String output;
 
   doc["homeName"] = _homeName;
@@ -302,6 +330,7 @@ void SmartSnap::EmitDeviceConnect()
 
   doc["homeName"] = _homeName;
   doc["deviceID"] = _deviceId;
+  if(_discovery){doc["discovery"]=true;doc["hardwareId"]=WiFi.macAddress();doc["suggestedName"]=_suggestedName;doc["model"]=_model;doc["icon"]=_icon;}
   JsonArray capabilities = doc.createNestedArray("capabilities");
   if (_capabilities & 1U) capabilities.add("ld2420");
   if (_capabilities & 4U) capabilities.add("custom_configuration");
@@ -321,7 +350,7 @@ void SmartSnap::EmitDeviceConnect()
 
 void SmartSnap::EmitDeviceWriteVariable(const String& varName, const String& varType, const String& varValue)
 {
-  StaticJsonDocument<200> doc;
+  StaticJsonDocument<768> doc;
   String output;
 
   doc["homeName"] = _homeName;
@@ -337,6 +366,23 @@ void SmartSnap::EmitDeviceWriteVariable(const String& varName, const String& var
     doc["varValue"] = varValue;
   // }
 
+  doc["reportKind"] = "state";
+  for (auto& receipt : _commandReceipts) {
+    if (receipt.variable == varName && receipt.id.length() &&
+        (receipt.value == varValue || ((varType == "int" || varType == "float") && [&]() {
+          char *expectedEnd, *reportedEnd;
+          double expected = strtod(receipt.value.c_str(), &expectedEnd);
+          double reported = strtod(varValue.c_str(), &reportedEnd);
+          return expectedEnd != receipt.value.c_str() && reportedEnd != varValue.c_str() &&
+                 *expectedEnd == '\0' && *reportedEnd == '\0' &&
+                 isfinite(expected) && isfinite(reported) && expected == reported;
+        }()))) {
+      doc["commandId"] = receipt.id;
+      doc["reportKind"] = "command_result";
+      receipt.id = "";
+      break;
+    }
+  }
   serializeJson(doc, output);
   _webSocket.emit("DeviceWriteVariable", output.c_str());
 }
@@ -387,6 +433,7 @@ void SmartSnap::HandleDeviceConnect(const char* payload, size_t length)
 
   if (strstr(payload, "OK") != nullptr) {
     _isDeviceConnected = true;
+    _healthSent = false;
     USE_SERIAL.println("Device connection ACK = OK");
   } else {
     _isDeviceConnected = false;
@@ -425,7 +472,7 @@ void SmartSnap::HandleWriteVariable(const char* payload, size_t length)
 {
   USE_SERIAL.printf("PhoneWriteVariable: %.*s\n", (int)length, payload);
 
-  StaticJsonDocument<200> doc;
+  StaticJsonDocument<768> doc;
   DeserializationError err = deserializeJson(doc, payload, length);
   if (err) {
     USE_SERIAL.printf("JSON parse error (PhoneWriteVariable): %s\n", err.c_str());
@@ -449,6 +496,7 @@ void SmartSnap::HandleWriteVariable(const char* payload, size_t length)
     varValue = s ? String(s) : String("");
   }
 
+  TrackCommand(varName, varValue, doc["commandId"] | "");
   if (_writeHandler) {
     _writeHandler(varName, varType, varValue);
   }
@@ -458,7 +506,7 @@ void SmartSnap::HandleGetVariableValueFromDevice(const char* payload, size_t len
 {
   USE_SERIAL.printf("GetVariableValueFromDevice: %.*s\n", (int)length, payload);
 
-  StaticJsonDocument<200> doc;
+  StaticJsonDocument<768> doc;
   DeserializationError err = deserializeJson(doc, payload, length);
   if (err) {
     USE_SERIAL.printf("JSON parse error (GetVariableValueFromDevice): %s\n", err.c_str());
@@ -488,7 +536,7 @@ void SmartSnap::HandleGetVariableValueFromServer(const char* payload, size_t len
 {
   USE_SERIAL.printf("GetVariableValueFromServer: %.*s\n", (int)length, payload);
 
-  StaticJsonDocument<200> doc;
+  StaticJsonDocument<768> doc;
   DeserializationError err = deserializeJson(doc, payload, length);
   if (err) {
     USE_SERIAL.printf("JSON parse error (GetVariableValueFromServer): %s\n", err.c_str());
@@ -524,6 +572,7 @@ void SmartSnap::HandleGetVariableValueFromServer(const char* payload, size_t len
   }
 
 
+  TrackCommand(varName, varValue, doc["commandId"] | "");
   if (_serverValueHandler) {
     _serverValueHandler(varName, varValue);
   }
@@ -563,4 +612,71 @@ void SmartSnap::SetCapability(Capability capability, bool enabled) {
   if (bit > static_cast<uint8_t>(Capability::CustomConfiguration)) return;
   if (enabled) _capabilities |= (1UL << bit);
   else _capabilities &= ~(1UL << bit);
+}
+
+
+// A receipt is attached only to an explicit matching device value report.
+// Receiving a command alone does not confirm that the application applied it.
+void SmartSnap::TrackCommand(const String& variable, const String& value, const String& id) {
+  for (auto& receipt : _commandReceipts) {
+    if (receipt.variable == variable) { receipt.value=value; receipt.id=id; return; }
+  }
+  if (!id.length()) return;
+  for (auto& receipt : _commandReceipts) {
+    if (!receipt.id.length()) { receipt.variable=variable; receipt.value=value; receipt.id=id; return; }
+  }
+  // A full receipt buffer loses confirmation only; it never blocks control.
+}
+
+void SmartSnap::EmitHealth() {
+  StaticJsonDocument<768> doc;
+  doc["homeName"]=_homeName;
+  doc["deviceID"]=_deviceId;
+  if (!_bootId.length()) {
+#if defined(ESP8266)
+    _bootId=String(os_random(),HEX)+String(os_random(),HEX);
+#else
+    _bootId=String(esp_random(),HEX)+String(esp_random(),HEX);
+#endif
+  }
+  doc["bootId"]=_bootId;
+  doc["uptimeMs"]=_uptimeMs;
+  doc["rssi"]=WiFi.RSSI();
+  doc["freeHeap"]=ESP.getFreeHeap();
+  doc["firmwareVersion"]=_firmwareVersion;
+#if defined(ESP8266)
+  doc["platform"]="ESP8266";
+  const char* reasons[]={"Power-on / reset", "Hardware watchdog", "Firmware exception", "Software watchdog", "Software restart", "Deep-sleep wake", "External reset"};
+  const uint32_t reason=ESP.getResetInfoPtr()->reason;
+  doc["resetReason"]=reason<7?reasons[reason]:"Unknown";
+#else
+  doc["platform"]="ESP32";
+  const char* reasons[]={"Unknown", "Power-on", "External reset", "Software restart", "Firmware panic", "Interrupt watchdog", "Task watchdog", "Other watchdog", "Deep-sleep wake", "Brownout", "SDIO reset", "USB reset", "JTAG reset", "eFuse error", "Power glitch", "CPU lockup"};
+  const int reason=int(esp_reset_reason());
+  doc["resetReason"]=reason>=0 && reason<16?reasons[reason]:"Unknown";
+#endif
+  String output;serializeJson(doc,output);
+  _webSocket.emit("DeviceHealth",output.c_str());
+}
+
+void SmartSnap::EventDefinition(const char*,size_t) {
+  if(!_instance||!_instance->_discovery)return;
+  DynamicJsonDocument doc(8192);JsonArray list=doc.createNestedArray("variables");
+  for(size_t i=0;i<_instance->_definitionCount;i++){const auto& v=_instance->_definitions[i];JsonObject item=list.createNestedObject();item["name"]=v.name;item["type"]=v.type;item["value"]=v.value;item["configuration"]=v.configuration;}
+  String out;serializeJson(doc,out);_webSocket.emit("DeviceDefinition",out.c_str());
+}
+void SmartSnap::EventAssigned(const char* payload,size_t length) {
+  if(!_instance||!_instance->_discovery)return;
+  DynamicJsonDocument doc(512);if(deserializeJson(doc,payload,length)!=DeserializationError::Ok)return;
+  int id=doc["deviceID"]|0;
+  if(id<=0||doc["homeName"].as<String>()!=_instance->_homeName||doc["hardwareId"].as<String>()!=WiFi.macAddress())return;
+#if defined(ESP8266)
+  if(!LittleFS.begin())return;
+  DynamicJsonDocument saved(256);saved["id"]=id;saved["home"]=_instance->_homeName;
+  File f=LittleFS.open("/smartsnap-assignment.tmp","w");if(!f)return;
+  bool ok=serializeJson(saved,f)>0;f.close();if(!ok||!LittleFS.rename("/smartsnap-assignment.tmp","/smartsnap-assignment.json"))return;
+#else
+  Preferences prefs;if(!prefs.begin("smartsnap",false))return;prefs.putString("home",_instance->_homeName);prefs.putInt("id",id);prefs.end();
+#endif
+  _instance->_deviceId=id;_instance->EmitDeviceConnect();
 }

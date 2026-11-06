@@ -1,0 +1,207 @@
+Processing nodemcuv2 (platform: espressif8266@4.2.1; board: nodemcuv2; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif8266/nodemcuv2.html
+PLATFORM: Espressif 8266 (4.2.1) > NodeMCU 1.0 (ESP-12E Module)
+HARDWARE: ESP8266 80MHz, 80KB RAM, 4MB Flash
+PACKAGES: 
+ - framework-arduinoespressif8266 @ 3.30102.0 (3.1.2) 
+ - tool-esptool @ 1.413.0 (4.13) 
+ - tool-esptoolpy @ 1.30000.201119 (3.0.0) 
+ - toolchain-xtensa @ 2.100300.220621 (10.3.0)
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 49 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- ArduinoJson @ 7.0.4
+|-- SocketIoClient
+|-- WebSockets @ 2.4.0
+|-- SmartSnapAPI @ 1.0.0
+|-- Adafruit VEML7700 Library @ 2.1.6
+|-- Adafruit AHTX0 @ 2.0.6
+|-- Adafruit BMP280 Library @ 3.0.0
+|-- LittleFS @ 0.1.0
+|-- Wire @ 1.0
+Building in release mode
+Compiling .pio\build\nodemcuv2\src\main.cpp.o
+In file included from src\PresenceSensor.h:4,
+                 from src\main.cpp:13:
+src\LD2420.h: In member function 'bool LD2420::transfer(ArduinoJson::V704PB2::JsonObject, bool)':
+src\LD2420.h:23:152: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonObject::createNestedArray(TChar*) const [with TChar = const char]' is deprecated: use obj[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   23 |   else{if(!readValues(regs,values,3))return false;cfg["minGate"]=values[0];cfg["maxGate"]=values[1];cfg["delay"]=values[2];cfg.createNestedArray("move");cfg.createNestedArray("still");}
+      |                                                                                                                                                        ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:30,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Object/JsonObject.hpp:167:13: note: declared here
+  167 |   JsonArray createNestedArray(TChar* key) const {
+      |             ^~~~~~~~~~~~~~~~~
+In file included from src\PresenceSensor.h:4,
+                 from src\main.cpp:13:
+src\LD2420.h:23:183: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonObject::createNestedArray(TChar*) const [with TChar = const char]' is deprecated: use obj[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   23 |   else{if(!readValues(regs,values,3))return false;cfg["minGate"]=values[0];cfg["maxGate"]=values[1];cfg["delay"]=values[2];cfg.createNestedArray("move");cfg.createNestedArray("still");}
+      |                                                                                                                                                                                       ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:30,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Object/JsonObject.hpp:167:13: note: declared here
+  167 |   JsonArray createNestedArray(TChar* key) const {
+      |             ^~~~~~~~~~~~~~~~~
+In file included from src\PresenceSensor.h:4,
+                 from src\main.cpp:13:
+src\LD2420.h: In member function 'void LD2420::poll()':
+src\LD2420.h:34:3: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   34 |   if(used<6)continue;size_t total=u16(frame+4)+10;if(total>sizeof(frame)||total<12){used=0;continue;}if(used<total)continue;
+      |   ^~
+src\LD2420.h:34:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   34 |   if(used<6)continue;size_t total=u16(frame+4)+10;if(total>sizeof(frame)||total<12){used=0;continue;}if(used<total)continue;
+      |                      ^~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h: At global scope:
+src\PresenceSensor.h:19:34: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   19 | DynamicJsonDocument currentConfig(2048);
+      |                                  ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:35:34: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   35 | DynamicJsonDocument lastDetection(3072);
+      |                                  ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h: In function 'void PresenceSensor::captureDetectionFrame()':
+src\PresenceSensor.h:47:68: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   47 |         JsonArray energy = lastDetection.createNestedArray("energy");
+      |                                                                    ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:33,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+  305 |   JsonArray createNestedArray(TChar* key) {
+      |             ^~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:48:66: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   48 |         JsonArray peaks = lastDetection.createNestedArray("peaks");
+      |                                                                  ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:33,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+  305 |   JsonArray createNestedArray(TChar* key) {
+      |             ^~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:49:76: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+   49 |         JsonArray candidates = lastDetection.createNestedArray("candidates");
+      |                                                                            ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:33,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+  305 |   JsonArray createNestedArray(TChar* key) {
+      |             ^~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h: In function 'void PresenceSensor::processRequest()':
+src\PresenceSensor.h:144:30: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  144 |     DynamicJsonDocument input(3072);
+      |                              ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:145:31: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  145 |     DynamicJsonDocument output(8192);
+      |                               ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:167:37: warning: 'DynamicJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+  167 |         DynamicJsonDocument verified(2048);
+      |                                     ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:125:58: note: declared here
+  125 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") DynamicJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~~
+In file included from src\main.cpp:13:
+src\PresenceSensor.h:200:63: warning: 'ArduinoJson::V704PB2::JsonArray ArduinoJson::V704PB2::JsonDocument::createNestedArray(TChar*) [with TChar = const char]' is deprecated: use doc[key].to<JsonArray>() instead [-Wdeprecated-declarations]
+  200 |         JsonArray energies = output.createNestedArray("energy");
+      |                                                               ^
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:33,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/Document/JsonDocument.hpp:305:13: note: declared here
+  305 |   JsonArray createNestedArray(TChar* key) {
+      |             ^~~~~~~~~~~~~~~~~
+src\main.cpp: In function 'bool saveSettings(const double*)':
+src\main.cpp:42:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   42 |     StaticJsonDocument<256> doc;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+src\main.cpp: In function 'void loadSettings()':
+src\main.cpp:55:5: warning: 'template<unsigned int N> class ArduinoJson::V704PB2::StaticJsonDocument' is deprecated: use JsonDocument instead [-Wdeprecated-declarations]
+   55 |     StaticJsonDocument<256> doc;
+      |     ^~~~~~~~~~~~~~~~~~
+In file included from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.hpp:53,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson.h:9,
+                 from C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\SmartSnap\src/SmartSnapAPI.h:17,
+                 from src\DeviceDefinition.h:2,
+                 from src\main.cpp:1:
+C:\Users\khale\OneDrive\Documents\ChatGPT\IOT dashboard App\PlatformIO\shared\ArduinoJson\src/ArduinoJson/compatibility.hpp:63:58: note: declared here
+   63 | class ARDUINOJSON_DEPRECATED("use JsonDocument instead") StaticJsonDocument
+      |                                                          ^~~~~~~~~~~~~~~~~~
+Linking .pio\build\nodemcuv2\firmware.elf
+Retrieving maximum program size .pio\build\nodemcuv2\firmware.elf
+Checking size .pio\build\nodemcuv2\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [====      ]  44.2% (used 36232 bytes from 81920 bytes)
+Flash: [=====     ]  48.5% (used 506229 bytes from 1044464 bytes)
+Building .pio\build\nodemcuv2\firmware.bin
+Creating BIN file ".pio\build\nodemcuv2\firmware.bin" using "C:\Users\khale\.platformio\packages\framework-arduinoespressif8266\bootloaders\eboot\eboot.elf" and ".pio\build\nodemcuv2\firmware.elf"
+========================= [SUCCESS] Took 9.50 seconds =========================

@@ -120,7 +120,7 @@ void setup()
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  smartSnap.SetFirmwareVersion("TemperatureSensor_1.0.0");
+  smartSnap.SetFirmwareVersion("TempSensor_BedRoom_1.1.0");
   int ret = smartSnap.Initialize( "Home_Germany", 1008, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {

@@ -1,0 +1,355 @@
+✔ accounts hash passwords, protect reserved owner migration, persist and revoke sessions (552.9821ms)
+✔ home permissions, layout conflicts, permission changes and revocation are enforced (220.8192ms)
+✔ email is unique regardless of case, nicknames can repeat, and eight-character passwords work (481.8268ms)
+Phone request received: event=SaveEvent home=Shared requestId=SaveEvent
+Phone request started: event=SaveEvent requestId=SaveEvent queueMs=0
+Phone authentication complete: event=SaveEvent requestId=SaveEvent elapsedMs=0
+Phone request rejected: event=SaveEvent requestId=SaveEvent gatewayMs=0 reason=You do not have permission for this home or action
+Phone request received: event=PhoneWriteVariable home=Shared requestId=control
+Phone request started: event=PhoneWriteVariable requestId=control queueMs=1
+Control checks complete: requestId=control elapsedMs=1
+Phone request rejected: event=PhoneWriteVariable requestId=control gatewayMs=1 reason=Home hub is offline; live commands are not queued
+Phone request received: event=PhoneWriteVariable home=Shared requestId=unblocked-write
+Phone request received: event=GetVariableSnapshot home=Shared requestId=unblocked-snapshot
+Phone request started: event=PhoneWriteVariable requestId=unblocked-write queueMs=0
+Phone request started: event=GetVariableSnapshot requestId=unblocked-snapshot queueMs=1
+Phone authentication complete: event=GetVariableSnapshot requestId=unblocked-snapshot elapsedMs=1
+Control checks complete: requestId=unblocked-write elapsedMs=1
+Phone request rejected: event=PhoneWriteVariable requestId=unblocked-write gatewayMs=1 reason=Home hub is offline; live commands are not queued
+Phone request rejected: event=GetVariableSnapshot requestId=unblocked-snapshot gatewayMs=2 reason=Home hub is offline; live commands are not queued
+✔ gateway isolates home lists, rejects legacy keys and checks each edit on an existing connection (2745.4219ms)
+✔ room tabs persist with shared layouts, enforce permissions and survive older clients (196.8573ms)
+✔ shared card widgets and room icons persist, preserve old-client omissions and validate icons (179.6495ms)
+Phone request received: event=PhoneWriteVariable home=Private requestId=overlap
+Phone request started: event=PhoneWriteVariable requestId=overlap queueMs=0
+Control checks complete: requestId=overlap elapsedMs=28
+Phone request rejected: event=PhoneWriteVariable requestId=overlap gatewayMs=28 reason=Home hub is offline; live commands are not queued
+Phone request received: event=PhoneWriteVariable home=Private requestId=revoked
+Phone request started: event=PhoneWriteVariable requestId=revoked queueMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=revoked gatewayMs=0 reason=Permission revoked
+✔ control checks overlap but never dispatch before both session and permission checks finish (113.9097ms)
+Event action: response lost after write
+Event 03d2423e-ecc6-4f94-ac21-731543da0233: outcome_unknown
+Event action: offline
+Event a82df6c4-163b-4a75-9189-474ed4d2aa4e: partial
+✔ applied action with lost acknowledgement is unknown, not failed or confirmed (41.5135ms)
+✔ history is home/device scoped and pagination never drops equal timestamps (5.2632ms)
+✔ only correlated matching device reports confirm; send result cannot overwrite early confirmation (1.6493ms)
+✔ same boot reconnect is not a reboot and later boot is recorded (2.038ms)
+✔ retention removes expired runs and their receipts (1.2031ms)
+✔ multiple actions persist independently and failed action does not suppress next action (2.7158ms)
+✔ skipped condition crossings recorded once, preview never dispatches, and filters isolate events (8.5755ms)
+✔ newer commands supersede older receipts and offline requests carry only the matching pending command (1.6706ms)
+✔ firmware numeric state reports confirm only the matching action (1.1177ms)
+Gateway bridge connected
+Gateway unavailable; local service continues
+✔ bridge forwards live measurements without requesting full runtime per value or phone (2633ms)
+✔ camera configuration limits targets to LAN hosts and validates credentials (2.7704ms)
+✔ camera relay authenticates users and isolates homes and device editing (4056.5206ms)
+✔ configuration reopening uses current and offline desired values rather than creation defaults (12.0889ms)
+✔ telemetry burst uses bounded writes and does not starve a fresh snapshot (37.2605ms)
+✔ batching never moves observations across offline command completion (1.3296ms)
+✔ cloud desired values survive restart; latest per variable wins, superseded acknowledgements cannot remove it (2.1316ms)
+✔ pending writes defeat stale hub snapshots, accepted hub updates advance cloud revision (0.9998ms)
+✔ cloud writes validate configured type and target; deleted/revoked queued values are removed (1.4384ms)
+✔ snapshot batch uses one persistence update and preserves pending and newer values (0.7318ms)
+✔ live outbox check bypasses a blocked telemetry write without writing the database (0.5426ms)
+✔ outbox check waits for an in-flight offline command to commit (34.8188ms)
+✔ chart carries boundary state, marks queued writes unknown and records unchanged confirmation (39.2134ms)
+✔ old history migration never treats unverified commands as confirmed (1.8639ms)
+✔ only configured controls record changed values, paginated newest first and isolated by home (12.4649ms)
+✔ legacy ranges retain all earlier cycles without upgrading queued writes to confirmed (2.4857ms)
+✔ online command estimates remain separate from offline queued values and later device reports (2.5622ms)
+✔ online acknowledgements update one transition; independent switches and resets remain logged (2.8369ms)
+✔ upgrade repairs only adjacent online command echoes and preserves queued/independent reports (2.8993ms)
+✔ configuration flag persists and defaults off without changing values or types (61.0285ms)
+✔ capabilities are bounded, deduplicated, and absent declarations clear old features (6.8087ms)
+✔ discovery requests definition; empty schema valid; scopes home and socket (5.1624ms)
+✔ bad schemas do not import; disconnected and expired boards disappear (0.7337ms)
+✔ known hardware is assigned existing ID without requesting/reimporting variables (0.2885ms)
+✔ assignment requires synced configuration and supports retry (0.9703ms)
+✔ import atomically allocates ID/schema once and does not restore deleted variables (3.62ms)
+✔ invalid schema cannot leave partial device and zero-variable import succeeds (0.6353ms)
+✔ HTTP discovery requires device permission and never accepts client-supplied definitions (3932.1564ms)
+✔ templates isolate accounts, persist metadata and enforce revisions (8.2044ms)
+✔ invalid template defaults and duplicate names are rejected (1.1817ms)
+✔ device and template variables are created in one revision; later template changes do not alter it (2.8334ms)
+✔ None keeps normal device creation with zero variables (0.6357ms)
+✔ template icons persist, are copied at creation, and cannot be overridden by stale runtime data (1.3018ms)
+✔ old templates, absent templates and unknown icons use the SmartSnap default (1.1161ms)
+✔ appliance icons are retained in templates and selected device definitions (1.3277ms)
+Event 79703a8a-d78d-4e82-8344-21e47532a4f7: saved_offline
+Schedule d7dc1f56-13ae-4e73-b319-2a727046fdc8: saved_offline (Home/1020/Relay1)
+✔ offline actions save latest value without reconnect push; online persists before dispatch (12.7862ms)
+✔ voice opt-out and storage failures cannot queue or send commands (0.6307ms)
+✔ multi-action event saves every disconnected ESP target (10.0015ms)
+✔ schedule saves disconnected target once for its scheduled minute (45.5311ms)
+Event 05dd02eb-8800-41f6-80d5-fabcc407d618: sent
+Event 05dd02eb-8800-41f6-80d5-fabcc407d618: sent
+Event 99d33765-9139-4c8c-b7a4-d244a6698b0c: sent
+Event 8a86e2ab-d8bc-4837-a251-78f5675e1942: sent
+Event 9c4994ae-f4a3-44d4-93cc-0763dc6d773f: sent
+Event 9c4994ae-f4a3-44d4-93cc-0763dc6d773f: sent
+Event 9c4994ae-f4a3-44d4-93cc-0763dc6d773f: sent
+✔ clock validation rejects bad timezone, dates, weekdays, coordinates and equal hours (134.5802ms)
+✔ exact time fires without variable traffic, once per minute; next day and restart safe (12.7105ms)
+✔ mixed AND conditions allow value arriving in minute but never repeat from echoes/toggles (3.9655ms)
+✔ save and enable in matching minute do not fire; missed times not replayed (3.9784ms)
+✔ DST repeated minute dispatches once, spring missing minute does not dispatch (2.9678ms)
+✔ custom daytime/nighttime complement, overnight windows, date and weekday filtering (1.9313ms)
+✔ solar mode is day at Berlin noon and night at midnight; polar conditions work (3.734ms)
+✔ daytime transition triggers, variable-only OR still permits rapid edges (5.3548ms)
+Event 6906240b-16fd-4c72-bd9b-e56235763978: sent
+Event 6906240b-16fd-4c72-bd9b-e56235763978: sent
+Event 7b680a9f-4523-4604-976b-4dce4da5ec94: sent
+Event d1522bb0-3245-44e4-a868-29440537c38b: sent
+Event 3b3c74d1-b8de-4c6f-8ec1-4d3124409cb6: sent
+Event f51f87ab-b7ee-4c98-820d-b2c86c2ea7e3: sent
+Event f51f87ab-b7ee-4c98-820d-b2c86c2ea7e3: sent
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Event 619aba96-094a-4da6-bb06-f67696c3f8cd: sent
+Event bd128eeb-e0b9-4f2e-927c-07e004c2a399: sent
+✔ absence must remain true continuously; duplicate reports do not restart timer; fires once (16.9872ms)
+✔ all AND conditions track independently even when earlier condition is false; OR can match immediately (3.9595ms)
+✔ disconnect cancels countdown and requires a fresh report after reconnect (2.5801ms)
+✔ restart, edit and disable cancel the old timer; enabled condition waits full duration (5.1508ms)
+✔ duration validation and legacy default, preview does not advance timer (4.0975ms)
+✔ time windows support duration and reset when the window ends (107.508ms)
+Event 3cb751b5-476a-47e9-9396-b5e8fbeab953: sent
+Event 3cb751b5-476a-47e9-9396-b5e8fbeab953: sent
+Event 3cb751b5-476a-47e9-9396-b5e8fbeab953: sent
+Event 3cb751b5-476a-47e9-9396-b5e8fbeab953: sent
+Event 503ee8b6-19e7-4b74-870f-8c667870d0d8: not_sent
+Events: Event not found
+Events: Add at least one condition and one action (maximum 32 each)
+Events: Enter a whole number
+Events: A selected device or variable no longer exists
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: Event not found
+Event 08f6d737-43b1-4e4a-8550-08625fed5b21: sent
+Event 08f6d737-43b1-4e4a-8550-08625fed5b21: sent
+Event action: Device failure
+Event 8c63f96f-4e78-4930-a4d7-33e83592c0c3: partial
+Event 336dec3f-2c3b-44b1-82d2-3e0dcbac4e98: sent
+Event 3c3f800f-981a-4b8e-8610-b240a5579bac: sent
+Event 336dec3f-2c3b-44b1-82d2-3e0dcbac4e98: sent
+Event 3c3f800f-981a-4b8e-8610-b240a5579bac: sent
+Event 336dec3f-2c3b-44b1-82d2-3e0dcbac4e98: sent
+Event 3c3f800f-981a-4b8e-8610-b240a5579bac: sent
+Event 355f488a-ef4f-43fd-9654-f8ae470c3f48: sent
+Event e7cd3d4f-cc77-4f51-b52e-a0e3d97bdac3: sent
+Event 13182226-c680-4bcf-808b-53831b4aad05: sent
+Event e55dcb2b-9dd5-4159-9b84-d7844480dc05: sent
+Event 348a3783-cdb7-44c8-b98b-e2b39a15e529: sent
+Event 0250ffdd-a66b-420c-949b-e8ec5d26c4dc: sent
+Event e878fff7-e41a-4078-ad6d-0046ccfed186: sent
+Event da993f06-8bce-470c-8e29-23b6efda89d0: sent
+Event eccfa5ba-e6c8-4cf5-b5d9-fc6609bcbf96: sent
+Event ffebc16f-b213-474c-9138-681508ab9746: sent
+Event 355f488a-ef4f-43fd-9654-f8ae470c3f48: sent
+Event e7cd3d4f-cc77-4f51-b52e-a0e3d97bdac3: sent
+Event 13182226-c680-4bcf-808b-53831b4aad05: sent
+Event e55dcb2b-9dd5-4159-9b84-d7844480dc05: sent
+Event 348a3783-cdb7-44c8-b98b-e2b39a15e529: sent
+Event 0250ffdd-a66b-420c-949b-e8ec5d26c4dc: sent
+Event e878fff7-e41a-4078-ad6d-0046ccfed186: sent
+Event da993f06-8bce-470c-8e29-23b6efda89d0: sent
+Event eccfa5ba-e6c8-4cf5-b5d9-fc6609bcbf96: sent
+Event ffebc16f-b213-474c-9138-681508ab9746: sent
+Event 355f488a-ef4f-43fd-9654-f8ae470c3f48: sent
+Event e7cd3d4f-cc77-4f51-b52e-a0e3d97bdac3: sent
+Event 13182226-c680-4bcf-808b-53831b4aad05: sent
+Event e55dcb2b-9dd5-4159-9b84-d7844480dc05: sent
+Event 348a3783-cdb7-44c8-b98b-e2b39a15e529: sent
+Event 0250ffdd-a66b-420c-949b-e8ec5d26c4dc: sent
+Event e878fff7-e41a-4078-ad6d-0046ccfed186: sent
+Event da993f06-8bce-470c-8e29-23b6efda89d0: sent
+Event eccfa5ba-e6c8-4cf5-b5d9-fc6609bcbf96: sent
+Event ffebc16f-b213-474c-9138-681508ab9746: sent
+Event action: Test dispatch failure
+Event e6163a56-2897-4a9e-84d4-56d031ad1e91: outcome_unknown
+Event 4de3bf55-8176-4e38-ab4d-af0ca8db77a6: sent
+Event 746b67fc-8bbb-4a8a-80ad-8d9fb195c4fb: sent
+Event 5cdbd6d5-cae9-4546-b55b-dd6987a13377: sent
+Event 95ddd997-ca8f-47d7-85a0-eb095fe4f2a8: sent
+Event b7468474-6505-462a-951a-208d8e886f0b: sent
+Event aa011210-dd64-4a85-b58e-1ac937dc61ad: sent
+Event 4501cc94-0472-42e4-b07d-0f0a13b975ce: sent
+Event 8b5cc79e-0498-4553-963c-b165084a50d3: sent
+Event 1dc488be-db6c-448d-ac71-ad8fe4209c4c: sent
+Event action: Test dispatch failure
+Event e6163a56-2897-4a9e-84d4-56d031ad1e91: outcome_unknown
+Event 4de3bf55-8176-4e38-ab4d-af0ca8db77a6: sent
+Event 746b67fc-8bbb-4a8a-80ad-8d9fb195c4fb: sent
+Event 5cdbd6d5-cae9-4546-b55b-dd6987a13377: sent
+Event 95ddd997-ca8f-47d7-85a0-eb095fe4f2a8: sent
+Event b7468474-6505-462a-951a-208d8e886f0b: sent
+Event aa011210-dd64-4a85-b58e-1ac937dc61ad: sent
+Event 4501cc94-0472-42e4-b07d-0f0a13b975ce: sent
+Event 8b5cc79e-0498-4553-963c-b165084a50d3: sent
+Event 1dc488be-db6c-448d-ac71-ad8fe4209c4c: sent
+✔ AND precedence and OR alternatives, numeric/bool normalization and exact text (3.5082ms)
+✔ rising edge only, multiple actions, persistence, disabled and enable baseline (12.8302ms)
+✔ offline actions record skipped result, save does not run, deletes are scoped (3.6225ms)
+✔ validation, loops including enabling a dormant loop, and target cleanup (3.2222ms)
+✔ queued rapid reports preserve both edges (1.5614ms)
+✔ one failed action does not prevent other actions and partial result is persisted (4.0157ms)
+✔ opposite events preserve repeated ON/OFF transitions without a cooldown (8.1612ms)
+✔ 10 simultaneous events and subsequent transitions survive a busy dispatcher (13.8933ms)
+✔ a failed event does not discard other simultaneous events or subsequent triggers (8.3304ms)
+Event action: Plug did not confirm
+Event 53431845-3008-46da-bf7e-55bfcbf35377: partial
+Event e192f4f9-6ae1-4e10-836e-f8c8de6fa3c8: sent
+Event bc74595c-2ae5-4ec6-8077-9ea1c8ba0d92: sent
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+✔ multiple actions wait for confirmation and continue after a failed plug (8.1818ms)
+✔ LivingLight_On requires Light <= 13 AND custom daytime, then sends both lamp actions (74.4426ms)
+✔ presence with both lamps OFF can turn them ON without a false cycle (10.0506ms)
+✔ opposite self guards still reject a real two-event ON/OFF loop (1.757ms)
+✔ value-aware cycle validation supports numeric thresholds and OR branches (1.0894ms)
+✔ value-aware cycles use boolean normalization and exact string comparisons (1.2815ms)
+✔ firmware validates sketch and version and creates an ESP8266 signed image (57.0342ms)
+✔ local OTA rejects unauthenticated upload, offline targets, bad transfers; completion requires matching image (138.2516ms)
+Phone request received: event=PhoneWriteVariable home=HistoryHome requestId=write
+Phone request started: event=PhoneWriteVariable requestId=write queueMs=0
+Control checks complete: requestId=write elapsedMs=0
+Phone request forwarded: event=PhoneWriteVariable home=HistoryHome requestId=write gatewayMs=0
+✔ authenticated phone gets recorded device history through bridge; phone writes excluded and other homes denied (4973.3696ms)
+✔ raw pages preserve each timestamp; clear is scoped, invalidates cursors and retry does not delete new readings (291.4333ms)
+✔ history belongs to the variable; removing last card pauses without deleting; stale config cannot re-enable (3.4811ms)
+✔ range queries retain peaks and counts, incremental replacement and 90 day / 730 day retention (6.764ms)
+✔ Pi location validates, caches, coalesces lookups and survives offline restart (42.8129ms)
+✔ owner pairs exactly one hub; only hashes persisted and authentication survives restart (11.2498ms)
+✔ expired, canceled, regenerated and malformed codes cannot claim homes (3.1094ms)
+✔ non-owner, removed owner and deleted home are rejected; legacy identity is protected (1.196ms)
+✔ concurrent claim attempts accept one token only, and cancellation cannot erase a paired identity (1.289ms)
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway bridge connected
+Gateway unavailable; local service continues
+✔ legacy protocol works locally and through gateway; outages, auth, persistence, isolation (2762.8986ms)
+Events: Ordering comparisons require a numeric variable
+✔ comparison operators include numeric boundaries; nonnumeric ordering never matches (1.5153ms)
+✔ persistent desired config, idempotency, conflicts, comparator validation, home isolation and tombstones (11.2548ms)
+Phone request received: event=SaveEvent home=Germany requestId=create-event
+Phone request started: event=SaveEvent requestId=create-event queueMs=0
+Configuration save started: event=SaveEvent requestId=create-event
+Configuration reply sent: event=SaveEvent requestId=create-event elapsedMs=1
+Gateway bridge connected
+Gateway bridge connected
+Phone request received: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read
+Phone request started: event=GetVariableSnapshot requestId=bypass-slow-read queueMs=0
+Phone request forwarded: event=GetVariableSnapshot home=Germany requestId=bypass-slow-read gatewayMs=0
+Snapshot response forwarded: requestId=bypass-slow-read responseAuthMs=1
+Phone request received: event=PhoneWriteVariable home=Germany requestId=bypass-command
+Phone request started: event=PhoneWriteVariable requestId=bypass-command queueMs=0
+Phone request forwarded: event=PhoneWriteVariable home=Germany requestId=bypass-command gatewayMs=0
+Gateway unavailable; local service continues
+Phone request received: event=GetVariableSnapshot home=Germany requestId=offline-cache
+Phone request started: event=GetVariableSnapshot requestId=offline-cache queueMs=0
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Phone request started: event=PhoneWriteVariable requestId=offline-write queueMs=0
+Phone request rejected: event=PhoneWriteVariable requestId=offline-write gatewayMs=0 reason=Home hub is offline
+Phone request received: event=PhoneWriteVariable home=Germany requestId=offline-write
+Phone request started: event=PhoneWriteVariable requestId=offline-write queueMs=0
+Gateway bridge connected
+Queued value delivered to home hub: Germany 1001 output
+Gateway unavailable; local service continues
+Phone request received: event=SetEventEnabled home=Germany requestId=disable-event
+Phone request started: event=SetEventEnabled requestId=disable-event queueMs=0
+Configuration save started: event=SetEventEnabled requestId=disable-event
+Configuration reply sent: event=SetEventEnabled requestId=disable-event elapsedMs=1
+Phone request received: event=SetEventEnabled home=Germany requestId=invalid-event
+Phone request started: event=SetEventEnabled requestId=invalid-event queueMs=0
+Configuration save started: event=SetEventEnabled requestId=invalid-event
+Events: Event not found
+Phone request rejected: event=SetEventEnabled requestId=invalid-event gatewayMs=0 reason=Event not found
+Gateway bridge connected
+Gateway unavailable; local service continues
+Gateway unavailable; local service continues
+Events: This measurement is read-only
+✔ two independent hubs, offline edits synchronize before live traffic, reconnect never resurrects deleted config (4020.2234ms)
+✔ device rename preserves identity, live variable values and automations during hub synchronization (7.1937ms)
+✔ metering variables are added only to the matching linked plug and sync is idempotent (1.1894ms)
+Phone request received: event=SaveEvent home=Germany requestId=save-under-load
+Phone request started: event=SaveEvent requestId=save-under-load queueMs=0
+Configuration save started: event=SaveEvent requestId=save-under-load
+Configuration reply sent: event=SaveEvent requestId=save-under-load elapsedMs=1
+Phone request received: event=SetEventEnabled home=Germany requestId=toggle-under-load
+Phone request started: event=SetEventEnabled requestId=toggle-under-load queueMs=0
+Configuration save started: event=SetEventEnabled requestId=toggle-under-load
+Configuration reply sent: event=SetEventEnabled requestId=toggle-under-load elapsedMs=1
+✔ runtime bursts coalesce and do not queue repeated metering edits ahead of event saves (71.7545ms)
+✔ gateway retains per-condition trigger duration across save and reload (3.0825ms)
+✔ action groups persist per home, validate targets and insert detached actions into events (6.7366ms)
+✔ constant watts integrate to kWh, persist totals, skip gaps and split day at home midnight (105.9124ms)
+✔ slower polling integrates within its bounded sampling window and skips outages (1.5453ms)
+✔ presence rejects incomplete, out-of-range and reversed settings (2.2234ms)
+✔ presence replies must come from target device and matching request; no offline queuing (3.2528ms)
+✔ cloud requires device-edit permission and correct home membership (3459.1932ms)
+Device push: home=Home device=1007 accepted=2
+Device push: home=Home device=1007 accepted=0
+Device push: home=Home device=1007 accepted=0
+FCM send failed: messaging/registration-token-not-registered
+Device push: home=Home device=1007 accepted=0
+Device push: home=Home device=1007 accepted=1
+Device push: home=Home device=1007 accepted=1
+✔ push reaches each opted-in phone without sockets and deduplicates hub events (6.5262ms)
+✔ opt-out, removed sharing, expired session and unregister prevent push (2.9179ms)
+✔ invalid hub home/device/message cannot generate notifications (2.3742ms)
+✔ invalid FCM registrations are removed without exposing tokens in logs (1.3412ms)
+✔ alarm type survives FCM routing and expires sooner than normal notifications (3.0157ms)
+✔ relay policy rejects invalid settings (2.077ms)
+✔ relay replies must come from target device and matching request; no offline queuing (1.3981ms)
+✔ cloud accepts config without capabilities and checks permission/home membership (3397.6044ms)
+✔ unsupported devices cannot receive relay configuration (2.6267ms)
+✔ startup behavior accepts generic and legacy capabilities, rejects unrelated devices (1.3319ms)
+Schedule f406544b-acc1-44aa-be74-56797f23848f: sent (Home_Germany/1007/power)
+Schedule f406544b-acc1-44aa-be74-56797f23848f: sent (Home_Germany/1007/power)
+Schedule 71e75654-3737-4a3e-af70-7245d10d7a41: skipped_offline (Home_Germany/1007/power)
+Schedule 71e75654-3737-4a3e-af70-7245d10d7a41: sent (Home_Germany/1007/power)
+Schedule 71e75654-3737-4a3e-af70-7245d10d7a41: sent (Home_Germany/1007/power)
+Schedule 14cbe957-1437-4137-81a8-c11c8aac9947: sent (Home_Germany/1007/power)
+✔ weekly time zone execution, no duplicates, survives restart, edit/delete and scoped access (115.7924ms)
+✔ offline occurrence skipped without changing values or replaying; new saves wait for next minute (84.6143ms)
+✔ DST repeated time runs once; missing local time is skipped (59.6225ms)
+✔ reject malformed rules and clean up deleted target schedules (79.4441ms)
+✔ setup keeps keys private, requires home and local verification, persists selection (32.4538ms)
+✔ Tuya import creates one Power variable and is idempotent (2.3192ms)
+✔ virtual device publishes confirmed power and forwards local commands (183.2064ms)
+✔ cloud setup rejects unauthorized users and relays credentials only to their hub (178.4008ms)
+✔ automatic setup reuses a known address and falls back to discovery when it fails (39.2286ms)
+✔ poll failures tolerate two misses, commands wait for confirmation and work with polling disabled (1347.2703ms)
+✔ voice validates current target and dispatches only exact allowed commands (4.8397ms)
+✔ deleted/read-only targets cannot be controlled; offline replies do not claim success (0.5375ms)
+✔ voice bearer requires a full secret (0.284ms)
+✔ natural word order and implicit living room resolve only configured targets (3.9071ms)
+✔ correction uses successful target, expires, and stays isolated per microphone (1.8676ms)
+✔ ambiguous lamp asks and a short clarification selects the target (0.6398ms)
+✔ negation, unknown rooms, multiple targets and revoked permissions do not actuate (0.4791ms)
+✔ failed dispatch does not become a follow-up target (0.3498ms)
+✔ light/right recognition ambiguity cannot operate a lamp (0.3958ms)
+ℹ tests 138
+ℹ suites 0
+ℹ pass 138
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6789.5778

@@ -1,0 +1,154 @@
+Event 31ec7e2d-5ad1-45a2-a21e-2d9d519c3458: sent
+Event 31ec7e2d-5ad1-45a2-a21e-2d9d519c3458: sent
+Event d5fd9991-99ca-4e22-a83a-ac8c0a016859: sent
+Event c32563d3-a10b-4c42-802f-54029158ac4c: sent
+Event 7e763cee-faaa-4646-8e7a-f16fd2922774: sent
+Event 6c2e061e-6432-47f7-9fb1-b73982ef5903: sent
+Event 6c2e061e-6432-47f7-9fb1-b73982ef5903: sent
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Events: Trigger duration must be between 00:00:01 and 99:59:59, or Immediately
+Event 02a87149-5aa9-4999-9e30-b8c04dc36893: sent
+Event 3a33e901-847e-49b8-9352-9a802ef4057a: sent
+✔ absence must remain true continuously; duplicate reports do not restart timer; fires once (26.7397ms)
+✔ all AND conditions track independently even when earlier condition is false; OR can match immediately (4.7424ms)
+✔ disconnect cancels countdown and requires a fresh report after reconnect (3.0742ms)
+✔ restart, edit and disable cancel the old timer; enabled condition waits full duration (4.4719ms)
+✔ duration validation and legacy default, preview does not advance timer (5.1786ms)
+✔ time windows support duration and reset when the window ends (80.8333ms)
+Event e3327718-9183-4ccb-9550-c3793c2dbe4e: sent
+Event e3327718-9183-4ccb-9550-c3793c2dbe4e: sent
+Event e3327718-9183-4ccb-9550-c3793c2dbe4e: sent
+Event e3327718-9183-4ccb-9550-c3793c2dbe4e: sent
+Event dd012220-c07f-4203-8ee1-edb535b46904: not_sent
+Events: Event not found
+Events: Add at least one condition and one action (maximum 32 each)
+Events: Enter a whole number
+Events: A selected device or variable no longer exists
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: Event not found
+Event d40eb2bd-dfe1-471f-8ca8-1138e719b91b: sent
+Event d40eb2bd-dfe1-471f-8ca8-1138e719b91b: sent
+Event action: Device failure
+Event 014eb8c4-1f10-4b07-873d-632b90422185: partial
+Event 4ed4f146-b9e9-4b0d-8c9a-02aeef9e9b1b: sent
+Event a4307672-715e-47c1-9002-727aef1b0075: sent
+Event 4ed4f146-b9e9-4b0d-8c9a-02aeef9e9b1b: sent
+Event a4307672-715e-47c1-9002-727aef1b0075: sent
+Event 4ed4f146-b9e9-4b0d-8c9a-02aeef9e9b1b: sent
+Event a4307672-715e-47c1-9002-727aef1b0075: sent
+Event 5e256d9f-c4af-4ea1-9742-917bd9f95470: sent
+Event 31028399-05db-4f2b-bdd6-000b1b5f621a: sent
+Event 58b04034-4e15-47f6-bbc5-ac76a2a1572a: sent
+Event 569194bd-afed-44c6-883b-5254fa078421: sent
+Event 103784cd-948f-4c9f-aad5-ed28f6e6fbe3: sent
+Event 329481e8-74a1-4ab2-b926-335ac341f5b5: sent
+Event 29105a33-617e-4b06-ab95-2a1e8ec204ca: sent
+Event 23fb0687-30ad-4f06-af5f-0396d2c3c0aa: sent
+Event 0e886a08-6c17-4235-88ac-9a182ae51a61: sent
+Event 238b554a-dfcb-4358-8ba0-07656f83f48c: sent
+Event 5e256d9f-c4af-4ea1-9742-917bd9f95470: sent
+Event 31028399-05db-4f2b-bdd6-000b1b5f621a: sent
+Event 58b04034-4e15-47f6-bbc5-ac76a2a1572a: sent
+Event 569194bd-afed-44c6-883b-5254fa078421: sent
+Event 103784cd-948f-4c9f-aad5-ed28f6e6fbe3: sent
+Event 329481e8-74a1-4ab2-b926-335ac341f5b5: sent
+Event 29105a33-617e-4b06-ab95-2a1e8ec204ca: sent
+Event 23fb0687-30ad-4f06-af5f-0396d2c3c0aa: sent
+Event 0e886a08-6c17-4235-88ac-9a182ae51a61: sent
+Event 238b554a-dfcb-4358-8ba0-07656f83f48c: sent
+Event 5e256d9f-c4af-4ea1-9742-917bd9f95470: sent
+Event 31028399-05db-4f2b-bdd6-000b1b5f621a: sent
+Event 58b04034-4e15-47f6-bbc5-ac76a2a1572a: sent
+Event 569194bd-afed-44c6-883b-5254fa078421: sent
+Event 103784cd-948f-4c9f-aad5-ed28f6e6fbe3: sent
+Event 329481e8-74a1-4ab2-b926-335ac341f5b5: sent
+Event 29105a33-617e-4b06-ab95-2a1e8ec204ca: sent
+Event 23fb0687-30ad-4f06-af5f-0396d2c3c0aa: sent
+Event 0e886a08-6c17-4235-88ac-9a182ae51a61: sent
+Event 238b554a-dfcb-4358-8ba0-07656f83f48c: sent
+Event action: Test dispatch failure
+Event 15da5c51-436e-4da9-866a-be491042bd32: outcome_unknown
+Event 2678c6c8-d099-476a-be8b-2d706ebfaa1f: sent
+Event 22120303-469c-4653-9b2f-c9854cbe0e6d: sent
+Event df52afda-7777-449e-bc51-e2e692355aea: sent
+Event bd97dd38-c606-448b-bcfa-0c1df7c0fb6c: sent
+Event 2aefb289-5538-4cf2-930b-0c8b895f7666: sent
+Event 4e31ac34-61d8-4014-9910-6993e403b8fa: sent
+Event e8d1c39a-e04d-4978-9c3a-1939f8e6b292: sent
+Event ba8a80c1-b42a-47b3-b122-47c312409ea2: sent
+Event 97f3eff6-1213-4127-926b-864ed4b80f9c: sent
+Event action: Test dispatch failure
+Event 15da5c51-436e-4da9-866a-be491042bd32: outcome_unknown
+Event 2678c6c8-d099-476a-be8b-2d706ebfaa1f: sent
+Event 22120303-469c-4653-9b2f-c9854cbe0e6d: sent
+Event df52afda-7777-449e-bc51-e2e692355aea: sent
+Event bd97dd38-c606-448b-bcfa-0c1df7c0fb6c: sent
+Event 2aefb289-5538-4cf2-930b-0c8b895f7666: sent
+Event 4e31ac34-61d8-4014-9910-6993e403b8fa: sent
+Event e8d1c39a-e04d-4978-9c3a-1939f8e6b292: sent
+Event ba8a80c1-b42a-47b3-b122-47c312409ea2: sent
+Event 97f3eff6-1213-4127-926b-864ed4b80f9c: sent
+✔ AND precedence and OR alternatives, numeric/bool normalization and exact text (2.3849ms)
+✔ rising edge only, multiple actions, persistence, disabled and enable baseline (25.104ms)
+✔ offline actions record skipped result, save does not run, deletes are scoped (3.6522ms)
+✔ validation, loops including enabling a dormant loop, and target cleanup (3.5681ms)
+✔ queued rapid reports preserve both edges (1.9866ms)
+✔ one failed action does not prevent other actions and partial result is persisted (5.0715ms)
+✔ opposite events preserve repeated ON/OFF transitions without a cooldown (5.752ms)
+✔ 10 simultaneous events and subsequent transitions survive a busy dispatcher (12.7938ms)
+✔ a failed event does not discard other simultaneous events or subsequent triggers (6.0896ms)
+Event action: Plug did not confirm
+Event bbc77348-54ed-488e-acaa-1fb0af770eb8: partial
+Event 8fcb6924-4dfa-439c-a9f6-acf35c0abef0: sent
+Event 57f832bf-65e0-48c4-a5d4-36e9587d8e76: sent
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: These enabled events form a loop. Change an action or disable a conflicting event.
+Events: Add a condition to each group or remove the empty group
+Events: Select a valid condition group
+Events: Choose AND or OR for each group
+Event 4487d518-70fa-4226-b8b2-da3d3b2aff54: sent
+Event 4487d518-70fa-4226-b8b2-da3d3b2aff54: sent
+Event 0ad42405-91bf-4378-ae90-00fe4d4fd219: sent
+Events: Enter a message of 1 to 512 UTF-8 bytes
+Events: Enter a message of 1 to 512 UTF-8 bytes
+Events: Enter a message of 1 to 512 UTF-8 bytes
+Events: Enter a message of 1 to 512 UTF-8 bytes
+Events: Unsupported action or condition type
+Event f5e813bf-aa2d-4130-be92-dcb3a84d1e72: sent
+Event f5e813bf-aa2d-4130-be92-dcb3a84d1e72: sent
+Events: Selected device no longer exists
+Events: Choose a device and connection status
+Events: Unsupported action or condition type
+Event 85bfe8b3-2e5d-4696-9deb-fb47503c62ab: sent
+Event b9e2c4b3-f944-4e10-9dd3-64d38ae2175b: sent
+✔ multiple actions wait for confirmation and continue after a failed plug (12.8495ms)
+✔ LivingLight_On requires Light <= 13 AND custom daytime, then sends both lamp actions (48.251ms)
+✔ presence with both lamps OFF can turn them ON without a false cycle (2.5203ms)
+✔ opposite self guards still reject a real two-event ON/OFF loop (1.852ms)
+✔ value-aware cycle validation supports numeric thresholds and OR branches (1.2485ms)
+✔ value-aware cycles use boolean normalization and exact string comparisons (1.5994ms)
+✔ explicit groups evaluate all truth combinations and preserve saved grouping (3.78ms)
+✔ group validation rejects empty groups, invalid references and operators (1.4332ms)
+✔ OR conditions with hold duration still require the chosen branch to mature (2.3333ms)
+✔ mixed group connectors use AND precedence and keep OR branches independent (1.5569ms)
+✔ message actions persist and fire once alongside device actions (1.9233ms)
+✔ message actions validate messages and cannot be conditions (1.8965ms)
+✔ device connection conditions persist and trigger once on status transitions (4.3188ms)
+✔ disconnected duration survives loss of availability and resets on reconnect (2.4265ms)
+✔ status key cannot collide with a normal variable and is isolated by home (1.186ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 496.9906

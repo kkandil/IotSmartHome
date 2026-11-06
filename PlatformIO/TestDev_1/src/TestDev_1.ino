@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <SmartSnapAPI.h>
 #include "SmartSnapHubConfig.h"
@@ -16,11 +17,13 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
     {
       led1State = 1;
       digitalWrite(D5, HIGH);
+      api.WriteVariableValue("V1", "int", String(led1State));
     }
     else
     {
       led1State = 0;
       digitalWrite(D5, LOW);
+      api.WriteVariableValue("V1", "int", String(led1State));
     }
    }
   else if (varName == "V2")
@@ -29,11 +32,13 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
     {
       led2State = 1.0;
       digitalWrite(D6, HIGH);
+      api.WriteVariableValue("V2", "float", String(led2State));
     }
     else
     {
       led2State = 0.0;
       digitalWrite(D6, LOW);
+      api.WriteVariableValue("V2", "float", String(led2State));
     }
   }
 }
@@ -68,7 +73,7 @@ void HandleConnectionStatus(bool connected)
 void setup()
 {
   Serial.begin(115200);
-  api.SetFirmwareVersion("TestDev_1.4.0");
+  api.SetFirmwareVersion("TestDev_1.4.3");
   
   pinMode(D5, OUTPUT);
   pinMode(D6, OUTPUT);
@@ -76,6 +81,8 @@ void setup()
   digitalWrite(D5, LOW);
   digitalWrite(D6, LOW);
 
+  api.EnableDiscovery("TestDev_1", "TestDev_1", "sensor");
+  api.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   api.onWriteVariable(HandleWriteVariable);
   api.onReadVariable(HandleReadVariable);
   api.onServerValue(HandleServerValue);

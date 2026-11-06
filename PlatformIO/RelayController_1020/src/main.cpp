@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <SmartSnapAPI.h>
 #include "BoardConfig.h"
@@ -199,11 +200,13 @@ void setup() {
         switches[i].begin(digitalRead(SWITCH_PINS[i]), millis());
     }
 
-    smartSnap.SetFirmwareVersion("3IOSwitch_1.2.2");
+    smartSnap.SetFirmwareVersion("3IOSwitch_1.3.2");
     smartSnap.SetCapability(SmartSnap::Capability::StartupBehavior);
     smartSnap.onStartupConfigure(onStartupConfigure);
     smartSnap.SetNonBlockingConnect();
-    smartSnap.onWriteVariable(onWrite);
+    smartSnap.EnableDiscovery("RelayController_1020", "RelayController_1020", "triple_switch");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
+  smartSnap.onWriteVariable(onWrite);
     smartSnap.onServerValue(onServerValue);
     smartSnap.onReadVariable(onRead);
     smartSnap.onConnectionStatus(onConnected);

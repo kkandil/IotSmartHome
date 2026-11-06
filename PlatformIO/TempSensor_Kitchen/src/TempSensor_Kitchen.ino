@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include "SmartSnapAPI.h"
 #include "DHTesp.h" // Click here to get the library: http://librarymanager/All#DHTesp
@@ -88,6 +89,9 @@ void setup()
 
   delay(500);
 
+  smartSnap.SetFirmwareVersion("TempSensor_Kitchen_1.1.2");
+  smartSnap.EnableDiscovery("TempSensor_Kitchen", "TempSensor_Kitchen", "sensor");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   smartSnap.onWriteVariable(HandleWriteVariable);
   smartSnap.onReadVariable(HandleReadVariable);
   smartSnap.onServerValue(HandleServerValue);

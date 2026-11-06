@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <SmartSnapAPI.h>
 #include "SmartSnapHubConfig.h"
@@ -14,11 +15,13 @@ void HandleWriteVariable(const String& varName, const String& varType, const Str
     {
       led1State = 1;
       digitalWrite(D5, HIGH);
+      smartSnap.WriteVariableValue("V1", "int", String(led1State));
     }
     else
     {
       led1State = 0;
       digitalWrite(D5, LOW);
+      smartSnap.WriteVariableValue("V1", "int", String(led1State));
     }
    }
 }
@@ -58,12 +61,14 @@ void setup()
 
   digitalWrite(D5, LOW); 
 
+  smartSnap.EnableDiscovery("TestDev_2", "TestDev_2", "sensor");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   smartSnap.onWriteVariable(HandleWriteVariable);
   smartSnap.onReadVariable(HandleReadVariable);
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  smartSnap.SetFirmwareVersion("TestDev2_1.0.0");
+  smartSnap.SetFirmwareVersion("TestDev2_1.0.3");
   int ret = smartSnap.Initialize( "Home_Germany",1012,"KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {

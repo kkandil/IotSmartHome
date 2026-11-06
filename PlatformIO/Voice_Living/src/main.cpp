@@ -1,3 +1,5 @@
+#include "SmartSnapAPI.h"
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <WiFi.h>
 #include <WebSocketsClient.h>
@@ -9,6 +11,8 @@
 #else
 #include "Secrets.example.h"
 #endif
+
+SmartSnap deviceRegistration;
 
 // SPH0645: SEL/LR to GND (left), powered from 3.3 V.
 constexpr int MIC_BCLK = 26;
@@ -149,10 +153,16 @@ void setup() {
     socket.setReconnectInterval(3000);
     socket.enableHeartbeat(15000, 3000, 2);
     socket.begin(VOICE_PI_HOST, VOICE_PI_PORT, String("/audio/") + VOICE_SATELLITE_ID);
+    deviceRegistration.SetNonBlockingConnect(true);
+    deviceRegistration.EnableDiscovery("Voice_Living", "Voice satellite", "microphone");
+    deviceRegistration.SetFirmwareVersion("Voice_Living_1.1.0");
+    deviceRegistration.SetVariableDefinitions(nullptr, 0);
+    deviceRegistration.Initialize(SMARTSNAP_VOICE_HOME, VOICE_DEVICE_ID, VOICE_WIFI_SSID, VOICE_WIFI_PASSWORD, VOICE_PI_HOST, SMARTSNAP_VOICE_PORT);
     Serial.println("Voice_Living: waiting for Wi-Fi and local voice server.");
 }
 
 void loop() {
+    deviceRegistration.Run();
     socket.loop();
     size_t received = 0;
     // Always drain RX, including while speaking, so stale audio is never replayed to recognition.

@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_VEML7700.h>
@@ -9,6 +10,7 @@
 #include <stdlib.h>
 #include "DeviceConfig.h"
 #include "ReportBaseline.h"
+#include "PresenceSensor.h"
 
 SmartSnap smartSnap;
 Adafruit_VEML7700 light;
@@ -63,7 +65,7 @@ void receiveSetting(int i, const String& text) {
     char* end;
     double value = strtod(text.c_str(), &end);
     if (end == text.c_str() || *end != '\0' || !validSetting(i, value)) {
-        Serial.printf("Rejected invalid %s\n", SETTINGS[i]);
+        Serial1.printf("Rejected invalid %s\n", SETTINGS[i]);
         return;
     }
     if (settings[i] != value) {
@@ -71,7 +73,7 @@ void receiveSetting(int i, const String& text) {
         for (int j = 0; j < 4; ++j) next[j] = settings[j];
         next[i] = value;
         if (!saveSettings(next)) {
-            Serial.println("Settings save failed; retaining previous settings");
+            Serial1.println("Settings save failed; retaining previous settings");
             return;
         }
         settings[i] = value;
@@ -92,8 +94,37 @@ bool responds(uint8_t address) {
     return Wire.endTransmission() == 0;
 }
 
+// Allow conversions to finish between loop iterations, never inside a blocking
+// auto-range call. 100 ms at gain 2 resolves 0.0288 lux, sufficient for room light.
+uint32_t lightReadyAt = 0;
+float readLightWithoutWaiting() {
+    if (int32_t(millis() - lightReadyAt) < 0) return NAN;
+    const uint16_t raw = light.readALS(false);
+    const uint8_t gain = light.getGain();
+    const float lux = light.readLux((gain == VEML7700_GAIN_1_8 || gain == VEML7700_GAIN_1_4) ? VEML_LUX_CORRECTED_NOWAIT : VEML_LUX_NORMAL_NOWAIT);
+    const uint8_t gains[] = {VEML7700_GAIN_1_8, VEML7700_GAIN_1_4, VEML7700_GAIN_1, VEML7700_GAIN_2};
+    int index = 0;
+    while (index < 3 && gains[index] != gain) ++index;
+    int next = index;
+    if (raw < 100 && index < 3) ++next;
+    else if (raw > 10000 && index > 0) --next;
+    if (next != index) {
+        light.setGain(gains[next]);
+        lightReadyAt = millis() + 200;
+    }
+    // Saturated samples cannot supply a reliable threshold/delta decision.
+    return raw == 65535 ? NAN : lux;
+}
+
 void initializeSensors() {
-    if (!lightReady && responds(0x10)) lightReady = light.begin(&Wire);
+    if (!lightReady && responds(0x10)) {
+        lightReady = light.begin(&Wire);
+        if (lightReady) {
+            light.setGain(VEML7700_GAIN_1);
+            light.setIntegrationTime(VEML7700_IT_100MS, false);
+            lightReadyAt = millis() + 200;
+        }
+    }
     if (!climateReady && responds(0x38)) climateReady = climate.begin(&Wire);
     if (!pressureReady) {
         for (uint8_t address : {uint8_t(0x76), uint8_t(0x77)}) {
@@ -119,8 +150,9 @@ void sampleAndPublish(bool fullReport) {
     initializeSensors();
     String errors;
     float lux = NAN, temperature = NAN, humidity = NAN, pressure = NAN, bmpTemp = NAN;
-    if (lightReady && responds(0x10)) lux = light.readLux(VEML_LUX_AUTO);
-    if (!isfinite(lux) || lux < 0) { lightReady = false; errors += "VEML7700 "; }
+    if (lightReady && responds(0x10)) lux = readLightWithoutWaiting();
+    const bool lightWaiting = lightReady && !isfinite(lux);
+    if (!lightWaiting && (!isfinite(lux) || lux < 0)) { lightReady = false; errors += "VEML7700 "; }
 
     sensors_event_t humidityEvent{}, temperatureEvent{};
     if (climateReady && responds(0x38) && climate.getEvent(&humidityEvent, &temperatureEvent)) {
@@ -138,10 +170,10 @@ void sampleAndPublish(bool fullReport) {
 
     // Every published reading becomes the comparison baseline. Extra updates
     // still leave the full-report timer unchanged.
-    bool lightCrossed = lightThresholdState.update(lux, settings[1]);
+    bool lightCrossed = !lightWaiting && lightThresholdState.update(lux, settings[1]);
     bool lightTrigger = lightBaseline.exceeds(lux, settings[2]);
     bool tempTrigger = climateValid && temperatureBaseline.exceeds(temperature, settings[3]);
-    if (fullReport || lightCrossed || (lightTrigger && String(lux, 2) != luxValue)) {
+    if (!lightWaiting && (fullReport || lightCrossed || (lightTrigger && String(lux, 2) != luxValue))) {
         publishNumber("Light", lux, luxValue, lightReady);
         if (lightReady && isfinite(lux)) lightBaseline.reported(luxValue.toFloat());
     }
@@ -182,6 +214,7 @@ void onServerValue(const String& name, const String& value) {
 }
 
 void onConnected(bool connected) {
+    PresenceSensor::handleConnection(connected);
     if (connected) {
         reportRequested = true;
         for (bool& waiting : waitingSettings) waiting = true;
@@ -192,6 +225,8 @@ void onConnected(bool connected) {
 }
 
 bool onRead(const String& name, String& type, String& value) {
+    if (name == "Presence" || name == "Distance")
+        return PresenceSensor::readVariable(name, type, value);
     int i = settingIndex(name);
     if (i >= 0) {
         // Never overwrite a saved server setting before it has been read.
@@ -211,14 +246,16 @@ bool onRead(const String& name, String& type, String& value) {
 }
 
 void setup() {
-    Serial.begin(115200);
+    PresenceSensor::begin();
     Wire.begin(I2C_SDA, I2C_SCL);
     Wire.setClock(100000);
     loadSettings();
-    smartSnap.SetFirmwareVersion("MultiSens_1.2.2");
+    smartSnap.SetFirmwareVersion("MultiSens_1.4.4");
     smartSnap.SetCapability(SmartSnap::Capability::CustomConfiguration);
     smartSnap.SetNonBlockingConnect();
-    smartSnap.onWriteVariable(onWrite);
+    smartSnap.EnableDiscovery("MultiSens", "MultiSens", "sensor");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
+  smartSnap.onWriteVariable(onWrite);
     smartSnap.onServerValue(onServerValue);
     smartSnap.onReadVariable(onRead);
     smartSnap.onConnectionStatus(onConnected);
@@ -226,12 +263,16 @@ void setup() {
 }
 
 void loop() {
+    PresenceSensor::radar.poll();
     smartSnap.Run();
+    PresenceSensor::run();
     if (smartSnap.IsConnected()) {
         bool full = reportRequested || uint32_t(millis() - lastReport) >= uint32_t(settings[0] * 1000);
         if (full || uint32_t(millis() - lastSample) >= 1000) {
             reportRequested = false;
             sampleAndPublish(full);
+            // Drain radar frames buffered while the I2C sensors were sampled.
+            PresenceSensor::run();
             lastSample = millis();
         }
     }

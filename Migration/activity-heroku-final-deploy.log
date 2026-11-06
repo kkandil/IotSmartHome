@@ -1,0 +1,71 @@
+remote: Updated 111 paths from ec30a59        
+remote: Compressing source files... done.        
+remote: Building source:        
+remote: 
+remote: -----> Building on the Heroku-24 stack        
+remote: -----> Using buildpack: heroku/nodejs        
+remote: -----> Node.js app detected        
+remote: 
+remote: -----> Creating runtime environment        
+remote:                
+remote:        NPM_CONFIG_LOGLEVEL=error        
+remote:        NODE_VERBOSE=false        
+remote:        NODE_ENV=production        
+remote:        NODE_MODULES_CACHE=true        
+remote: 
+remote: -----> Installing binaries        
+remote:        engines.node (package.json):   24.x        
+remote:        engines.npm (package.json):    unspecified (use default)        
+remote: 
+remote:        Resolving node version 24.x...        
+remote:        Downloading and installing node 24.22.1...        
+remote: curl: (28) Operation timed out after 120000 milliseconds with 8110080 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 1 seconds. 5 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 9142272 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 2 seconds. 4 retries left.        
+remote: curl: (28) Operation timed out after 120000 milliseconds with 13172736 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 4 seconds. 3 retries left.        
+remote: curl: (28) Operation timed out after 120000 milliseconds with 19382272 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 8 seconds. 2 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 6930432 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 16 seconds. 1 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 27607040 out of 58290700 bytes received        
+remote: 
+remote: -----> Build failed        
+remote: 
+remote:  !     Error: Unable to download Node.js.        
+remote:  !             
+remote:  !     Failed to download Node.js from:        
+remote:  !     https://nodejs.org/download/release/v24.22.1/node-v24.22.1-linux-x64.tar.gz        
+remote:  !             
+remote:  !     In some cases, this happens due to a temporary network        
+remote:  !     issue or an outage with the Node.js distribution server.        
+remote:  !             
+remote:  !     Confirm the download url (https://nodejs.org/download/release/v24.22.1/node-v24.22.1-linux-x64.tar.gz) works then try building again        
+remote:  !     to see if the error resolves itself.        
+remote:  !             
+remote:  !     If that doesn't help, check the Node.js status page:        
+remote:  !     https://status.nodejs.org/        
+remote: 
+remote:  !     Push rejected, failed to compile Node.js app.        
+remote: 
+remote:  !     Push failed        
+remote:  !        
+remote:  ! ## Warning - The same version of this code has already been built: 5d34252b0d1aa140a7983bb8900ee3911d85292f        
+remote:  !        
+remote:  ! We have detected that you have triggered a build from source code with version 5d34252b0d1aa140a7983bb8900ee3911d85292f        
+remote:  ! at least twice. One common cause of this behavior is attempting to deploy code from a different branch.        
+remote:  !        
+remote:  ! If you are developing on a branch and deploying via git you must run:        
+remote:  !        
+remote:  !     git push heroku <branchname>:main        
+remote:  !        
+remote:  ! This article goes into details on the behavior:        
+remote:  !   https://devcenter.heroku.com/articles/duplicate-build-version        
+remote: 
+remote: 
+remote:  !     Push rejected to smarthomehub.        
+remote: 
+To https://git.heroku.com/smarthomehub.git
+ ! [remote rejected] HEAD -> main (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/smarthomehub.git'

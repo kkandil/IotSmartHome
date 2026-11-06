@@ -121,6 +121,8 @@ extern void SmartSnapWriteVariable(String VarName, String VarType, String Value)
         isServoAttached = true;
 //        Serial.println("OFF") ;
       }
+      // Report after setting the servo output. This confirms software state, not physical movement.
+      SmartSnap.WriteVariableValue("V1", "int", isHeaterActive ? "1" : "0");
       Serial.print("V1 updated with: ");
       Serial.println(String(val));
    }

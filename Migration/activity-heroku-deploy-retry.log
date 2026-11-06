@@ -1,0 +1,35 @@
+remote: Updated 111 paths from ec30a59        
+remote: Compressing source files... done.        
+remote: Building source:        
+remote: 
+remote: -----> Building on the Heroku-24 stack        
+remote: -----> Using buildpack: heroku/nodejs        
+remote: -----> Node.js app detected        
+remote: 
+remote: -----> Creating runtime environment        
+remote:                
+remote:        NPM_CONFIG_LOGLEVEL=error        
+remote:        NODE_VERBOSE=false        
+remote:        NODE_ENV=production        
+remote:        NODE_MODULES_CACHE=true        
+remote: 
+remote: -----> Installing binaries        
+remote:        engines.node (package.json):   24.x        
+remote:        engines.npm (package.json):    unspecified (use default)        
+remote: 
+remote:        Resolving node version 24.x...        
+remote:        Downloading and installing node 24.22.1...        
+remote: curl: (28) Operation timed out after 120002 milliseconds with 2981888 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 1 seconds. 5 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 7274496 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 2 seconds. 4 retries left.        
+remote: curl: (28) Operation timed out after 120000 milliseconds with 131072 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 4 seconds. 3 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 98304 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 8 seconds. 2 retries left.        
+remote: curl: (28) Operation timed out after 120001 milliseconds with 1425408 out of 58290700 bytes received        
+remote: Warning: Problem : timeout. Will retry in 16 seconds. 1 retries left.        
+error: RPC failed; curl 56 OpenSSL SSL_read: Connection was reset, errno 10054
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
+Everything up-to-date

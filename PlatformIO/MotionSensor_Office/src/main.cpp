@@ -1,8 +1,10 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include <SmartSnapAPI.h>
 
 #include "SmartSnapHubConfig.h"
 #include "LD2420.h"
+#include "../../shared/RadarEnergyWindow.h"
 
 #ifndef RADAR_BAUD
 #define RADAR_BAUD 115200
@@ -33,11 +35,22 @@ uint8_t recentCount = 0, recentNext = 0;
 uint32_t previousFrameTime = 0, detectionTime = 0, detectionSequence = 0;
 bool observedFrame = false, previousPresence = false;
 DynamicJsonDocument lastDetection(3072);
+RadarEnergyWindow energyWindow;
+uint32_t quietSince = 0;
+bool quietTracked = false;
 
 void captureDetectionFrame() {
     const uint32_t now = millis();
     const bool continuous = observedFrame && now - previousFrameTime < RADAR_FRESHNESS_MS;
-    if (!continuous) recentCount = recentNext = 0;
+    if (!continuous) { recentCount = recentNext = 0; energyWindow.clear(); quietTracked = false; }
+    energyWindow.add(now, radar.energy);
+    if (configValid) {
+        bool below = true;
+        for (int g = currentConfig["minGate"].as<int>(); g <= currentConfig["maxGate"].as<int>(); ++g)
+            if (radar.energy[g] >= currentConfig["still"][g].as<int>()) below = false;
+        if (!below || !quietTracked) quietSince = now;
+        quietTracked = true;
+    }
     if (continuous && !previousPresence && radar.presence && configValid) {
         lastDetection.clear();
         lastDetection["id"] = ++detectionSequence;
@@ -156,6 +169,7 @@ void processRequest() {
     if (action == "read" || action == "save") {
         configValid = false;
         observedFrame = false;
+        energyWindow.clear(); quietTracked = false;
         recentCount = recentNext = 0;
     }
     if (action == "read") {
@@ -180,6 +194,7 @@ void processRequest() {
 
     if (action == "read" || action == "save") {
         observedFrame = false;
+        energyWindow.clear(); quietTracked = false;
         recentCount = recentNext = 0;
     }
     output["status"] = ok ? "OK" : "Error";
@@ -203,6 +218,16 @@ void processRequest() {
         }
     }
 
+    if (fresh && configValid) {
+        uint16_t peaks[16], lows[16]; uint32_t span;
+        const uint32_t frames = energyWindow.read(millis(), peaks, lows, span);
+        JsonObject window = output.createNestedObject("energyWindow");
+        window["frames"] = frames; window["spanMs"] = span;
+        window["quietMs"] = quietTracked ? uint32_t(millis() - quietSince) : 0;
+        JsonArray high = window.createNestedArray("peaks");
+        JsonArray low = window.createNestedArray("lows");
+        for (int g = 0; g < 16; ++g) { high.add(peaks[g]); low.add(lows[g]); }
+    }
     output["detectionSnapshots"] = true;
     if (!lastDetection.isNull()) {
         output["lastDetection"] = lastDetection.as<JsonObject>();
@@ -270,7 +295,9 @@ void setup() {
     smartSnap.onPresenceConfigure(queueRequest);
     smartSnap.onConnectionStatus(handleConnection);
     smartSnap.onReadVariable(readVariable);
-    smartSnap.SetFirmwareVersion("MotionSensor_Office_1.0.3");
+    smartSnap.EnableDiscovery("MotionSensor_Office", "MotionSensor_Office", "motion");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
+  smartSnap.SetFirmwareVersion("MotionSensor_Office_1.0.6");
     smartSnap.SetCapability(SmartSnap::Capability::LD2420);
     smartSnap.Initialize( "Home_Germany", 1013, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 

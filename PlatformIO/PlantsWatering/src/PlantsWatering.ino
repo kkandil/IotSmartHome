@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include "SmartSnapAPI.h"
 #include <Ultrasonic.h>
 #include "SmartSnapHubConfig.h"
@@ -89,11 +90,13 @@ void HandleWriteVariable(const String& varName, const String& VarType, const Str
   {
       outputState = value.toInt(); 
       SetPumpOutputState(0, outputState);
+      SmartSnap.WriteVariableValue(PUMP1_CONTROL_VAR, "int", String(Pumps[0].currentState));
   }
   else if( varName == PUMP2_CONTROL_VAR )
   {
       outputState = value.toInt(); 
       SetPumpOutputState(1, outputState);
+      SmartSnap.WriteVariableValue(PUMP2_CONTROL_VAR, "int", String(Pumps[1].currentState));
   }
   else if( varName == "V7")
   {
@@ -195,6 +198,9 @@ void setup() {
    
   delay(1000);  
   
+  SmartSnap.SetFirmwareVersion("PlantsWatering_1.1.2");
+  SmartSnap.EnableDiscovery("PlantsWatering", "PlantsWatering", "sensor");
+  SmartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   SmartSnap.onWriteVariable(HandleWriteVariable);
   SmartSnap.onReadVariable(HandleReadVariable);
   SmartSnap.onServerValue(HandleServerValue);

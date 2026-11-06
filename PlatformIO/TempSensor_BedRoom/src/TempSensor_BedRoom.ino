@@ -1,3 +1,4 @@
+#include "DeviceDefinition.h"
 #include <Arduino.h>
 #include "SmartSnapAPI.h"
 #include "DHTesp.h" // Click here to get the library: http://librarymanager/All#DHTesp
@@ -105,7 +106,13 @@ void HandleServerValue(const String& varName, const String& value)
 void HandleConnectionStatus(bool connected)
 {
   Serial.printf("Connection status: %s\n", connected ? "connected" : "disconnected");
-  if (connected) smartSnap.RequestVariableValueFromServer("SleepAlowed");
+  if (connected) {
+    smartSnap.RequestVariableValueFromServer("SleepAlowed");
+    // Also publish when pairing finishes after setup has already returned.
+    smartSnap.WriteVariableValue("Temp", "float", String(dht.getTemperature(), 2));
+    smartSnap.WriteVariableValue("Humid", "float", String(dht.getHumidity(), 2));
+    smartSnap.WriteVariableValue("status", "string", dht.getStatusString());
+  }
 }
 
 void setup()
@@ -116,12 +123,14 @@ void setup()
 
   delay(500);
 
+  smartSnap.EnableDiscovery("TempSensor_BedRoom", "TempSensor_BedRoom", "sensor");
+  smartSnap.SetVariableDefinitions(DEVICE_VARIABLES, sizeof(DEVICE_VARIABLES)/sizeof(DEVICE_VARIABLES[0]));
   smartSnap.onWriteVariable(HandleWriteVariable);
   smartSnap.onReadVariable(HandleReadVariable);
   smartSnap.onServerValue(HandleServerValue);
   smartSnap.onConnectionStatus(HandleConnectionStatus);
 
-  smartSnap.SetFirmwareVersion("TemperatureSensor_1.0.0");
+  smartSnap.SetFirmwareVersion("TempSensor_BedRoom_1.1.2");
   int ret = smartSnap.Initialize( "Home_Germany", 1010, "KS_DSL", "2wad@dsl", SMARTSNAP_HUB_HOST, SMARTSNAP_HUB_PORT);
 
   if (ret == E_OK) {
@@ -146,7 +155,7 @@ void setup()
   {
     smartSnap.Run();
   }
-  if(isSleepAlowed == true)
+  if(isSleepAlowed == true && smartSnap.IsConnected())
   {
     smartSnap.Disconnect();
     delay(500);
@@ -159,8 +168,6 @@ void setup()
 
 void loop()
 {
-  if(isSleepAlowed == false)
-  {
-    smartSnap.Run(); 
-  }
+  // Keep receiving the saved sleep setting after a late pairing acknowledgement.
+  smartSnap.Run();
 }
